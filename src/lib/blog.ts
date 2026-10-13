@@ -6,6 +6,8 @@ import type { MDXContent } from "mdx/types";
 import { cache } from "react";
 import { z } from "zod";
 
+import type { BlogDivision } from "@/content/types";
+
 /**
  * Blog posts live in `src/content/blog/<slug>.mdx`. The file name is the URL slug.
  * Each post exports a `meta` object that is validated against this schema.
@@ -14,6 +16,8 @@ const postMetaSchema = z.object({
   title: z.string().min(1),
   description: z.string().min(1),
   date: z.iso.date(),
+  /** Which business line the post belongs to: "it" or "engineering". */
+  division: z.enum(["it", "engineering"]) satisfies z.ZodType<BlogDivision>,
   category: z.string().min(1),
   cover: z.string().startsWith("/"),
 });
@@ -58,3 +62,8 @@ export const getAllPosts = cache(async (): Promise<Post[]> => {
   );
   return posts.sort((a, b) => b.date.localeCompare(a.date));
 });
+
+/** Posts of one business line, newest first. */
+export async function getPostsByDivision(division: BlogDivision) {
+  return (await getAllPosts()).filter((post) => post.division === division);
+}

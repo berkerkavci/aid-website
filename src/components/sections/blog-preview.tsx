@@ -1,17 +1,20 @@
 import { BlogCard } from "@/components/blog/blog-card";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionIntro } from "@/components/ui/section-intro";
-import type { SectionIntro as SectionIntroContent } from "@/content/types";
-import { getAllPosts } from "@/lib/blog";
+import type { BlogDivision, SectionIntro as SectionIntroContent } from "@/content/types";
+import { getPostsByDivision } from "@/lib/blog";
 
 type BlogPreviewProps = {
   intro: SectionIntroContent;
+  /** Only posts of this business line are shown. */
+  division: BlogDivision;
   limit: number;
 };
 
 /** Latest blog posts ("Knowledge Hub"). The "view all" link lives in the intro. */
-export async function BlogPreview({ intro, limit }: BlogPreviewProps) {
-  const posts = (await getAllPosts()).slice(0, limit);
+export async function BlogPreview({ intro, division, limit }: BlogPreviewProps) {
+  const posts = (await getPostsByDivision(division)).slice(0, limit);
+  if (posts.length === 0) return null;
 
   return (
     <section

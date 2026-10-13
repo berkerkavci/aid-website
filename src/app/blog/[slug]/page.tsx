@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionIntro } from "@/components/ui/section-intro";
 import { siteConfig } from "@/config/site";
-import { blogPostContent as content } from "@/content/pages/blog";
+import { blogDivisionHref, blogPostContent as content } from "@/content/pages/blog";
 import { getAllPosts, getPost, getPostSlugs } from "@/lib/blog";
 import { cn, formatDate, getSiteUrl } from "@/lib/utils";
 
@@ -50,8 +50,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const { Content } = post;
   const siteUrl = getSiteUrl();
+  // Prefer articles from the same business line, newest first.
   const related = (await getAllPosts())
     .filter((other) => other.slug !== post.slug)
+    .sort((a, b) => Number(b.division === post.division) - Number(a.division === post.division))
     .slice(0, content.related.limit);
 
   return (
@@ -60,7 +62,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <header className="flex w-full flex-col items-center section-x">
           <div className="flex w-full max-w-[600px] flex-col items-center gap-[15px] text-center">
             <Link
-              href={content.backLink.href}
+              href={blogDivisionHref(post.division)}
               className="mb-3 inline-flex items-center gap-2 type-badge text-body transition-colors hover:text-ink"
             >
               <ArrowLeft weight="bold" className="size-4" aria-hidden />

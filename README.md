@@ -75,7 +75,8 @@ export const meta = {
   title: "Yazı başlığı",
   description: "Arama motorları ve paylaşımlar için kısa özet.",
   date: "2026-10-13",
-  category: "Automation",
+  division: "engineering", // "it" veya "engineering" — blogdaki sekmeyi belirler
+  category: "MEP Design",
   cover: "/images/blog/kapak.jpg",
 };
 
@@ -86,8 +87,10 @@ Giriş paragrafı…
 - **Kalın kısım:** madde metni
 ```
 
-Yazı otomatik olarak blog listesine, IT sayfasındaki "Knowledge Hub" bölümüne (en yeni 3 yazı) ve
-`sitemap.xml`'e eklenir. `meta` alanlarından biri eksik/hatalıysa build açıklayıcı bir hata verir.
+Yazı otomatik olarak blog listesinde `division` ile seçilen sekmeye (IT Services / Engineering),
+IT yazılarıysa IT sayfasındaki "Knowledge Hub" bölümüne (en yeni 3 yazı) ve `sitemap.xml`'e
+eklenir. `meta` alanlarından biri eksik/hatalıysa build açıklayıcı bir hata verir. Sekme
+etiketleri ve boş durum metinleri `src/content/pages/blog.ts` içinde.
 
 ### Metinleri / kartları / istatistikleri değiştirmek
 

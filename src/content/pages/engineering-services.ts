@@ -22,7 +22,8 @@ export const engineeringServicesContent = {
     description:
       "AID is a contemporary engineering firm dedicated to delivering top-tier design and development services for building MEP (Mechanical, Electrical, and Plumbing) systems, leveraging cutting-edge technologies.",
     primaryCta: { label: "Get in touch", href: "/contact" },
-    secondaryCta: { label: "Explore services", href: "#services" },
+    // Jumps to the first section below the hero.
+    secondaryCta: { label: "Explore", href: "#about" },
   } satisfies HeroContent,
 
   /** In-page section bar shown below the hero. */

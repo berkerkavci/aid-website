@@ -26,7 +26,7 @@ export default function ItServicesPage() {
       <AboutSection intro={content.about.intro} features={content.about.features} />
       <StatsSection intro={content.stats.intro} items={content.stats.items} />
       <ServicesGrid intro={content.services.intro} items={content.services.items} />
-      <BlogPreview intro={content.blog.intro} limit={content.blog.limit} />
+      <BlogPreview intro={content.blog.intro} division="it" limit={content.blog.limit} />
       <CtaSection intro={content.cta.intro} button={content.cta.button} />
     </PageShell>
   );

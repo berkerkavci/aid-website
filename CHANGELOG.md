@@ -2,6 +2,18 @@
 
 Bu dosya sitedeki önemli değişiklikleri tarih sırasıyla listeler (en yeni en üstte).
 
+## 2026-10-14 — Blog kategorileri ve hero düzeltmeleri
+
+- **Blog iki bölüme ayrıldı:** Knowledge Hub sayfasında hap şeklinde segmented control
+  (IT Services · Engineering); mobilde tam genişlik. Seçim adreste saklanır
+  (`/blog?division=engineering`), link paylaşılabilir. Erişilebilir sekme yapısı (ok tuşları,
+  Home/End). Henüz yazı olmayan bölüm için "yakında" boş durumu.
+- Her blog yazısının `meta` bloğuna zorunlu `division: "it" | "engineering"` alanı eklendi.
+- IT sayfasındaki Knowledge Hub yalnızca IT yazılarını gösterir; yazı sayfasındaki
+  "← All articles" doğru sekmeye döner, "Keep Reading" önce aynı bölümün yazılarını önerir.
+- **Hero:** İkinci buton "Explore" oldu ve hero'nun altındaki ilk bölüme (About) gider.
+- **Düzeltme:** Sayfa içi butonlar (ör. "Explore") ikinci tıklamada da çalışıyor.
+
 ## 2026-10-14 — İletişim formu geri bildirimi
 
 - **Başarılı gönderim:** Form gönderildikten sonra formun yerine net bir onay ekranı geliyor

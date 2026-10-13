@@ -22,7 +22,8 @@ export const itServicesContent = {
     description:
       "We simplify complex IT operations with smart monitoring, automation, and DevOps solutions—boosting efficiency and ensuring uptime.",
     primaryCta: { label: "Get in touch", href: "/contact" },
-    secondaryCta: { label: "Explore services", href: "#services" },
+    // Jumps to the first section below the hero.
+    secondaryCta: { label: "Explore", href: "#about" },
   } satisfies HeroContent,
 
   /** In-page section bar shown below the hero. */

@@ -2,6 +2,9 @@
 
 export type Cta = { label: string; href: string };
 
+/** Business line a blog post belongs to (used by the blog filter). */
+export type BlogDivision = "it" | "engineering";
+
 /** Entry of the in-page section bar; `id` must match the section's `id` attribute. */
 export type SectionLink = { id: string; label: string };
 

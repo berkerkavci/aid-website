@@ -20,7 +20,9 @@ const variants = {
 
 type ButtonVariant = keyof typeof variants;
 
-type ButtonLinkProps = Omit<ComponentProps<typeof Link>, "className" | "children"> & {
+type ButtonLinkProps = Omit<ComponentProps<"a">, "href" | "className" | "children"> & {
+  /** A page path ("/contact") or an in-page anchor ("#about"). */
+  href: string;
   variant?: ButtonVariant;
   icon?: "arrow-right" | "arrow-down";
   className?: string;
@@ -30,6 +32,7 @@ type ButtonLinkProps = Omit<ComponentProps<typeof Link>, "className" | "children
 const iconMap = { "arrow-right": ArrowRight, "arrow-down": ArrowDown };
 
 export function ButtonLink({
+  href,
   variant = "light",
   icon,
   className,
@@ -37,18 +40,31 @@ export function ButtonLink({
   ...props
 }: ButtonLinkProps) {
   const IconComponent = icon ? iconMap[icon] : null;
-
-  return (
-    <Link
-      className={cn(
-        "group inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[transform,filter,background-color] duration-300 ease-framer focus-visible:outline-2 focus-visible:outline-offset-4",
-        variants[variant],
-        className,
-      )}
-      {...props}
-    >
+  const classes = cn(
+    "group inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[transform,filter,background-color] duration-300 ease-framer focus-visible:outline-2 focus-visible:outline-offset-4",
+    variants[variant],
+    className,
+  );
+  const content = (
+    <>
       {variant === "dark" && typeof children === "string" ? <RollText text={children} /> : children}
       {IconComponent && <IconComponent weight="bold" className="size-5" aria-hidden />}
+    </>
+  );
+
+  // In-page anchors use a native link: the browser scrolls on every click,
+  // even when the URL already ends with the same #hash.
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} className={classes} {...props}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={classes} {...props}>
+      {content}
     </Link>
   );
 }
