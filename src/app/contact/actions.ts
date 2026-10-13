@@ -11,7 +11,7 @@ import {
   type ContactFormValues,
 } from "@/lib/contact";
 
-const SUCCESS_MESSAGE = "Thank you! Your message has been sent. We'll get back to you shortly.";
+const SUCCESS_MESSAGE = "Your message has been sent. We typically reply within one business day.";
 
 function formatEmail(data: ContactFormValues) {
   return [

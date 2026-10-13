@@ -1,7 +1,8 @@
 "use client";
 
+import { CheckCircle, WarningCircle } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
-import { useActionState, type ComponentProps } from "react";
+import { useActionState, useEffect, useRef, useState, type ComponentProps } from "react";
 
 import { sendContactMessage } from "@/app/contact/actions";
 import {
@@ -92,11 +93,68 @@ function PrivacyConsent({ state }: { state: ContactFormState }) {
   );
 }
 
-export function ContactForm() {
-  const [state, formAction, pending] = useActionState(sendContactMessage, initialContactFormState);
+/** Replaces the form after a successful submission so the confirmation can't be missed. */
+function SuccessMessage({ message, onReset }: { message?: string; onReset: () => void }) {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  // Bring the confirmation into view and move focus to it (screen readers announce it).
+  useEffect(() => {
+    panelRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+    headingRef.current?.focus({ preventScroll: true });
+  }, []);
 
   return (
-    <form action={formAction} className="flex flex-col gap-5" noValidate>
+    <div
+      ref={panelRef}
+      role="status"
+      className="flex min-h-[22rem] flex-col items-center justify-center gap-5 py-6 text-center"
+    >
+      <span className="flex size-16 items-center justify-center rounded-full bg-tint-green">
+        <CheckCircle weight="fill" className="size-9 text-green-700" aria-hidden />
+      </span>
+      <div className="flex flex-col gap-2">
+        <h2 ref={headingRef} tabIndex={-1} className="type-h3 text-ink outline-none">
+          Thank you!
+        </h2>
+        <p className="max-w-[420px] type-body text-body">{message}</p>
+      </div>
+      <button
+        type="button"
+        onClick={onReset}
+        className="rounded-field border border-ink px-5 py-3 type-button text-ink outline-ink transition-transform hover:scale-[1.03]"
+      >
+        Send another message
+      </button>
+    </div>
+  );
+}
+
+/**
+ * The form is remounted (new `key`) for "Send another message", which also
+ * resets the server action state.
+ */
+export function ContactForm() {
+  const [formKey, setFormKey] = useState(0);
+  return <ContactFormInner key={formKey} onReset={() => setFormKey((key) => key + 1)} />;
+}
+
+function ContactFormInner({ onReset }: { onReset: () => void }) {
+  const [state, formAction, pending] = useActionState(sendContactMessage, initialContactFormState);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // After a failed validation, move focus to the first field that needs attention.
+  useEffect(() => {
+    if (state.status !== "error") return;
+    formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+  }, [state]);
+
+  if (state.status === "success") {
+    return <SuccessMessage message={state.message} onReset={onReset} />;
+  }
+
+  return (
+    <form ref={formRef} action={formAction} className="flex flex-col gap-5" noValidate>
       <div className="grid gap-5 tablet:grid-cols-2">
         <Field
           name="fullName"
@@ -155,6 +213,16 @@ export function ContactForm() {
 
       <PrivacyConsent state={state} />
 
+      {state.status === "error" && state.message && (
+        <div
+          role="alert"
+          className="flex items-start gap-3 rounded-field border border-red-200 bg-red-50 p-4 text-sm/[1.5] text-red-800"
+        >
+          <WarningCircle weight="fill" className="mt-px size-5 shrink-0 text-red-600" aria-hidden />
+          <p>{state.message}</p>
+        </div>
+      )}
+
       <button
         type="submit"
         disabled={pending}
@@ -162,17 +230,6 @@ export function ContactForm() {
       >
         {pending ? "Sending…" : "Send message"}
       </button>
-
-      <p
-        role="status"
-        aria-live="polite"
-        className={cn(
-          "text-sm empty:hidden",
-          state.status === "success" ? "text-green-700" : "text-red-600",
-        )}
-      >
-        {state.status !== "idle" ? state.message : ""}
-      </p>
     </form>
   );
 }

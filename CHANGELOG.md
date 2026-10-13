@@ -2,6 +2,16 @@
 
 Bu dosya sitedeki önemli değişiklikleri tarih sırasıyla listeler (en yeni en üstte).
 
+## 2026-10-14 — İletişim formu geri bildirimi
+
+- **Başarılı gönderim:** Form gönderildikten sonra formun yerine net bir onay ekranı geliyor
+  (yeşil onay ikonu, "Thank you!", 1 iş günü içinde dönüş notu ve "Send another message" butonu).
+  Ekran otomatik olarak onaya kayar ve odak onay başlığına taşınır (ekran okuyucular duyurur).
+- **Hata durumu:** Gönder butonunun üstünde kırmızı, ikonlu uyarı kutusu; doğrulama hatasında
+  imleç otomatik olarak ilk hatalı alana gider.
+- **Yayın:** Site Vercel'e taşındı (www.aidprojectsolutions.com), e-postalar Resend
+  (`notify.aidprojectsolutions.com`, AB bölgesi) üzerinden gönderiliyor.
+
 ## 2026-10-13 — Tasarım, kullanılabilirlik ve yasal uyum güncellemesi
 
 ### Yerleşim ve tasarım
