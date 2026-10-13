@@ -4,6 +4,7 @@ import type {
   HeroContent,
   PartnerLogo,
   SectionIntro,
+  SectionLink,
   ServiceCard,
   Stat,
 } from "@/content/types";
@@ -20,9 +21,22 @@ export const itServicesContent = {
     rotatingWords: ["Solution", "Automation", "Software"],
     description:
       "We simplify complex IT operations with smart monitoring, automation, and DevOps solutions—boosting efficiency and ensuring uptime.",
-    cta: { label: "Scroll for More", href: "#about" },
+    primaryCta: { label: "Get in touch", href: "/contact" },
+    secondaryCta: { label: "Explore services", href: "#services" },
   } satisfies HeroContent,
 
+  /** In-page section bar shown below the hero. */
+  sectionNav: {
+    title: "IT Services",
+    links: [
+      { id: "about", label: "About" },
+      { id: "services", label: "Services" },
+      { id: "blog", label: "Knowledge Hub" },
+      { id: "contact", label: "Contact" },
+    ] satisfies SectionLink[],
+  },
+
+  partnersTitle: "Technologies we work with",
   partners: [
     { name: "UiPath", src: "/images/partners/uipath.png", width: 97, height: 36 },
     { name: "Dynatrace", src: "/images/partners/dynatrace.png", width: 201, height: 36 },
@@ -125,9 +139,9 @@ export const itServicesContent = {
       title: "Knowledge Hub",
       description:
         "Thoughtful content on automation, monitoring, and digital transformation shaped by hands-on experience.",
+      link: { label: "View all articles", href: "/blog" },
     } satisfies SectionIntro,
     limit: 3,
-    cta: { label: "View All", href: "/blog" } satisfies Cta,
   },
 
   cta: {

@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
 
-import { getNavLinks, type SiteSection } from "@/config/site";
+import type { SiteSection } from "@/config/site";
 
 import { Footer } from "./footer";
 import { Navbar } from "./navbar";
 
 type PageShellProps = {
   children: ReactNode;
-  /** Which part of the site the page belongs to (nav links + footer e-mail). */
+  /** Which business line the page belongs to (decides the e-mail shown in the footer). */
   section?: SiteSection;
   /** Use "transparent" only on pages that start with a dark hero. */
   navVariant?: "transparent" | "solid";
@@ -23,7 +23,7 @@ export function PageShell({ children, section = "general", navVariant = "solid" 
       >
         Skip to content
       </a>
-      <Navbar links={getNavLinks(section)} variant={navVariant} />
+      <Navbar variant={navVariant} />
       <main id="main-content">{children}</main>
       <Footer section={section} />
     </>

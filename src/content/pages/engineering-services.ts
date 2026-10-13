@@ -1,4 +1,13 @@
-import type { Cta, FeatureCard, HeroContent, ListGroup, SectionIntro, Stat } from "@/content/types";
+import type {
+  Cta,
+  FeatureCard,
+  HeroContent,
+  ListGroup,
+  SectionIntro,
+  SectionLink,
+  ServiceCard,
+  Stat,
+} from "@/content/types";
 
 export const engineeringServicesContent = {
   meta: {
@@ -12,8 +21,20 @@ export const engineeringServicesContent = {
     rotatingWords: ["MEP Engineering", "MEP Consultancy", "Project Management"],
     description:
       "AID is a contemporary engineering firm dedicated to delivering top-tier design and development services for building MEP (Mechanical, Electrical, and Plumbing) systems, leveraging cutting-edge technologies.",
-    cta: { label: "Scroll for More", href: "#about" },
+    primaryCta: { label: "Get in touch", href: "/contact" },
+    secondaryCta: { label: "Explore services", href: "#services" },
   } satisfies HeroContent,
+
+  /** In-page section bar shown below the hero. */
+  sectionNav: {
+    title: "Engineering Services",
+    links: [
+      { id: "about", label: "About" },
+      { id: "services", label: "Services" },
+      { id: "capabilities", label: "Capabilities" },
+      { id: "contact", label: "Contact" },
+    ] satisfies SectionLink[],
+  },
 
   about: {
     intro: {
@@ -63,16 +84,16 @@ export const engineeringServicesContent = {
         "We optimize building MEP system operations at scale, enhancing system resilience, improving energy efficiency, reducing operational costs and risks, and aligning technologies with project objectives.",
     } satisfies SectionIntro,
     items: [
-      "Project Engineering",
-      "MEP 3D Coordination Drawings",
-      "MEP 3D Shop Drawings",
-      "Cost Analysis",
-      "Tender Documentation Services",
-      "Technical Documentation and Spec Preparation",
-      "Independent Design Review Process",
-      "Commissioning Services",
-      "Fire Protection System Design",
-    ],
+      { title: "Project Engineering", icon: "clipboard", tint: "blue" },
+      { title: "MEP 3D Coordination Drawings", icon: "cube", tint: "pink" },
+      { title: "MEP 3D Shop Drawings", icon: "ruler", tint: "yellow" },
+      { title: "Cost Analysis", icon: "calculator", tint: "green" },
+      { title: "Tender Documentation Services", icon: "file-text", tint: "blue" },
+      { title: "Technical Documentation and Spec Preparation", icon: "files", tint: "pink" },
+      { title: "Independent Design Review Process", icon: "magnifying-glass", tint: "yellow" },
+      { title: "Commissioning Services", icon: "wrench", tint: "green" },
+      { title: "Fire Protection System Design", icon: "fire-extinguisher", tint: "blue" },
+    ] satisfies ServiceCard[],
   },
 
   capabilities: {
@@ -82,6 +103,7 @@ export const engineeringServicesContent = {
     } satisfies SectionIntro,
     groups: [
       {
+        title: "Design Standards",
         intro:
           "The personnel is experienced in designing mechanical systems in accordance with the standards following:",
         items: [
@@ -98,6 +120,7 @@ export const engineeringServicesContent = {
         ],
       },
       {
+        title: "System Design Expertise",
         intro: "We are specialized at the following system designs:",
         items: [
           "Heating, Ventilation, Air-Conditioning systems",
@@ -116,7 +139,6 @@ export const engineeringServicesContent = {
         ],
       },
     ] satisfies ListGroup[],
-    cta: { label: "View All", href: "/blog" } satisfies Cta,
   },
 
   cta: {

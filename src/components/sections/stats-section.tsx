@@ -10,7 +10,7 @@ type StatsSectionProps = {
 /** Dark "Solutions Without Borders" band with key figures. */
 export function StatsSection({ intro, items }: StatsSectionProps) {
   return (
-    <section className="flex flex-col items-center gap-15 bg-stats section-x py-[72px] tablet:py-20 desktop:py-25">
+    <section className="flex flex-col items-center section-y bg-stats section-x">
       <Reveal className="w-full">
         <SectionIntro {...intro} tone="dark" />
       </Reveal>

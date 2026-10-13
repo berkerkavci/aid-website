@@ -35,10 +35,10 @@ export function ContactCards() {
   return (
     <div className="grid w-full gap-10 desktop:grid-cols-3">
       {cards.map((card, index) => (
-        <Reveal key={card.title} delay={index * 0.1} className="h-full">
+        <Reveal key={card.title} delay={index * 0.1} className="h-full min-w-0">
           <div className="flex h-full flex-col items-start gap-8 rounded-card border border-line bg-white p-8 tablet:p-10">
             <Icon name={card.icon} className="size-7 text-icon" />
-            <div className="flex flex-col gap-3">
+            <div className="flex min-w-0 flex-col gap-3 [overflow-wrap:anywhere]">
               <h2 className="font-display text-lg/[1.4] font-semibold text-black">{card.title}</h2>
               {card.links.map((link) => (
                 <p key={link.href}>

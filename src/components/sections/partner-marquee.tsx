@@ -8,8 +8,13 @@ const LOGO_GAP = 60; // px between logos
 const SPEED = 30; // px per second (same as the original)
 const COPIES = 4; // enough copies to fill ultra-wide screens without gaps
 
-/** Infinite, CSS-only logo marquee. */
-export function PartnerMarquee({ logos }: { logos: PartnerLogo[] }) {
+type PartnerMarqueeProps = {
+  logos: PartnerLogo[];
+  title?: string;
+};
+
+/** Infinite, CSS-only logo marquee. Pauses on hover; logos regain colour on hover. */
+export function PartnerMarquee({ logos, title }: PartnerMarqueeProps) {
   if (logos.length === 0) return null;
 
   const setWidth = logos.reduce((sum, logo) => sum + logo.width + LOGO_GAP, 0);
@@ -18,11 +23,19 @@ export function PartnerMarquee({ logos }: { logos: PartnerLogo[] }) {
   const track = Array.from({ length: COPIES }, () => logos).flat();
 
   return (
-    <section aria-label="Technologies we work with" className="bg-white p-5 tablet:p-10">
+    <section
+      aria-label={title ?? "Technologies we work with"}
+      className="flex flex-col gap-4 bg-white p-5 tablet:gap-5 tablet:p-10"
+    >
+      {title && (
+        <p className="text-center text-sm font-medium tracking-[0.08em] text-body/80 uppercase">
+          {title}
+        </p>
+      )}
       <Reveal>
         <div className="flex h-[82px] items-center overflow-hidden">
           <ul
-            className="flex w-max shrink-0 items-center motion-safe:animate-marquee"
+            className="marquee-track flex w-max shrink-0 items-center"
             style={{ "--marquee-duration": `${duration}s` } as CSSProperties}
           >
             {track.map((logo, index) => {
@@ -40,7 +53,7 @@ export function PartnerMarquee({ logos }: { logos: PartnerLogo[] }) {
                     width={logo.width}
                     height={logo.height}
                     sizes={`${logo.width}px`}
-                    className="object-contain"
+                    className="object-contain opacity-60 grayscale transition-[filter,opacity] duration-300 hover:opacity-100 hover:grayscale-0"
                     style={{ width: logo.width, height: logo.height }}
                   />
                 </li>

@@ -94,11 +94,18 @@ Yazı otomatik olarak blog listesine, IT sayfasındaki "Knowledge Hub" bölümü
 - IT sayfası: `src/content/pages/it-services.ts`
 - Engineering sayfası: `src/content/pages/engineering-services.ts`
 - Giriş sayfası: `src/content/pages/home.ts`
-- İletişim bilgileri, menü, footer: `src/config/site.ts`
+- Sayfa içi gezinme çubuğu (About · Services · …): ilgili sayfa dosyasındaki `sectionNav`
+  listesi. Her öğenin `id` değeri, gideceği bölümün `id`'si ile aynı olmalı.
+- İletişim sayfası (yanıt süresi notu dahil): `src/content/pages/contact.ts`
+- Blog yazısı altındaki "Keep Reading" ve iletişim bölümü: `src/content/pages/blog.ts`
+- İletişim bilgileri, üst menü (`mainNavigation`), footer menüsü: `src/config/site.ts`
+- Gizlilik Politikası metni: `src/content/legal/privacy.mdx` (değiştirince
+  `src/app/privacy/page.tsx` içindeki `privacyPolicyUpdatedAt` tarihini güncelleyin)
 
 ### Yeni servis kartı / ikon
 
-`it-services.ts` → `services.items` dizisine bir nesne ekleyin. İkonlar
+`it-services.ts` veya `engineering-services.ts` → `services.items` dizisine bir nesne ekleyin
+(`description` yazmazsanız kart kompakt görünür). İkonlar
 `src/components/ui/icon.tsx` içinde tanımlı; yeni ikon için [phosphoricons.com](https://phosphoricons.com)
 üzerinden adını bulup bu dosyaya ve `src/content/types.ts` içindeki `IconName` listesine ekleyin.
 
@@ -128,18 +135,20 @@ Sonra `src/app/sitemap.ts` içindeki `staticRoutes` listesine ekleyin.
 
 Tüm tasarım değerleri `src/app/globals.css` içindeki `@theme` bloğunda (ör. `--color-brand`,
 `--color-ink`). Kırılım noktaları orijinal siteyle aynı: telefon `< 810px`, `tablet:` ≥ 810px,
-`desktop:` ≥ 1200px.
+`desktop:` ≥ 1200px. `short:` varyantı, masaüstü genişliğinde ama kısa (≤ 820px) ekranları
+(dizüstüler) hedefler.
+
+Bölüm düzeni için ortak yardımcılar:
+
+- `section-x` — yatay kenar boşluğu; içerik en fazla 1360px genişlikte ortalanır.
+- `section-y` — tüm bölümlerde aynı dikey ritim (masaüstünde ekran yüksekliğine göre ölçeklenir).
+- `section-fit` — gezinme çubuğundan ulaşılan bölümler masaüstünde tam bir ekran yüksekliğindedir
+  ve içerik dikeyde ortalanır. Yeni bir bölümü çubuğa eklerken bu sınıfı ve bir `id` verin.
 
 ## Vercel'e yayınlama
 
-1. Projeyi GitHub'a gönderin:
-   ```bash
-   git init -b main
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin https://github.com/<kullanici>/aid-website.git
-   git push -u origin main
-   ```
+1. Kod GitHub'da: [berkerkavci/aid-website](https://github.com/berkerkavci/aid-website). Değişiklikleri
+   `git add .`, `git commit -m "…"` ve `git push` ile gönderin.
 2. [vercel.com/new](https://vercel.com/new) → depoyu seçin → **Deploy**. Framework (Next.js) ve
    Node sürümü (24.x, `package.json` → `engines`) otomatik algılanır; ekstra ayar gerekmez.
 3. **Settings → Environment Variables** bölümüne `.env.example` dosyasındaki değişkenleri ekleyin.
@@ -159,15 +168,35 @@ Form, [Resend](https://resend.com) üzerinden e-posta gönderir:
    - `CONTACT_FROM_EMAIL` — doğrulanmış alan adından gönderici, ör. `AID Website <noreply@aidprojectsolutions.com>`
 
 Anahtar yoksa geliştirme ortamında mesajlar terminale yazılır; production'da kullanıcıya e-posta
-adresine yazması söylenir. Form; Zod doğrulaması, bot tuzağı (honeypot) ve erişilebilir hata
-mesajları içerir.
+adresine yazması söylenir. Form; Zod doğrulaması, bot tuzağı (honeypot), erişilebilir hata
+mesajları ve zorunlu Gizlilik Politikası onayı içerir.
+
+### Gizlilik (GDPR / KVKK)
+
+- `/privacy` sayfası GDPR ve KVKK'ya göre hazırlanmış bir başlangıç metnidir; **yayına almadan önce
+  bir hukukçuya kontrol ettirin** ve şirketlerin resmi unvanlarını ekleyin.
+- Site çerez kullanmaz. İletişim sayfasındaki Google Haritası, ziyaretçi "Show map" butonuna basana
+  kadar yüklenmez (Google'a veri gitmez), bu yüzden çerez banner'ı gerekmez. İleride analitik ya da
+  çerez kullanan bir servis eklerseniz politikayı ve onay mekanizmasını güncelleyin.
+
+## Değişiklik notları
+
+Yapılan tüm değişiklikler tarih sırasıyla [CHANGELOG.md](CHANGELOG.md) dosyasında listelenir.
+Yeni bir değişiklik yaptığınızda oraya kısa bir not eklemeniz önerilir.
 
 ## Orijinal siteye göre bilinçli farklar
 
 - Footer'daki Framer şablon metni "© 2025 Your Company, Inc." → "© {yıl} AID Project Solutions".
 - Yazım hataları düzeltildi: "Sofware Solutions" → "Software Solutions"; blog adresindeki
   "nnvironments" → "environments" (eski adres kalıcı yönlendirme ile çalışmaya devam eder).
-- Engineering sayfasındaki menü linkleri artık IT sayfasına değil, kendi bölümlerine gidiyor.
+- Menü sadeleştirildi: **IT Services · Engineering · Blog · Contact Us**; bulunduğunuz sayfa
+  altı çizili gösterilir. Logo her zaman giriş sayfasına döner.
+- Geniş ekranlarda içerik en fazla 1360px genişliğinde ortalanır; bölüm başlıkları daha geniş ve dengeli.
+- Hero'da "Scroll for More" yerine "Get in touch" (ana) ve "Explore services" (ikincil) butonları.
+- Engineering hizmetleri ikonlu kartlar, standartlar/uzmanlıklar iki ayrı kontrol listesi olarak gösterilir.
+- Logo şeridine başlık eklendi; logolar gri tonda, üzerine gelince renklenir ve şerit durur.
+- Blog yazılarında "← All articles" linki, "Keep Reading" (ilgili yazılar) ve iletişim bölümü var.
+- Gizlilik Politikası sayfası, form onay kutusu ve tıklayınca yüklenen harita eklendi.
 - Engineering sayfasındaki boş logo şeridi ve istatistik bölümündeki fazladan çizgiler kaldırıldı.
 - Her sayfaya ayrı başlık/açıklama, canonical URL, Open Graph, sitemap, robots ve yapılandırılmış veri
   (JSON-LD) eklendi; animasyonlar işletim sistemindeki "hareketi azalt" ayarına uyuyor.

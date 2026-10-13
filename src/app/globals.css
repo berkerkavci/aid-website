@@ -5,6 +5,9 @@
 /*  Values are taken 1:1 from the original Framer site.                        */
 /* -------------------------------------------------------------------------- */
 
+/* `short:` = desktop width but limited height (typical laptops ≤ 820px tall). */
+@custom-variant short (@media (width >= 75rem) and (height <= 51.25rem));
+
 @theme inline {
   --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
@@ -37,6 +40,9 @@
   --color-tint-yellow: rgb(255 221 71 / 0.32);
   --color-tint-green: rgb(91 194 160 / 0.25);
 
+  /* Max content width (≈ the original 1440px desktop design minus gutters) */
+  --container-content: 85rem;
+
   /* Radii */
   --radius-field: 0.625rem;
   --radius-button: 0.75rem;
@@ -56,16 +62,10 @@
 
   /* Motion */
   --ease-framer: cubic-bezier(0.22, 1, 0.36, 1);
-  --animate-marquee: marquee var(--marquee-duration, 45s) linear infinite;
   --animate-blob-a: blob-spin 16s linear infinite, blob-pulse 9s ease-in-out infinite;
   --animate-blob-b: blob-spin 12s linear infinite;
   --animate-blob-c: blob-spin 10s linear infinite, blob-pulse 7s ease-in-out infinite reverse;
 
-  @keyframes marquee {
-    to {
-      transform: translateX(-50%);
-    }
-  }
   @keyframes blob-spin {
     to {
       rotate: 360deg;
@@ -126,6 +126,10 @@
     font-size: 3.25rem;
     letter-spacing: normal;
   }
+  /* Short desktop screens (laptops): compact scale so each section fits one screen. */
+  @media (width >= 75rem) and (height <= 51.25rem) {
+    font-size: 2.5rem;
+  }
 }
 
 @utility type-h3 {
@@ -139,6 +143,9 @@
   @media (width >= 75rem) {
     font-size: 1.5rem;
     letter-spacing: 0.01em;
+  }
+  @media (width >= 75rem) and (height <= 51.25rem) {
+    font-size: 1.25rem;
   }
 }
 
@@ -159,6 +166,10 @@
   @media (width >= 75rem) {
     font-size: 1.375rem;
   }
+  @media (width >= 75rem) and (height <= 51.25rem) {
+    font-size: 1.125rem;
+    line-height: 1.55;
+  }
 }
 
 @utility type-body {
@@ -166,6 +177,9 @@
   line-height: 1.5rem;
   @media (width >= 50.625rem) {
     font-size: 1.125rem;
+  }
+  @media (width >= 75rem) and (height <= 51.25rem) {
+    font-size: 1rem;
   }
 }
 
@@ -189,10 +203,48 @@
 /*  Layout helpers & section backgrounds                                       */
 /* -------------------------------------------------------------------------- */
 
+/*
+ * Horizontal page gutter. Backgrounds stay full-bleed while the content is
+ * capped at --container-content and centred on very wide screens.
+ */
 @utility section-x {
-  padding-inline: 1.25rem;
+  padding-inline: max(1.25rem, calc((100% - var(--container-content)) / 2));
   @media (width >= 50.625rem) {
-    padding-inline: 2.5rem;
+    padding-inline: max(2.5rem, calc((100% - var(--container-content)) / 2));
+  }
+}
+
+/*
+ * One vertical rhythm for every content section. On desktop the spacing
+ * scales with the viewport height so a section fits on one screen.
+ */
+@utility section-y {
+  padding-block: 3.75rem;
+  row-gap: 2.5rem;
+  @media (width >= 50.625rem) {
+    padding-block: 5rem;
+    row-gap: 3rem;
+  }
+  @media (width >= 75rem) {
+    padding-block: clamp(2rem, 4.25svh, 4.5rem);
+    row-gap: clamp(1.5rem, 3.5svh, 3rem);
+  }
+  @media (width >= 75rem) and (height <= 51.25rem) {
+    padding-block: clamp(1.25rem, 3svh, 2.5rem);
+    row-gap: clamp(1.25rem, 3svh, 2rem);
+  }
+}
+
+/*
+ * Sections reachable from the in-page section bar fill exactly one screen on
+ * desktop (below the header + bar) with their content vertically centred.
+ */
+@utility section-fit {
+  @media (width >= 75rem) {
+    :root:has([data-section-nav]) & {
+      min-height: calc(100svh - var(--header-height) - var(--subnav-height));
+      justify-content: center;
+    }
   }
 }
 
@@ -267,9 +319,30 @@
     font-family: var(--font-sans);
   }
 
-  /* Keep anchored sections clear of the fixed navigation bar. */
+  /* Consistent, on-brand focus ring for keyboard users (replaces the browser default). */
+  :where(a, button, summary, [tabindex]):focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+    border-radius: 0.25rem;
+  }
+
+  /* Heights of the fixed header and the sticky in-page section bar. */
+  :root {
+    --header-height: 4.5rem;
+    --subnav-height: 0px;
+  }
+  @media (width >= 50.625rem) {
+    :root {
+      --header-height: 5rem;
+    }
+  }
+  :root:has([data-section-nav]) {
+    --subnav-height: 3.25rem;
+  }
+
+  /* Keep anchored sections clear of the fixed header (and section bar, if any). */
   [id] {
-    scroll-margin-top: 4.5rem;
+    scroll-margin-top: calc(var(--header-height) + var(--subnav-height));
   }
 
   ::selection {
@@ -281,7 +354,24 @@
 /*  Components                                                                 */
 /* -------------------------------------------------------------------------- */
 
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @layer components {
+  /* Infinite logo strip — pauses while hovered so a logo can be inspected. */
+  .marquee-track {
+    animation: marquee var(--marquee-duration, 45s) linear infinite;
+    &:hover {
+      animation-play-state: paused;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
   /* Letter "roll" hover effect used on the CTA button. */
   .roll-char {
     display: inline-block;

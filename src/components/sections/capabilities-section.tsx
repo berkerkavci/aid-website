@@ -1,44 +1,51 @@
-import { ButtonLink } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionIntro } from "@/components/ui/section-intro";
-import type { Cta, ListGroup, SectionIntro as SectionIntroContent } from "@/content/types";
+import type { ListGroup, SectionIntro as SectionIntroContent } from "@/content/types";
 
 type CapabilitiesSectionProps = {
   intro: SectionIntroContent;
   groups: ListGroup[];
-  cta?: Cta;
 };
 
-/** Long-form reference lists (standards, specialisations). */
-export function CapabilitiesSection({ intro, groups, cta }: CapabilitiesSectionProps) {
+/** Reference lists (standards, specialisations) as side-by-side checklist cards. */
+export function CapabilitiesSection({ intro, groups }: CapabilitiesSectionProps) {
   return (
-    <section className="flex flex-col items-center gap-10 bg-white section-x pt-10 pb-15 tablet:gap-15 tablet:pt-15 tablet:pb-20">
-      <Reveal className="flex w-full flex-col items-center gap-6">
+    <section
+      id="capabilities"
+      className="flex section-fit flex-col items-center section-y bg-white section-x"
+    >
+      <Reveal className="w-full">
         <SectionIntro {...intro} />
-        <div className="w-full max-w-[720px] type-lead text-ink">
-          {groups.map((group) => (
-            <div key={group.intro}>
-              <p>{group.intro}</p>
-              <ul>
+      </Reveal>
+
+      <div className="grid w-full items-stretch gap-6 desktop:grid-cols-2 desktop:gap-10">
+        {groups.map((group, index) => (
+          <Reveal key={group.title} delay={index * 0.1} className="h-full">
+            <article className="flex h-full flex-col gap-5 rounded-card border border-line bg-white p-7 tablet:p-8 short:gap-4 short:p-6">
+              <div className="flex flex-col gap-2">
+                <h3 className="type-h3 text-ink">{group.title}</h3>
+                <p className="type-body text-body">{group.intro}</p>
+              </div>
+              <ul className="grid gap-x-6 gap-y-2.5 tablet:grid-cols-2 short:gap-y-2">
                 {group.items.map((item) => (
-                  <li key={item} className="grid grid-cols-[2.2em_1fr]">
-                    <span aria-hidden>•</span>
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 text-base/6 text-ink short:text-[0.9375rem]/[1.35]"
+                  >
+                    <Icon
+                      name="check-circle"
+                      weight="fill"
+                      className="mt-0.5 size-5 shrink-0 text-brand"
+                    />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-            </div>
-          ))}
-        </div>
-      </Reveal>
-
-      {cta && (
-        <Reveal>
-          <ButtonLink href={cta.href} variant="outline" icon="arrow-right">
-            {cta.label}
-          </ButtonLink>
-        </Reveal>
-      )}
+            </article>
+          </Reveal>
+        ))}
+      </div>
     </section>
   );
 }

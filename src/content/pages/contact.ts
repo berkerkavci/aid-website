@@ -12,4 +12,5 @@ export const contactContent = {
     description:
       "Let’s turn your IT challenges into strategic advantages. Connect with us to start building smarter solutions.",
   } satisfies SectionIntro,
+  responseTime: "We typically reply within one business day.",
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState, type ComponentProps } from "react";
 
 import { sendContactMessage } from "@/app/contact/actions";
@@ -51,6 +52,39 @@ function Field({ name, label, state, className, multiline, ...props }: FieldProp
       )}
       {error && (
         <p id={`${id}-error`} className="text-sm text-red-600">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** GDPR / KVKK information notice with a required acknowledgement. */
+function PrivacyConsent({ state }: { state: ContactFormState }) {
+  const error = state.fieldErrors?.privacy?.[0];
+
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label className="flex cursor-pointer items-start gap-3 text-sm/[1.5] text-body">
+        <input
+          type="checkbox"
+          name="privacy"
+          required
+          defaultChecked={state.values?.privacy === "on"}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? "contact-privacy-error" : undefined}
+          className="mt-0.5 size-4 shrink-0 cursor-pointer accent-ink"
+        />
+        <span>
+          I have read the{" "}
+          <Link href="/privacy" className="font-medium text-ink underline underline-offset-2">
+            Privacy Policy
+          </Link>{" "}
+          and agree that AID processes my details to respond to my enquiry.
+        </span>
+      </label>
+      {error && (
+        <p id="contact-privacy-error" className="text-sm text-red-600">
           {error}
         </p>
       )}
@@ -119,10 +153,12 @@ export function ContactForm() {
         />
       </div>
 
+      <PrivacyConsent state={state} />
+
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-field bg-ink px-6 py-3.5 type-button text-white transition-opacity hover:opacity-90 disabled:cursor-wait disabled:opacity-60"
+        className="w-full rounded-field bg-ink px-6 py-3.5 type-button text-white outline-ink transition-opacity hover:opacity-90 disabled:cursor-wait disabled:opacity-60"
       >
         {pending ? "Sending…" : "Send message"}
       </button>

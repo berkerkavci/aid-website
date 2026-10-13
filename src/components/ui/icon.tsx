@@ -1,12 +1,23 @@
 import type { IconProps } from "@phosphor-icons/react";
 import {
   BellSimple,
+  Calculator,
+  CheckCircle,
+  ClipboardText,
+  Clock,
+  Cube,
   EnvelopeSimple,
+  FileText,
+  Files,
+  FireExtinguisher,
   Gear,
+  MagnifyingGlass,
   MapPin,
   Phone,
   Robot,
+  Ruler,
   UserSwitch,
+  Wrench,
 } from "@phosphor-icons/react/ssr";
 import type { ComponentType } from "react";
 
@@ -25,6 +36,17 @@ const icons: Record<IconName, ComponentType<IconProps>> = {
   envelope: EnvelopeSimple,
   phone: Phone,
   "map-pin": MapPin,
+  clock: Clock,
+  "check-circle": CheckCircle,
+  clipboard: ClipboardText,
+  cube: Cube,
+  ruler: Ruler,
+  calculator: Calculator,
+  "file-text": FileText,
+  files: Files,
+  "magnifying-glass": MagnifyingGlass,
+  wrench: Wrench,
+  "fire-extinguisher": FireExtinguisher,
 };
 
 export function Icon({ name, ...props }: IconProps & { name: IconName }) {

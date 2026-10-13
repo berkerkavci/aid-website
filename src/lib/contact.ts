@@ -17,6 +17,8 @@ export const contactFormSchema = z.object({
     .trim()
     .min(10, "Please tell us a bit more (at least 10 characters).")
     .max(5000),
+  /** Checkbox: the visitor confirms they have read the Privacy Policy (GDPR / KVKK notice). */
+  privacy: z.literal("on", { error: "Please confirm that you have read the Privacy Policy." }),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;

@@ -4,8 +4,9 @@ import { Icon } from "@/components/ui/icon";
 import { Logo } from "@/components/ui/logo";
 import {
   contactInfo,
+  footerNavigation,
   getContactEmail,
-  getFooterLinks,
+  legalNavigation,
   siteConfig,
   type SiteSection,
 } from "@/config/site";
@@ -49,7 +50,7 @@ export function Footer({ section = "general" }: { section?: SiteSection }) {
 
           <nav aria-label="Footer" className="flex-1">
             <ul className="flex flex-col items-start gap-2.5">
-              {getFooterLinks(section).map((link) => (
+              {footerNavigation.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -74,7 +75,7 @@ export function Footer({ section = "general" }: { section?: SiteSection }) {
                     {...(item.external && { target: "_blank", rel: "noopener noreferrer" })}
                   >
                     <Icon name={item.icon} className="size-6 shrink-0" />
-                    {item.label}
+                    <span className="min-w-0 [overflow-wrap:anywhere]">{item.label}</span>
                   </a>
                 </li>
               ))}
@@ -84,9 +85,20 @@ export function Footer({ section = "general" }: { section?: SiteSection }) {
 
         <div aria-hidden className="h-px bg-line-dark" />
 
-        <p className="text-center text-sm/[21px]">
-          © {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.
-        </p>
+        <div className="flex flex-col items-center justify-center gap-x-6 gap-y-2 text-sm/[21px] tablet:flex-row">
+          <p>
+            © {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.
+          </p>
+          {legalNavigation.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="underline-offset-4 transition-opacity hover:underline hover:opacity-80"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </footer>
   );

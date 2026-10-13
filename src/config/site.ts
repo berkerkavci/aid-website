@@ -49,36 +49,26 @@ export function getContactEmail(section: SiteSection) {
   return section === "engineering" ? contactInfo.emails.engineering : contactInfo.emails.it;
 }
 
+/** Top navigation — the two business lines are always one click away. */
+export const mainNavigation: NavLink[] = [
+  { label: "IT Services", href: "/it-services" },
+  { label: "Engineering", href: "/engineering-services" },
+  { label: "Blog", href: "/blog" },
+];
+
 export const contactLink: NavLink = { label: "Contact Us", href: "/contact" };
 
-const navigation: Record<SiteSection, NavLink[]> = {
-  it: [
-    { label: "Home", href: "/it-services" },
-    { label: "About", href: "/it-services#about" },
-    { label: "Services", href: "/it-services#services" },
-    { label: "Blog", href: "/it-services#blog" },
-  ],
-  engineering: [
-    { label: "Home", href: "/engineering-services" },
-    { label: "About", href: "/engineering-services#about" },
-    { label: "Services", href: "/engineering-services#services" },
-    { label: "Blog", href: "/blog" },
-  ],
-  general: [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/it-services#about" },
-    { label: "Services", href: "/it-services#services" },
-    { label: "Blog", href: "/blog" },
-  ],
-};
+export const footerNavigation: NavLink[] = [
+  { label: "Home", href: "/" },
+  { label: "IT Services", href: "/it-services" },
+  { label: "Engineering Services", href: "/engineering-services" },
+  { label: "Blog", href: "/blog" },
+  contactLink,
+];
 
-export function getNavLinks(section: SiteSection) {
-  return navigation[section];
-}
+export const legalNavigation: NavLink[] = [{ label: "Privacy Policy", href: "/privacy" }];
 
-export function getFooterLinks(section: SiteSection): NavLink[] {
-  const links = navigation[section].map((link) =>
-    link.label === "Blog" ? { ...link, href: "/blog" } : link,
-  );
-  return [...links, contactLink];
+/** True when `href` is the current page or a parent of it (e.g. /blog for /blog/my-post). */
+export function isActiveLink(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
 }

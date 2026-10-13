@@ -1,42 +1,34 @@
 import { BlogCard } from "@/components/blog/blog-card";
-import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionIntro } from "@/components/ui/section-intro";
-import type { Cta, SectionIntro as SectionIntroContent } from "@/content/types";
+import type { SectionIntro as SectionIntroContent } from "@/content/types";
 import { getAllPosts } from "@/lib/blog";
 
 type BlogPreviewProps = {
   intro: SectionIntroContent;
   limit: number;
-  cta: Cta;
 };
 
-/** Latest blog posts ("Knowledge Hub"). */
-export async function BlogPreview({ intro, limit, cta }: BlogPreviewProps) {
+/** Latest blog posts ("Knowledge Hub"). The "view all" link lives in the intro. */
+export async function BlogPreview({ intro, limit }: BlogPreviewProps) {
   const posts = (await getAllPosts()).slice(0, limit);
 
   return (
     <section
       id="blog"
-      className="flex flex-col items-center gap-10 bg-white section-x py-15 tablet:gap-15 tablet:pb-20"
+      className="flex section-fit flex-col items-center section-y bg-white section-x"
     >
       <Reveal className="w-full">
         <SectionIntro {...intro} />
       </Reveal>
 
-      <div className="grid w-full items-start gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
+      <div className="grid w-full items-stretch gap-6 tablet:grid-cols-2 desktop:grid-cols-3 desktop:gap-10">
         {posts.map((post, index) => (
-          <Reveal key={post.slug} delay={index * 0.1}>
-            <BlogCard post={post} />
+          <Reveal key={post.slug} delay={index * 0.1} className="h-full">
+            <BlogCard post={post} compact />
           </Reveal>
         ))}
       </div>
-
-      <Reveal>
-        <ButtonLink href={cta.href} variant="outline" icon="arrow-right">
-          {cta.label}
-        </ButtonLink>
-      </Reveal>
     </section>
   );
 }

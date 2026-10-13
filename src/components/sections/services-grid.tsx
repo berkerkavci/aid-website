@@ -14,34 +14,55 @@ const tints: Record<IconTint, string> = {
 type ServicesGridProps = {
   intro: SectionIntroContent;
   items: ServiceCard[];
+  /** Number of columns on desktop. */
+  columns?: 2 | 3;
 };
 
-/** Two-column grid of service cards with tinted icons. */
-export function ServicesGrid({ intro, items }: ServicesGridProps) {
+/**
+ * Grid of service cards with tinted icons. Cards with a description put the
+ * icon beside the text (tablet and up); cards without one render compactly.
+ */
+export function ServicesGrid({ intro, items, columns = 2 }: ServicesGridProps) {
   return (
     <section
       id="services"
-      className="flex flex-col items-center gap-10 bg-glow-bottom section-x py-15 tablet:gap-15 tablet:py-20"
+      className="flex section-fit flex-col items-center section-y bg-glow-bottom section-x"
     >
       <Reveal className="w-full">
         <SectionIntro {...intro} />
       </Reveal>
 
-      <div className="grid w-full gap-10 tablet:grid-cols-2">
+      <div
+        className={cn(
+          "grid w-full tablet:grid-cols-2",
+          columns === 3 ? "gap-4 desktop:grid-cols-3" : "gap-6",
+        )}
+      >
         {items.map((service, index) => (
-          <Reveal key={service.title} delay={(index % 2) * 0.1} className="h-full">
-            <article className="flex h-full flex-col items-start gap-8 rounded-card border border-line bg-white p-8 tablet:p-10">
+          <Reveal key={service.title} delay={(index % columns) * 0.1} className="h-full">
+            <article
+              className={cn(
+                "flex h-full rounded-card border border-line bg-white",
+                service.description
+                  ? "flex-col items-start gap-5 p-7 tablet:flex-row tablet:gap-6 short:p-6"
+                  : "items-center gap-5 p-5 short:gap-4 short:p-4",
+              )}
+            >
               <span
                 className={cn(
-                  "flex size-14 shrink-0 items-center justify-center rounded-field",
+                  "flex size-14 shrink-0 items-center justify-center rounded-field short:size-12",
                   tints[service.tint],
                 )}
               >
                 <Icon name={service.icon} weight="light" className="size-8 text-black" />
               </span>
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2">
                 <h3 className="type-h3 text-ink">{service.title}</h3>
-                <p className="type-body font-medium text-body opacity-80">{service.description}</p>
+                {service.description && (
+                  <p className="type-body font-medium text-body opacity-80">
+                    {service.description}
+                  </p>
+                )}
               </div>
             </article>
           </Reveal>

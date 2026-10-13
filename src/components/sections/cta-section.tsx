@@ -6,12 +6,14 @@ import type { Cta, SectionIntro as SectionIntroContent } from "@/content/types";
 type CtaSectionProps = {
   intro: SectionIntroContent;
   button: Cta;
+  /** Anchor id used by the section bar. */
+  id?: string;
 };
 
 /** "Let's Work Together" call-to-action with a soft blue glow. */
-export function CtaSection({ intro, button }: CtaSectionProps) {
+export function CtaSection({ intro, button, id = "contact" }: CtaSectionProps) {
   return (
-    <section className="flex flex-col items-center gap-10 bg-cta section-x pt-10 pb-20 tablet:gap-15 tablet:pt-15 tablet:pb-30">
+    <section id={id} className="flex section-fit flex-col items-center section-y bg-cta section-x">
       <Reveal className="w-full">
         <SectionIntro {...intro} />
       </Reveal>

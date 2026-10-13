@@ -64,7 +64,7 @@ export async function sendContactMessage(
   if (formData.get(HONEYPOT_FIELD)) return { status: "success", message: SUCCESS_MESSAGE };
 
   const values = Object.fromEntries(
-    (["fullName", "company", "email", "phone", "message"] as const).map((field) => [
+    (["fullName", "company", "email", "phone", "message", "privacy"] as const).map((field) => [
       field,
       String(formData.get(field) ?? ""),
     ]),

@@ -16,7 +16,8 @@ export function ServiceHero({ hero, descriptionClassName }: ServiceHeroProps) {
   const [firstWord = ""] = hero.rotatingWords;
 
   return (
-    <section className="relative isolate flex min-h-[max(100svh,640px)] items-end overflow-hidden bg-hero section-x pb-10 tablet:pb-20">
+    // Leaves room for the section bar so it is visible on the first screen.
+    <section className="relative isolate flex min-h-[max(calc(100svh_-_var(--subnav-height)),640px)] items-end overflow-hidden bg-hero section-x pb-10 tablet:pb-20">
       <HeroBackground />
 
       <div className="relative flex w-full flex-col items-start gap-15">
@@ -45,10 +46,15 @@ export function ServiceHero({ hero, descriptionClassName }: ServiceHeroProps) {
           </Reveal>
         </div>
 
-        <Reveal immediate delay={0.3}>
-          <ButtonLink href={hero.cta.href} icon="arrow-down">
-            {hero.cta.label}
+        <Reveal immediate delay={0.3} className="flex flex-wrap items-center gap-3">
+          <ButtonLink href={hero.primaryCta.href} icon="arrow-right">
+            {hero.primaryCta.label}
           </ButtonLink>
+          {hero.secondaryCta && (
+            <ButtonLink href={hero.secondaryCta.href} variant="ghost" icon="arrow-down">
+              {hero.secondaryCta.label}
+            </ButtonLink>
+          )}
         </Reveal>
       </div>
     </section>
