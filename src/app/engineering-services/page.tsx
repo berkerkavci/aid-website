@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/page-shell";
 import { SectionNav } from "@/components/layout/section-nav";
 import { AboutSection } from "@/components/sections/about-section";
+import { BlogPreview } from "@/components/sections/blog-preview";
 import { CapabilitiesSection } from "@/components/sections/capabilities-section";
 import { CtaSection } from "@/components/sections/cta-section";
 import { ServiceHero } from "@/components/sections/service-hero";
@@ -27,6 +28,12 @@ export default function EngineeringServicesPage() {
       <CapabilitiesSection
         intro={content.capabilities.intro}
         groups={content.capabilities.groups}
+      />
+      <BlogPreview
+        intro={content.blog.intro}
+        division="engineering"
+        limit={content.blog.limit}
+        background="glow"
       />
       <CtaSection intro={content.cta.intro} button={content.cta.button} />
     </PageShell>

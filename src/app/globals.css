@@ -59,12 +59,22 @@
     0 0.6px 1.81px -1.25px rgb(0 0 0 / 0.07), 0 2.29px 6.87px -2.5px rgb(0 0 0 / 0.06),
     0 10px 30px -3.75px rgb(0 0 0 / 0.03);
   --shadow-cta: 0 24px 50px 0 rgb(5 3 43 / 0.4);
+  --shadow-dropdown: 0 1px 2px rgb(4 17 61 / 0.06), 0 16px 32px -8px rgb(4 17 61 / 0.18);
 
   /* Motion */
   --ease-framer: cubic-bezier(0.22, 1, 0.36, 1);
   --animate-blob-a: blob-spin 16s linear infinite, blob-pulse 9s ease-in-out infinite;
   --animate-blob-b: blob-spin 12s linear infinite;
   --animate-blob-c: blob-spin 10s linear infinite, blob-pulse 7s ease-in-out infinite reverse;
+  --animate-dropdown-in: dropdown-in 160ms var(--ease-framer);
+
+  @keyframes dropdown-in {
+    from {
+      opacity: 0;
+      translate: 0 -4px;
+      scale: 0.98;
+    }
+  }
 
   @keyframes blob-spin {
     to {

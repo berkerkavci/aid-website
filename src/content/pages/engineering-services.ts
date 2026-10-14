@@ -8,6 +8,7 @@ import type {
   ServiceCard,
   Stat,
 } from "@/content/types";
+import { blogDivisionHref } from "@/content/pages/blog";
 
 export const engineeringServicesContent = {
   meta: {
@@ -21,7 +22,7 @@ export const engineeringServicesContent = {
     rotatingWords: ["MEP Engineering", "MEP Consultancy", "Project Management"],
     description:
       "AID is a contemporary engineering firm dedicated to delivering top-tier design and development services for building MEP (Mechanical, Electrical, and Plumbing) systems, leveraging cutting-edge technologies.",
-    primaryCta: { label: "Get in touch", href: "/contact" },
+    primaryCta: { label: "Get in touch", href: "/contact?department=engineering" },
     // Jumps to the first section below the hero.
     secondaryCta: { label: "Explore", href: "#about" },
   } satisfies HeroContent,
@@ -33,6 +34,7 @@ export const engineeringServicesContent = {
       { id: "about", label: "About" },
       { id: "services", label: "Services" },
       { id: "capabilities", label: "Capabilities" },
+      { id: "blog", label: "Knowledge Hub" },
       { id: "contact", label: "Contact" },
     ] satisfies SectionLink[],
   },
@@ -44,25 +46,23 @@ export const engineeringServicesContent = {
       description:
         "AID was founded in 2023 by B.Sc. Mechanical Engineer E. Güher KAVCI as a corporate entity. Although recently established, the management team brings extensive experience from years of collaboration in the international construction market. AID has rapidly earned industry recognition, with key personnel renowned for their outstanding professionalism. The company is respected among peers for its deep expertise, ethical practices, and a strong philosophy of collaborative business.",
     } satisfies SectionIntro,
-    // NOTE: These cards are identical to the IT page on the original site.
-    // Replace them with engineering-specific highlights when ready.
     features: [
       {
-        title: "Automation",
+        title: "MEP System Design",
         description:
-          "Eliminate manual bottlenecks with workflow automation that boosts operational speed, accuracy, and consistency.",
+          "HVAC, plumbing, fire fighting and utility systems engineered to ASHRAE, EN, NFPA and FM standards, from concept to detailed design.",
         image: "/images/features/shape-automation.png",
       },
       {
-        title: "Monitoring & Observability",
+        title: "3D Coordination & BIM",
         description:
-          "Gain full visibility into your infrastructure with proactive system health checks, real-time alerts, and intuitive dashboards.",
+          "Clash-free, multi-discipline 3D models and installation-ready shop drawings that prevent costly rework on site.",
         image: "/images/features/shape-monitoring.png",
       },
       {
-        title: "DevOps Engineering",
+        title: "Project Delivery & Quality",
         description:
-          "Accelerate your deployment cycles and improve collaboration between development and operations with CI/CD pipelines and container orchestration.",
+          "Cost analysis, tender documentation, independent design reviews and commissioning that keep projects on budget and performing as designed.",
         image: "/images/features/shape-devops.png",
       },
     ] satisfies FeatureCard[],
@@ -85,15 +85,60 @@ export const engineeringServicesContent = {
         "We optimize building MEP system operations at scale, enhancing system resilience, improving energy efficiency, reducing operational costs and risks, and aligning technologies with project objectives.",
     } satisfies SectionIntro,
     items: [
-      { title: "Project Engineering", icon: "clipboard", tint: "blue" },
-      { title: "MEP 3D Coordination Drawings", icon: "cube", tint: "pink" },
-      { title: "MEP 3D Shop Drawings", icon: "ruler", tint: "yellow" },
-      { title: "Cost Analysis", icon: "calculator", tint: "green" },
-      { title: "Tender Documentation Services", icon: "file-text", tint: "blue" },
-      { title: "Technical Documentation and Spec Preparation", icon: "files", tint: "pink" },
-      { title: "Independent Design Review Process", icon: "magnifying-glass", tint: "yellow" },
-      { title: "Commissioning Services", icon: "wrench", tint: "green" },
-      { title: "Fire Protection System Design", icon: "fire-extinguisher", tint: "blue" },
+      {
+        title: "Project Engineering",
+        description: "End-to-end MEP engineering management, from concept design to handover.",
+        icon: "clipboard",
+        tint: "blue",
+      },
+      {
+        title: "MEP 3D Coordination Drawings",
+        description: "Clash-free, multi-discipline 3D coordination before work starts on site.",
+        icon: "cube",
+        tint: "pink",
+      },
+      {
+        title: "MEP 3D Shop Drawings",
+        description: "Detailed, installation-ready shop drawings for contractors and fabricators.",
+        icon: "ruler",
+        tint: "yellow",
+      },
+      {
+        title: "Cost Analysis",
+        description: "Accurate quantity take-offs and cost estimates that keep budgets on track.",
+        icon: "calculator",
+        tint: "green",
+      },
+      {
+        title: "Tender Documentation Services",
+        description: "Complete tender packages with drawings, bills of quantities and specs.",
+        icon: "file-text",
+        tint: "blue",
+      },
+      {
+        title: "Technical Documentation and Spec Preparation",
+        description: "Clear technical specifications aligned with international standards.",
+        icon: "files",
+        tint: "pink",
+      },
+      {
+        title: "Independent Design Review Process",
+        description: "Third-party design reviews for compliance, efficiency and constructability.",
+        icon: "magnifying-glass",
+        tint: "yellow",
+      },
+      {
+        title: "Commissioning Services",
+        description: "Testing and commissioning to verify every system performs as designed.",
+        icon: "wrench",
+        tint: "green",
+      },
+      {
+        title: "Fire Protection System Design",
+        description: "Fire suppression and protection systems designed to NFPA and EN standards.",
+        icon: "fire-extinguisher",
+        tint: "blue",
+      },
     ] satisfies ServiceCard[],
   },
 
@@ -142,13 +187,24 @@ export const engineeringServicesContent = {
     ] satisfies ListGroup[],
   },
 
+  blog: {
+    intro: {
+      badge: "Blog",
+      title: "Knowledge Hub",
+      description:
+        "Practical insights on MEP design, 3D coordination, fire protection and commissioning shaped by hands-on project experience.",
+      link: { label: "View all articles", href: blogDivisionHref("engineering") },
+    } satisfies SectionIntro,
+    limit: 3,
+  },
+
   cta: {
     intro: {
       badge: "Contact",
       title: "Let's Work Together",
       description:
-        "Let’s turn your IT challenges into strategic advantages. Connect with us to start building smarter solutions.",
+        "Let’s turn your MEP challenges into well-coordinated, buildable solutions. Connect with us to start your next project.",
     } satisfies SectionIntro,
-    button: { label: "Contact Us", href: "/contact" } satisfies Cta,
+    button: { label: "Contact Us", href: "/contact?department=engineering" } satisfies Cta,
   },
 };

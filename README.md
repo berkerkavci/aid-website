@@ -88,8 +88,8 @@ Giriş paragrafı…
 ```
 
 Yazı otomatik olarak blog listesinde `division` ile seçilen sekmeye (IT Services / Engineering),
-IT yazılarıysa IT sayfasındaki "Knowledge Hub" bölümüne (en yeni 3 yazı) ve `sitemap.xml`'e
-eklenir. `meta` alanlarından biri eksik/hatalıysa build açıklayıcı bir hata verir. Sekme
+ilgili hizmet sayfasındaki "Knowledge Hub" bölümüne (IT ya da Engineering; en yeni 3 yazı) ve
+`sitemap.xml`'e eklenir. `meta` alanlarından biri eksik/hatalıysa build açıklayıcı bir hata verir. Sekme
 etiketleri ve boş durum metinleri `src/content/pages/blog.ts` içinde.
 
 ### Metinleri / kartları / istatistikleri değiştirmek
@@ -99,7 +99,8 @@ etiketleri ve boş durum metinleri `src/content/pages/blog.ts` içinde.
 - Giriş sayfası: `src/content/pages/home.ts`
 - Sayfa içi gezinme çubuğu (About · Services · …): ilgili sayfa dosyasındaki `sectionNav`
   listesi. Her öğenin `id` değeri, gideceği bölümün `id`'si ile aynı olmalı.
-- İletişim sayfası (yanıt süresi notu dahil): `src/content/pages/contact.ts`
+- İletişim sayfası (yanıt süresi notu ve formdaki **Service** seçenekleri dahil):
+  `src/content/pages/contact.ts`
 - Blog yazısı altındaki "Keep Reading" ve iletişim bölümü: `src/content/pages/blog.ts`
 - İletişim bilgileri, üst menü (`mainNavigation`), footer menüsü: `src/config/site.ts`
 - Gizlilik Politikası metni: `src/content/legal/privacy.mdx` (değiştirince
@@ -167,8 +168,15 @@ Form, [Resend](https://resend.com) üzerinden e-posta gönderir:
 1. Resend'de hesap açın, alan adınızı (aidprojectsolutions.com) doğrulayın, bir API anahtarı oluşturun.
 2. Vercel'de şu değişkenleri tanımlayın:
    - `RESEND_API_KEY` — API anahtarı
-   - `CONTACT_TO_EMAIL` — mesajların gideceği adres
    - `CONTACT_FROM_EMAIL` — doğrulanmış alan adından gönderici, ör. `AID Website <noreply@aidprojectsolutions.com>`
+
+**Alıcı adresi:** Formdaki **Service** açılır menüsü (IT Services / Engineering) mesajın kime
+gideceğini belirler: IT → `contactInfo.emails.it`, Engineering → `contactInfo.emails.engineering`
+(`src/config/site.ts`). E-posta konusu `[IT Services]` veya `[Engineering]` ile başlar. Seçenek
+metinleri `src/content/pages/contact.ts` içinde. Bir link ile seçim önceden yapılabilir:
+`/contact?department=it` veya `/contact?department=engineering` (hizmet sayfalarındaki
+"Get in touch" ve "Contact Us" butonları bunu kullanır). Eski `CONTACT_TO_EMAIL` değişkeni artık
+kullanılmıyor; Vercel'den silinebilir.
 
 Anahtar yoksa geliştirme ortamında mesajlar terminale yazılır; production'da kullanıcıya e-posta
 adresine yazması söylenir. Form; Zod doğrulaması, bot tuzağı (honeypot), erişilebilir hata

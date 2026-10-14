@@ -2,6 +2,41 @@
 
 Bu dosya sitedeki önemli değişiklikleri tarih sırasıyla listeler (en yeni en üstte).
 
+## 2026-10-14 — Engineering içeriği ve iletişim formunda hizmet seçimi
+
+### Engineering sayfası
+
+- **Hizmet kartları:** 9 hizmet kartı IT Services kartlarıyla aynı tasarıma getirildi (renkli ikon,
+  başlık ve kısa açıklama; masaüstünde 3 sütun, tablette 2, mobilde 1). Not: 9 açıklamalı kart
+  nedeniyle bu bölüm masaüstünde tek ekrandan uzun; kaydırılarak okunur.
+- **Explore Us kartları MEP'e uyarlandı:** IT sayfasından kopyalanan Automation / Monitoring /
+  DevOps kartlarının yerine firmanın yaptığı işlere göre **MEP System Design**, **3D Coordination &
+  BIM** ve **Project Delivery & Quality** kartları geldi.
+- **Knowledge Hub eklendi:** Engineering sayfasında en yeni 3 MEP yazısı ve "View all articles"
+  (`/blog?division=engineering`) linki. Gezinme çubuğu: About · Services · Capabilities ·
+  Knowledge Hub · Contact. Bölüm, beyaz Capabilities bölümünden ayrışsın diye hafif mor zeminli.
+- İletişim bölümü metni "IT challenges" yerine MEP'e uygun hale getirildi.
+
+### Blog
+
+- **4 yeni Engineering yazısı** (her biri kendi kapak görseliyle):
+  - MEP 3D Coordination: Eliminating Clashes Before Construction
+  - Designing Fire Protection Systems to NFPA and EN Standards
+  - Energy-Efficient HVAC Design for Modern Buildings
+  - Why Commissioning Matters: Delivering MEP Systems That Perform as Designed
+- Knowledge Hub sayfasının açıklaması iki bölümü de kapsayacak şekilde güncellendi.
+
+### İletişim formu
+
+- **Service açılır menüsü:** Ziyaretçi mesajın **IT Services** mi **Engineering** mi için olduğunu
+  seçer (zorunlu alan). Seçenekler ikon ve kısa açıklama ile gösterilir; klavye ile tam kullanılır
+  (ok tuşları, Enter, Escape, harfle atlama) ve ekran okuyucularla uyumludur (WAI-ARIA combobox).
+- **Doğru ekibe yönlendirme:** IT mesajları `bkavci@`, Engineering mesajları `gkavci@` adresine gider;
+  e-posta konusu `[IT Services]` / `[Engineering]` ile başlar. `CONTACT_TO_EMAIL` değişkeni artık
+  kullanılmıyor (alıcılar `src/config/site.ts` içinde).
+- **Ön seçim:** Hizmet sayfalarındaki "Get in touch" ve "Contact Us" butonları formu ilgili hizmet
+  seçili olarak açar (`/contact?department=engineering`).
+
 ## 2026-10-14 — Blog kategorileri ve hero düzeltmeleri
 
 - **Blog iki bölüme ayrıldı:** Knowledge Hub sayfasında hap şeklinde segmented control

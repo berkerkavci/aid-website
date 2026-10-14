@@ -2,7 +2,8 @@
 
 import { z } from "zod";
 
-import { contactInfo } from "@/config/site";
+import { getContactEmail } from "@/config/site";
+import { contactContent } from "@/content/pages/contact";
 import {
   contactFormSchema,
   HONEYPOT_FIELD,
@@ -13,8 +14,26 @@ import {
 
 const SUCCESS_MESSAGE = "Your message has been sent. We typically reply within one business day.";
 
+const CONTACT_FIELDS = [
+  "department",
+  "fullName",
+  "company",
+  "email",
+  "phone",
+  "message",
+  "privacy",
+] as const satisfies readonly ContactField[];
+
+function departmentLabel(data: ContactFormValues) {
+  return (
+    contactContent.department.options.find((option) => option.value === data.department)?.label ??
+    data.department
+  );
+}
+
 function formatEmail(data: ContactFormValues) {
   return [
+    `Service: ${departmentLabel(data)}`,
     `Name: ${data.fullName}`,
     `Company: ${data.company || "-"}`,
     `E-mail: ${data.email}`,
@@ -24,13 +43,21 @@ function formatEmail(data: ContactFormValues) {
   ].join("\n");
 }
 
-/** Sends the contact form via the Resend API (https://resend.com/docs/api-reference). */
+/**
+ * Sends the contact form via the Resend API (https://resend.com/docs/api-reference).
+ * The chosen service decides the recipient: IT → contactInfo.emails.it,
+ * Engineering → contactInfo.emails.engineering (both set in src/config/site.ts).
+ */
 async function deliver(data: ContactFormValues) {
   const apiKey = process.env.RESEND_API_KEY;
+  const to = getContactEmail(data.department);
 
   if (!apiKey) {
     if (process.env.NODE_ENV !== "production") {
-      console.info("[contact] RESEND_API_KEY is not set — message logged instead of sent:\n", data);
+      console.info(
+        `[contact] RESEND_API_KEY is not set — message for ${to} logged instead of sent:\n`,
+        data,
+      );
       return true;
     }
     console.error("[contact] RESEND_API_KEY is not configured.");
@@ -42,9 +69,9 @@ async function deliver(data: ContactFormValues) {
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       from: process.env.CONTACT_FROM_EMAIL ?? "AID Website <onboarding@resend.dev>",
-      to: [process.env.CONTACT_TO_EMAIL ?? contactInfo.emails.it],
+      to: [to],
       reply_to: data.email,
-      subject: `New enquiry from ${data.fullName}${data.company ? ` (${data.company})` : ""}`,
+      subject: `[${departmentLabel(data)}] New enquiry from ${data.fullName}${data.company ? ` (${data.company})` : ""}`,
       text: formatEmail(data),
     }),
   });
@@ -64,10 +91,7 @@ export async function sendContactMessage(
   if (formData.get(HONEYPOT_FIELD)) return { status: "success", message: SUCCESS_MESSAGE };
 
   const values = Object.fromEntries(
-    (["fullName", "company", "email", "phone", "message", "privacy"] as const).map((field) => [
-      field,
-      String(formData.get(field) ?? ""),
-    ]),
+    CONTACT_FIELDS.map((field) => [field, String(formData.get(field) ?? "")]),
   ) as Record<ContactField, string>;
 
   const parsed = contactFormSchema.safeParse(values);
@@ -84,7 +108,7 @@ export async function sendContactMessage(
   if (!sent) {
     return {
       status: "error",
-      message: `Sorry, your message could not be sent. Please e-mail us at ${contactInfo.emails.it}.`,
+      message: `Sorry, your message could not be sent. Please e-mail us at ${getContactEmail(parsed.data.department)}.`,
       values,
     };
   }

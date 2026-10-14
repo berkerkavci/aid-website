@@ -21,7 +21,7 @@ export const itServicesContent = {
     rotatingWords: ["Solution", "Automation", "Software"],
     description:
       "We simplify complex IT operations with smart monitoring, automation, and DevOps solutions—boosting efficiency and ensuring uptime.",
-    primaryCta: { label: "Get in touch", href: "/contact" },
+    primaryCta: { label: "Get in touch", href: "/contact?department=it" },
     // Jumps to the first section below the hero.
     secondaryCta: { label: "Explore", href: "#about" },
   } satisfies HeroContent,
@@ -152,6 +152,6 @@ export const itServicesContent = {
       description:
         "Let’s turn your IT challenges into strategic advantages. Connect with us to start building smarter solutions.",
     } satisfies SectionIntro,
-    button: { label: "Contact Us", href: "/contact" } satisfies Cta,
+    button: { label: "Contact Us", href: "/contact?department=it" } satisfies Cta,
   },
 };

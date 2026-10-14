@@ -1,15 +1,8 @@
-import { Icon } from "@/components/ui/icon";
+import { Icon, iconTintClass } from "@/components/ui/icon";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionIntro } from "@/components/ui/section-intro";
-import type { IconTint, SectionIntro as SectionIntroContent, ServiceCard } from "@/content/types";
+import type { SectionIntro as SectionIntroContent, ServiceCard } from "@/content/types";
 import { cn } from "@/lib/utils";
-
-const tints: Record<IconTint, string> = {
-  blue: "bg-tint-blue",
-  pink: "bg-tint-pink",
-  yellow: "bg-tint-yellow",
-  green: "bg-tint-green",
-};
 
 type ServicesGridProps = {
   intro: SectionIntroContent;
@@ -34,8 +27,8 @@ export function ServicesGrid({ intro, items, columns = 2 }: ServicesGridProps) {
 
       <div
         className={cn(
-          "grid w-full tablet:grid-cols-2",
-          columns === 3 ? "gap-4 desktop:grid-cols-3" : "gap-6",
+          "grid w-full gap-6 tablet:grid-cols-2",
+          columns === 3 && "desktop:grid-cols-3",
         )}
       >
         {items.map((service, index) => (
@@ -51,7 +44,7 @@ export function ServicesGrid({ intro, items, columns = 2 }: ServicesGridProps) {
               <span
                 className={cn(
                   "flex size-14 shrink-0 items-center justify-center rounded-field short:size-12",
-                  tints[service.tint],
+                  iconTintClass[service.tint],
                 )}
               >
                 <Icon name={service.icon} weight="light" className="size-8 text-black" />

@@ -5,6 +5,9 @@ export type Cta = { label: string; href: string };
 /** Business line a blog post belongs to (used by the blog filter). */
 export type BlogDivision = "it" | "engineering";
 
+/** Team a contact form enquiry is routed to. */
+export type ContactDepartment = "it" | "engineering";
+
 /** Entry of the in-page section bar; `id` must match the section's `id` attribute. */
 export type SectionLink = { id: string; label: string };
 
@@ -63,7 +66,9 @@ export type IconName =
   | "files"
   | "magnifying-glass"
   | "wrench"
-  | "fire-extinguisher";
+  | "fire-extinguisher"
+  | "cpu"
+  | "buildings";
 
 export type IconTint = "blue" | "pink" | "yellow" | "green";
 
@@ -79,4 +84,14 @@ export type ListGroup = {
   title: string;
   intro: string;
   items: string[];
+};
+
+/** Choice in the contact form's "Service" dropdown. */
+export type ContactDepartmentOption = {
+  value: ContactDepartment;
+  label: string;
+  /** Short hint shown under the label in the open list. */
+  description: string;
+  icon: IconName;
+  tint: IconTint;
 };

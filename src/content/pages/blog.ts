@@ -15,7 +15,7 @@ export const blogIndexContent = {
   },
   title: "Knowledge Hub",
   description:
-    "Thoughtful content on automation, monitoring, and digital transformation shaped by hands-on experience.",
+    "Thoughtful content on IT automation and monitoring, and on MEP design and engineering, shaped by hands-on experience.",
   /** Segmented control above the list. The first entry is the default. */
   divisions: [
     {

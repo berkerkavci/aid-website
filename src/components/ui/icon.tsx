@@ -1,10 +1,12 @@
 import type { IconProps } from "@phosphor-icons/react";
 import {
   BellSimple,
+  Buildings,
   Calculator,
   CheckCircle,
   ClipboardText,
   Clock,
+  Cpu,
   Cube,
   EnvelopeSimple,
   FileText,
@@ -21,7 +23,15 @@ import {
 } from "@phosphor-icons/react/ssr";
 import type { ComponentType } from "react";
 
-import type { IconName } from "@/content/types";
+import type { IconName, IconTint } from "@/content/types";
+
+/** Background classes for the soft colored tile behind an icon. */
+export const iconTintClass: Record<IconTint, string> = {
+  blue: "bg-tint-blue",
+  pink: "bg-tint-pink",
+  yellow: "bg-tint-yellow",
+  green: "bg-tint-green",
+};
 
 /**
  * Maps the icon names used in content files to Phosphor icons
@@ -47,6 +57,8 @@ const icons: Record<IconName, ComponentType<IconProps>> = {
   "magnifying-glass": MagnifyingGlass,
   wrench: Wrench,
   "fire-extinguisher": FireExtinguisher,
+  cpu: Cpu,
+  buildings: Buildings,
 };
 
 export function Icon({ name, ...props }: IconProps & { name: IconName }) {

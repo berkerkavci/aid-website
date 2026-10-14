@@ -1,7 +1,13 @@
 import { z } from "zod";
 
+import type { ContactDepartment } from "@/content/types";
+
 /** Validation rules for the contact form — shared by the client form and the server action. */
 export const contactFormSchema = z.object({
+  /** Team the enquiry is for; also decides which mailbox receives it. */
+  department: z.enum(["it", "engineering"], {
+    error: "Please choose IT Services or Engineering.",
+  }) satisfies z.ZodType<ContactDepartment>,
   fullName: z.string().trim().min(2, "Please enter your full name.").max(100),
   company: z.string().trim().max(100).optional().default(""),
   email: z.string().trim().max(200).pipe(z.email("Please enter a valid e-mail address.")),

@@ -2,9 +2,20 @@
 
 import { CheckCircle, WarningCircle } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
-import { useActionState, useEffect, useRef, useState, type ComponentProps } from "react";
+import {
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ComponentProps,
+} from "react";
 
 import { sendContactMessage } from "@/app/contact/actions";
+import { Icon, iconTintClass } from "@/components/ui/icon";
+import { Select } from "@/components/ui/select";
+import { contactContent } from "@/content/pages/contact";
+import type { ContactDepartment } from "@/content/types";
 import {
   HONEYPOT_FIELD,
   initialContactFormState,
@@ -57,6 +68,57 @@ function Field({ name, label, state, className, multiline, ...props }: FieldProp
         </p>
       )}
     </div>
+  );
+}
+
+const departmentOptions = contactContent.department.options.map((option) => ({
+  value: option.value,
+  label: option.label,
+  description: option.description,
+  icon: (
+    <span
+      className={cn(
+        "flex size-6 items-center justify-center rounded-md in-[li]:size-10 in-[li]:rounded-field",
+        iconTintClass[option.tint],
+      )}
+    >
+      <Icon name={option.icon} className="size-4 text-ink in-[li]:size-5" />
+    </span>
+  ),
+}));
+
+function isDepartment(value: unknown): value is ContactDepartment {
+  return departmentOptions.some((option) => option.value === value);
+}
+
+/** Team preselected by a link such as /contact?department=engineering. */
+function readDepartmentFromUrl() {
+  const value = new URLSearchParams(window.location.search).get("department");
+  return isDepartment(value) ? value : null;
+}
+
+const subscribeToNothing = () => () => {};
+
+/** "Service" dropdown — routes the message to the IT or the Engineering team. */
+function DepartmentSelect({ state }: { state: ContactFormState }) {
+  const fromUrl = useSyncExternalStore(subscribeToNothing, readDepartmentFromUrl, () => null);
+  const submitted = state.values?.department;
+  const [chosen, setChosen] = useState<ContactDepartment | null>(null);
+  const value = chosen ?? (isDepartment(submitted) ? submitted : fromUrl);
+
+  return (
+    <Select
+      id="contact-department"
+      name="department"
+      label={contactContent.department.label}
+      placeholder={contactContent.department.placeholder}
+      options={departmentOptions}
+      value={value}
+      onChange={setChosen}
+      required
+      error={state.fieldErrors?.department?.[0]}
+      triggerClassName={fieldClass}
+    />
   );
 }
 
@@ -189,6 +251,8 @@ function ContactFormInner({ onReset }: { onReset: () => void }) {
           state={state}
         />
       </div>
+
+      <DepartmentSelect state={state} />
 
       <Field
         multiline
