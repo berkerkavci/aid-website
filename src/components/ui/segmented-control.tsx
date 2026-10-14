@@ -39,9 +39,13 @@ export function SegmentedControl<T extends string>({
 
   const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
     const last = options.length - 1;
+    const next = index === last ? 0 : index + 1;
+    const previous = index === 0 ? last : index - 1;
+    // Arrow keys follow the visual order, which is mirrored in right-to-left languages.
+    const rtl = getComputedStyle(event.currentTarget).direction === "rtl";
     const keyTargets: Record<string, number> = {
-      ArrowRight: index === last ? 0 : index + 1,
-      ArrowLeft: index === 0 ? last : index - 1,
+      ArrowRight: rtl ? previous : next,
+      ArrowLeft: rtl ? next : previous,
       Home: 0,
       End: last,
     };
@@ -59,7 +63,7 @@ export function SegmentedControl<T extends string>({
         role="tablist"
         aria-label={label}
         className={cn(
-          "grid auto-cols-fr grid-flow-col rounded-full border border-line bg-[#f2f3f8] p-1",
+          "grid auto-cols-fr grid-flow-col rounded-full border border-line bg-surface-muted p-1",
           className,
         )}
       >
@@ -88,7 +92,7 @@ export function SegmentedControl<T extends string>({
                 <motion.span
                   layoutId="segmented-thumb"
                   aria-hidden
-                  className="absolute inset-0 rounded-full bg-white shadow-[0_1px_2px_rgb(18_18_18/0.08),0_4px_12px_-2px_rgb(23_40_150/0.14)]"
+                  className="absolute inset-0 rounded-full bg-surface-raised shadow-[0_1px_2px_rgb(18_18_18/0.08),0_4px_12px_-2px_rgb(23_40_150/0.14)] dark:shadow-[0_1px_2px_rgb(0_0_0/0.4)]"
                   transition={{ type: "spring", bounce: 0.15, duration: 0.45 }}
                 />
               )}

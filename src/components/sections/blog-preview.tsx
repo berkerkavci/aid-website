@@ -10,8 +10,8 @@ type BlogPreviewProps = {
   /** Only posts of this business line are shown. */
   division: BlogDivision;
   limit: number;
-  /** Use "glow" when the previous section is white, so neighbouring sections stay distinct. */
-  background?: "white" | "glow";
+  /** Use "glow" when the previous section is plain, so neighbouring sections stay distinct. */
+  background?: "plain" | "glow";
 };
 
 /** Latest blog posts ("Knowledge Hub"). The "view all" link lives in the intro. */
@@ -19,7 +19,7 @@ export async function BlogPreview({
   intro,
   division,
   limit,
-  background = "white",
+  background = "plain",
 }: BlogPreviewProps) {
   const posts = (await getPostsByDivision(division)).slice(0, limit);
   if (posts.length === 0) return null;
@@ -29,7 +29,7 @@ export async function BlogPreview({
       id="blog"
       className={cn(
         "flex section-fit flex-col items-center section-y section-x",
-        background === "glow" ? "bg-glow-bottom" : "bg-white",
+        background === "glow" ? "bg-glow-bottom" : "bg-canvas",
       )}
     >
       <Reveal className="w-full">

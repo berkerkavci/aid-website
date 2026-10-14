@@ -16,13 +16,15 @@ const PANEL_ID = "blog-posts";
 type BlogBrowserViewProps = {
   posts: Post[];
   divisions: BlogDivisionTab[];
+  /** Accessible name of the segmented control, e.g. "Blog category". */
+  label: string;
   division: BlogDivision;
   onChange?: (division: BlogDivision) => void;
 };
 
 function EmptyState({ title, description, cta }: BlogDivisionTab["empty"]) {
   return (
-    <div className="flex flex-col items-center gap-5 rounded-card border border-line bg-white px-6 py-14 text-center tablet:py-20">
+    <div className="flex flex-col items-center gap-5 rounded-card border border-line bg-surface px-6 py-14 text-center tablet:py-20">
       <span className="flex size-14 items-center justify-center rounded-full bg-tint-blue">
         <Notebook weight="light" className="size-7 text-brand" aria-hidden />
       </span>
@@ -38,7 +40,13 @@ function EmptyState({ title, description, cta }: BlogDivisionTab["empty"]) {
 }
 
 /** Segmented control + the posts of the selected division (presentational). */
-export function BlogBrowserView({ posts, divisions, division, onChange }: BlogBrowserViewProps) {
+export function BlogBrowserView({
+  posts,
+  divisions,
+  label,
+  division,
+  onChange,
+}: BlogBrowserViewProps) {
   const [hasSwitched, setHasSwitched] = useState(false);
   const active = divisions.find((item) => item.id === division) ?? divisions[0];
   if (!active) return null;
@@ -55,7 +63,7 @@ export function BlogBrowserView({ posts, divisions, division, onChange }: BlogBr
         options={divisions.map((item) => ({ value: item.id, label: item.label }))}
         value={active.id}
         onChange={onChange ? handleChange : undefined}
-        label="Blog category"
+        label={label}
         idPrefix="blog-division"
         controls={PANEL_ID}
         className="w-full tablet:w-auto tablet:min-w-[24rem]"
@@ -110,17 +118,28 @@ const readDivisionFromUrl = () => new URLSearchParams(window.location.search).ge
 const readDivisionOnServer = () => null;
 
 /** Interactive blog list with a segmented division filter. */
-export function BlogBrowser({ posts, divisions }: Omit<BlogBrowserViewProps, "division">) {
+export function BlogBrowser({
+  posts,
+  divisions,
+  label,
+}: Omit<BlogBrowserViewProps, "division" | "onChange">) {
   const requested = useSyncExternalStore(subscribeToUrl, readDivisionFromUrl, readDivisionOnServer);
   const division = divisions.find((item) => item.id === requested)?.id ?? divisions[0]?.id ?? "it";
 
   const onChange = (next: BlogDivision) => {
-    // Update the address bar without a navigation, reload or scroll jump.
-    window.history.replaceState(window.history.state, "", blogDivisionHref(next));
+    // Update the address bar (keeping the language prefix) without a navigation or scroll jump.
+    const url = new URL(blogDivisionHref(next), window.location.origin);
+    window.history.replaceState(window.history.state, "", window.location.pathname + url.search);
     window.dispatchEvent(new Event(DIVISION_CHANGE_EVENT));
   };
 
   return (
-    <BlogBrowserView posts={posts} divisions={divisions} division={division} onChange={onChange} />
+    <BlogBrowserView
+      posts={posts}
+      divisions={divisions}
+      label={label}
+      division={division}
+      onChange={onChange}
+    />
   );
 }

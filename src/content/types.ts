@@ -21,7 +21,9 @@ export type SectionIntro = {
 
 export type HeroContent = {
   badge: string;
-  /** Words that rotate between "Your" and "Partner" in the headline. */
+  /** Headline with a `{word}` placeholder, e.g. "Your {word} Partner". */
+  headline: string;
+  /** Words that rotate in place of `{word}`. */
   rotatingWords: string[];
   description: string;
   /** Main action (solid white button). */

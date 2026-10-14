@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
-import Link from "next/link";
 import type { ComponentProps } from "react";
+
+import { Link } from "@/i18n/link";
 
 /** Element overrides for blog posts. Typography is styled by `.post-body` in globals.css. */
 const components: MDXComponents = {

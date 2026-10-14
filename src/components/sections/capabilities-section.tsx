@@ -13,7 +13,7 @@ export function CapabilitiesSection({ intro, groups }: CapabilitiesSectionProps)
   return (
     <section
       id="capabilities"
-      className="flex section-fit flex-col items-center section-y bg-white section-x"
+      className="flex section-fit flex-col items-center section-y bg-canvas section-x"
     >
       <Reveal className="w-full">
         <SectionIntro {...intro} />
@@ -22,7 +22,7 @@ export function CapabilitiesSection({ intro, groups }: CapabilitiesSectionProps)
       <div className="grid w-full items-stretch gap-6 desktop:grid-cols-2 desktop:gap-10">
         {groups.map((group, index) => (
           <Reveal key={group.title} delay={index * 0.1} className="h-full">
-            <article className="flex h-full flex-col gap-5 rounded-card border border-line bg-white p-7 tablet:p-8 short:gap-4 short:p-6">
+            <article className="flex h-full flex-col gap-5 rounded-card border border-line bg-surface p-7 tablet:p-8 short:gap-4 short:p-6">
               <div className="flex flex-col gap-2">
                 <h3 className="type-h3 text-ink">{group.title}</h3>
                 <p className="type-body text-body">{group.intro}</p>

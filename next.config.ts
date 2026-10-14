@@ -19,13 +19,15 @@ const nextConfig: NextConfig = {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
   async redirects() {
+    const typoSlug = "configuration-management-ensuring-control-and-consistency-in-it-nnvironments";
+    const fixedSlug =
+      "configuration-management-ensuring-control-and-consistency-in-it-environments";
     return [
       // The original Framer URL contained a typo ("nnvironments"); keep old links working.
+      { source: `/blog/${typoSlug}`, destination: `/blog/${fixedSlug}`, permanent: true },
       {
-        source:
-          "/blog/configuration-management-ensuring-control-and-consistency-in-it-nnvironments",
-        destination:
-          "/blog/configuration-management-ensuring-control-and-consistency-in-it-environments",
+        source: `/:locale(tr|pl|de|fr|es|ar)/blog/${typoSlug}`,
+        destination: `/:locale/blog/${fixedSlug}`,
         permanent: true,
       },
     ];

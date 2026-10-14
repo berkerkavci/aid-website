@@ -2,6 +2,47 @@
 
 Bu dosya sitedeki önemli değişiklikleri tarih sırasıyla listeler (en yeni en üstte).
 
+## 2026-10-14 — 7 dil desteği ve açık / koyu tema
+
+### Diller
+
+- Site artık **İngilizce, Türkçe, Lehçe, Almanca, Fransızca, İspanyolca ve Arapça** görüntülenebiliyor.
+  Tüm sayfa metinleri, menüler, form (hata mesajları ve onay ekranı dahil), 7 blog yazısı ve
+  Gizlilik Politikası her dile çevrildi.
+- **Dil menüsü:** Navbar'ın sağında (giriş sayfasında sağ üst köşede) 🌐 EN düğmesi. Dil adları kendi
+  dillerinde yazılı; seçim aynı sayfanın o dildeki adresine gider ve hatırlanır.
+- **Adresler:** İngilizce mevcut adreslerde kalır (`/it-services`); diğer diller `/tr/…`, `/de/…` gibi.
+  Site varsayılan olarak her ziyaretçiye İngilizce açılır.
+- **Arapça** sağdan sola düzende; Arapça için IBM Plex Sans Arabic fontu eklendi.
+- **SEO:** Her sayfa için `hreflang` bağlantıları, dile göre başlık/açıklama ve çok dilli sitemap.
+- İletişim formundan gelen e-postada ziyaretçinin dili yazar; iletişim kartlarında iki e-posta
+  adresi (IT ve Engineering) gösterilir.
+
+### Açık / koyu tema
+
+- Navbar'da ay/güneş butonu ile **koyu tema**. Site varsayılan olarak açık temada açılır; seçim
+  tarayıcıda saklanır ve sayfa yüklenirken beyaz parlama olmaz.
+- Tasarım sistemine **anlamsal renk token'ları** eklendi (`canvas`, `surface`, `surface-muted`,
+  `surface-raised`, `heading`, `inverse`…); tüm bileşenler bu token'larla iki temaya uyumlu.
+  Koyu temada partner logoları beyaz silüet olarak gösterilir.
+
+### Teknik
+
+- Sayfalar `src/app/[locale]/` altına taşındı; dil yönlendirmesi `src/proxy.ts`, metinler
+  `src/content/messages/<dil>.ts`, blog yazıları `src/content/blog/<yazı>/<dil>.mdx`.
+- Eksik çeviri anahtarları build'i durdurur; çevirisi olmayan blog yazısı İngilizce gösterilir.
+
+## 2026-10-14 — Knowledge Hub kapak görselleri ve Engineering istatistikleri
+
+- **Ortak kapak dili:** IT yazılarının kapakları, Engineering kapaklarıyla aynı "blueprint" stilinde
+  ve kendi konularına göre yeniden üretildi: IT izleme (canlı nabız grafiği ve uyarı), süreç
+  otomasyonu (iş akışı ve dişli) ve konfigürasyon yönetimi (tek yapılandırma dosyasının sunuculara
+  senkronu). Eski fotoğraf kapaklar kaldırıldı (~2.5 MB yerine ~100 KB'lık görseller).
+- **Kapak üretici:** Tüm kapaklar `npm run covers` (`scripts/blog-covers.mjs`) ile üretiliyor; yeni
+  yazılar için kapak eklemek README'de anlatıldı. Bu stil bundan sonra Knowledge Hub'ın standardı.
+- **Solutions Without Borders:** Engineering sayfasındaki bölüm IT sayfasındaki gibi üç
+  istatistikli hale getirildi (15+ yıl deneyim, 50+ müşteri, 15+ ülke).
+
 ## 2026-10-14 — Engineering içeriği ve iletişim formunda hizmet seçimi
 
 ### Engineering sayfası

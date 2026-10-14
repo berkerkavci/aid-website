@@ -35,7 +35,7 @@ export function ServicesGrid({ intro, items, columns = 2 }: ServicesGridProps) {
           <Reveal key={service.title} delay={(index % columns) * 0.1} className="h-full">
             <article
               className={cn(
-                "flex h-full rounded-card border border-line bg-white",
+                "flex h-full rounded-card border border-line bg-surface",
                 service.description
                   ? "flex-col items-start gap-5 p-7 tablet:flex-row tablet:gap-6 short:p-6"
                   : "items-center gap-5 p-5 short:gap-4 short:p-4",
@@ -47,7 +47,7 @@ export function ServicesGrid({ intro, items, columns = 2 }: ServicesGridProps) {
                   iconTintClass[service.tint],
                 )}
               >
-                <Icon name={service.icon} weight="light" className="size-8 text-black" />
+                <Icon name={service.icon} weight="light" className="size-8 text-ink" />
               </span>
               <div className="flex flex-col gap-2">
                 <h3 className="type-h3 text-ink">{service.title}</h3>

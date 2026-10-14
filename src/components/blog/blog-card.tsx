@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 
+import { Link } from "@/i18n/link";
 import type { Post } from "@/lib/blog";
-import { cn, formatDate } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 type BlogCardProps = {
   post: Post;
@@ -23,7 +23,7 @@ export function BlogCard({
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-card border border-line bg-white transition-[transform,box-shadow] duration-300 ease-framer hover:scale-[1.02] hover:shadow-card-hover"
+      className="group flex h-full flex-col overflow-hidden rounded-card border border-line bg-surface transition-[transform,box-shadow] duration-300 ease-framer hover:scale-[1.02] hover:shadow-card-hover"
     >
       <div
         className={cn(
@@ -35,9 +35,12 @@ export function BlogCard({
         <span aria-hidden className="absolute inset-0 border border-black/6" />
       </div>
       <div className={cn("flex flex-col px-6", compact ? "py-6 short:py-5" : "py-8")}>
-        <h3 className="type-h3 text-black">{post.title}</h3>
+        {/* Untranslated posts are shown in English; mark the language for screen readers. */}
+        <h3 lang={post.translated ? undefined : "en"} className="type-h3 text-heading">
+          {post.title}
+        </h3>
         <p className="pt-2 type-body font-medium text-body">
-          <time dateTime={post.date}>{formatDate(post.date)}</time>
+          <time dateTime={post.date}>{post.dateLabel}</time>
         </p>
       </div>
     </Link>

@@ -25,7 +25,7 @@ export function PartnerMarquee({ logos, title }: PartnerMarqueeProps) {
   return (
     <section
       aria-label={title ?? "Technologies we work with"}
-      className="flex flex-col gap-4 bg-white p-5 tablet:gap-5 tablet:p-10"
+      className="flex flex-col gap-4 bg-canvas p-5 tablet:gap-5 tablet:p-10"
     >
       {title && (
         <p className="text-center text-sm font-medium tracking-[0.08em] text-body/80 uppercase">
@@ -33,7 +33,8 @@ export function PartnerMarquee({ logos, title }: PartnerMarqueeProps) {
         </p>
       )}
       <Reveal>
-        <div className="flex h-[82px] items-center overflow-hidden">
+        {/* Logos scroll the same way in every language (also right-to-left ones). */}
+        <div dir="ltr" className="flex h-[82px] items-center overflow-hidden">
           <ul
             className="marquee-track flex w-max shrink-0 items-center"
             style={{ "--marquee-duration": `${duration}s` } as CSSProperties}
@@ -53,7 +54,8 @@ export function PartnerMarquee({ logos, title }: PartnerMarqueeProps) {
                     width={logo.width}
                     height={logo.height}
                     sizes={`${logo.width}px`}
-                    className="object-contain opacity-60 grayscale transition-[filter,opacity] duration-300 hover:opacity-100 hover:grayscale-0"
+                    // In dark mode the logos become white silhouettes so dark wordmarks stay visible.
+                    className="object-contain opacity-60 grayscale transition-[filter,opacity] duration-300 hover:opacity-100 hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:grayscale"
                     style={{ width: logo.width, height: logo.height }}
                   />
                 </li>

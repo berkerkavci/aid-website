@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
 import localFont from "next/font/local";
 
 /** Body copy — Satoshi by Indian Type Foundry (Fontshare, ITF Free Font License). */
@@ -29,4 +29,21 @@ export const inter = Inter({
   display: "swap",
 });
 
-export const fontVariables = [satoshi.variable, switzer.variable, inter.variable].join(" ");
+/**
+ * Arabic pages — IBM Plex Sans Arabic (SIL Open Font License). It sits after the
+ * Latin fonts in every font stack and is only downloaded when Arabic text is shown.
+ */
+export const plexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-arabic",
+  display: "swap",
+  preload: false,
+});
+
+export const fontVariables = [
+  satoshi.variable,
+  switzer.variable,
+  inter.variable,
+  plexArabic.variable,
+].join(" ");

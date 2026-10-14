@@ -1,20 +1,28 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Logo } from "@/components/ui/logo";
 import { contactLink, isActiveLink, mainNavigation } from "@/config/site";
+import type { Messages } from "@/content/messages/en";
+import { stripLocale } from "@/i18n/config";
+import { Link } from "@/i18n/link";
 import { cn } from "@/lib/utils";
+
+import { LanguageSwitcher } from "./language-switcher";
+
+export type NavbarLabels = Pick<Messages["common"], "nav" | "homeLabel" | "language" | "theme">;
 
 type NavbarProps = {
   /**
-   * "transparent" — sits on top of a dark hero and turns white after scrolling.
-   * "solid" — always white (pages without a dark hero).
+   * "transparent" — sits on top of a dark hero and turns solid after scrolling.
+   * "solid" — always solid (pages without a dark hero).
    */
   variant?: "transparent" | "solid";
+  labels: NavbarLabels;
 };
 
 const SCROLL_THRESHOLD = 40;
@@ -23,8 +31,8 @@ const SCROLL_THRESHOLD = 40;
 const activeIndicator =
   "relative after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5 after:rounded-full after:bg-current";
 
-export function Navbar({ variant = "transparent" }: NavbarProps) {
-  const pathname = usePathname();
+export function Navbar({ variant = "transparent", labels }: NavbarProps) {
+  const { path } = stripLocale(usePathname());
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -55,92 +63,110 @@ export function Navbar({ variant = "transparent" }: NavbarProps) {
   }, [menuOpen]);
 
   const filled = (variant === "solid" || scrolled) && !menuOpen;
+  const tone = filled ? "default" : "onDark";
   const closeMenu = () => setMenuOpen(false);
+  const { nav } = labels;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
         className={cn(
-          "flex h-[72px] items-center justify-between section-x transition-[background-color,box-shadow] duration-300 tablet:h-20",
-          filled ? "bg-white shadow-nav" : "bg-transparent",
+          "flex h-[72px] items-center justify-between gap-4 section-x transition-[background-color,box-shadow] duration-300 tablet:h-20",
+          filled ? "bg-canvas shadow-nav" : "bg-transparent",
         )}
       >
-        <Link href="/" aria-label="AID — home" onClick={closeMenu}>
+        <Link href="/" aria-label={labels.homeLabel} onClick={closeMenu} className="shrink-0">
           <Logo tone={filled ? "brand" : "white"} />
         </Link>
 
-        {/* Desktop & tablet */}
-        <nav aria-label="Main" className="hidden tablet:block">
-          <ul className="flex items-center gap-10 desktop:gap-15">
-            {mainNavigation.map((link) => {
-              const active = isActiveLink(pathname, link.href);
-              return (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    aria-current={active ? "page" : undefined}
-                    className={cn(
-                      "text-lg/6 font-medium transition-[color,opacity] duration-300 hover:opacity-70",
-                      filled ? "text-black" : "text-white",
-                      active && activeIndicator,
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            })}
-            <li>
-              <Link
-                href={contactLink.href}
-                aria-current={isActiveLink(pathname, contactLink.href) ? "page" : undefined}
-                className={cn(
-                  "inline-flex items-center rounded-button border px-[18px] py-2.5 text-lg/6 font-medium transition-[background-color,color,box-shadow,filter] duration-300 hover:brightness-90",
-                  filled
-                    ? "border-white/12 bg-black text-white shadow-button-dark outline-ink"
-                    : "border-transparent bg-white text-black outline-white",
-                )}
-              >
-                {contactLink.label}
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <div className="flex items-center gap-1 tablet:gap-4 desktop:gap-6">
+          {/* Desktop & tablet */}
+          <nav aria-label={nav.main} className="hidden tablet:block">
+            <ul className="flex items-center gap-6 desktop:gap-12">
+              {mainNavigation.map((link) => {
+                const active = isActiveLink(path, link.href);
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "text-lg/6 font-medium whitespace-nowrap transition-[color,opacity] duration-300 hover:opacity-70",
+                        filled ? "text-heading" : "text-white",
+                        active && activeIndicator,
+                      )}
+                    >
+                      {nav[link.labelKey]}
+                    </Link>
+                  </li>
+                );
+              })}
+              <li>
+                <Link
+                  href={contactLink.href}
+                  aria-current={isActiveLink(path, contactLink.href) ? "page" : undefined}
+                  className={cn(
+                    "inline-flex items-center rounded-button border px-[18px] py-2.5 text-lg/6 font-medium whitespace-nowrap transition-[background-color,color,box-shadow,filter] duration-300 hover:brightness-90",
+                    filled
+                      ? "border-white/12 bg-ink text-inverse shadow-button-dark outline-ink"
+                      : "border-transparent bg-white text-black outline-white",
+                  )}
+                >
+                  {nav[contactLink.labelKey]}
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
-        {/* Phone */}
-        <button
-          type="button"
-          className={cn(
-            "relative -mr-2 flex size-10 items-center justify-center tablet:hidden",
-            filled ? "text-ink" : "text-white",
-          )}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
           <span
             aria-hidden
-            className={cn(
-              "absolute h-0.5 w-6 rounded-full bg-current transition-transform duration-300",
-              menuOpen ? "rotate-45" : "-translate-y-1",
-            )}
+            className={cn("hidden h-6 w-px tablet:block", filled ? "bg-line" : "bg-white/25")}
           />
-          <span
-            aria-hidden
+
+          <div className="flex items-center">
+            <LanguageSwitcher
+              buttonLabel={labels.language.button}
+              menuLabel={labels.language.menu}
+              tone={tone}
+            />
+            <ThemeToggle label={labels.theme.toggle} tone={tone} />
+          </div>
+
+          {/* Phone */}
+          <button
+            type="button"
             className={cn(
-              "absolute h-0.5 w-6 rounded-full bg-current transition-transform duration-300",
-              menuOpen ? "-rotate-45" : "translate-y-1",
+              "relative -me-2 flex size-10 items-center justify-center tablet:hidden",
+              filled ? "text-ink" : "text-white",
             )}
-          />
-        </button>
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? nav.closeMenu : nav.openMenu}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span
+              aria-hidden
+              className={cn(
+                "absolute h-0.5 w-6 rounded-full bg-current transition-transform duration-300",
+                menuOpen ? "rotate-45" : "-translate-y-1",
+              )}
+            />
+            <span
+              aria-hidden
+              className={cn(
+                "absolute h-0.5 w-6 rounded-full bg-current transition-transform duration-300",
+                menuOpen ? "-rotate-45" : "translate-y-1",
+              )}
+            />
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
             id="mobile-menu"
-            aria-label="Mobile"
+            aria-label={nav.mobile}
             className="fixed inset-0 -z-10 bg-menu pt-[110px] tablet:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -149,7 +175,7 @@ export function Navbar({ variant = "transparent" }: NavbarProps) {
           >
             <ul className="flex flex-col items-center">
               {mainNavigation.map((link) => {
-                const active = isActiveLink(pathname, link.href);
+                const active = isActiveLink(path, link.href);
                 return (
                   <li key={link.href} className="py-[15px]">
                     <Link
@@ -161,7 +187,7 @@ export function Navbar({ variant = "transparent" }: NavbarProps) {
                         active && activeIndicator,
                       )}
                     >
-                      {link.label}
+                      {nav[link.labelKey]}
                     </Link>
                   </li>
                 );
@@ -172,7 +198,7 @@ export function Navbar({ variant = "transparent" }: NavbarProps) {
                   onClick={closeMenu}
                   className="inline-flex rounded-button bg-white px-[18px] py-2.5 text-base/6 font-medium text-black outline-white"
                 >
-                  {contactLink.label}
+                  {nav[contactLink.labelKey]}
                 </Link>
               </li>
             </ul>

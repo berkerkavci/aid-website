@@ -8,10 +8,14 @@
 /* `short:` = desktop width but limited height (typical laptops ≤ 820px tall). */
 @custom-variant short (@media (width >= 75rem) and (height <= 51.25rem));
 
+/* `dark:` = dark theme (set on <html data-theme="dark"> by the theme script / toggle). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Arabic glyphs fall back to IBM Plex Sans Arabic (downloaded only when Arabic text is shown). */
 @theme inline {
-  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
-  --font-inter: var(--font-inter-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-satoshi), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-switzer), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-inter: var(--font-inter-sans), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme {
@@ -19,26 +23,46 @@
   --breakpoint-tablet: 50.625rem;
   --breakpoint-desktop: 75rem;
 
-  /* Colors */
-  --color-ink: #121212;
+  /*
+   * Colors — light theme values. Dark theme values are set further down
+   * (`:root[data-theme="dark"]`); components only use these semantic names,
+   * so they adapt to both themes automatically.
+   */
+
+  /* Surfaces */
+  --color-canvas: #ffffff; /* page background */
+  --color-surface: #ffffff; /* cards, badges, inputs */
+  --color-surface-muted: #f2f3f8; /* tracks, placeholders, subtle fills */
+  --color-surface-raised: #ffffff; /* dropdowns, selected segments */
+
+  /* Text */
+  --color-heading: #000000;
+  --color-ink: #121212; /* primary text, dark buttons */
+  --color-inverse: #ffffff; /* text on `bg-ink` */
   --color-body: #434752;
   --color-prose: #666666;
   --color-muted: #999999;
   --color-brand: #172896;
   --color-logo-text: #202024;
   --color-icon: #575757;
+
+  /* Lines and form fields */
   --color-line: rgb(182 181 199 / 0.48);
-  --color-line-dark: rgb(97 97 97 / 0.48);
-  --color-line-stat: #bec1cc;
-  --color-glass: rgb(255 255 255 / 0.11);
-  --color-glass-text: #d6d6d6;
   --color-label: rgb(74 74 74 / 0.8);
   --color-placeholder: rgb(74 74 74 / 0.6);
   --color-field: rgb(227 227 227 / 0.15);
+
+  /* Icon tiles */
   --color-tint-blue: rgb(61 87 255 / 0.2);
   --color-tint-pink: rgb(230 145 200 / 0.16);
   --color-tint-yellow: rgb(255 221 71 / 0.32);
   --color-tint-green: rgb(91 194 160 / 0.25);
+
+  /* Always-dark areas (hero, stats band, footer, menu) — same in both themes */
+  --color-line-dark: rgb(97 97 97 / 0.48);
+  --color-line-stat: #bec1cc;
+  --color-glass: rgb(255 255 255 / 0.11);
+  --color-glass-text: #d6d6d6;
 
   /* Max content width (≈ the original 1440px desktop design minus gutters) */
   --container-content: 85rem;
@@ -272,22 +296,22 @@
 }
 
 @utility bg-glow-bottom {
-  background-image: radial-gradient(
-    72% 100% at 50% 100%,
-    rgb(79 85 255 / 0.15) 0%,
-    rgb(255 255 255 / 0) 100%
-  );
+  background-image: radial-gradient(72% 100% at 50% 100%, var(--glow-bottom) 0%, transparent 100%);
 }
 
 @utility bg-cta {
-  background-image: radial-gradient(61% 117% at 50% 120.1%, #bdccff 0%, #ffffff 100%);
+  background-image: radial-gradient(
+    61% 117% at 50% 120.1%,
+    var(--glow-cta) 0%,
+    var(--color-canvas) 100%
+  );
 }
 
 @utility bg-contact {
   background-image: radial-gradient(
     84% 75% at 52.3% 123.8%,
-    rgb(117 122 255 / 0.2) 0%,
-    #ffffff 115%
+    var(--glow-contact) 0%,
+    var(--color-canvas) 115%
   );
 }
 
@@ -311,6 +335,59 @@
 /* -------------------------------------------------------------------------- */
 
 @layer base {
+  /* Section glows used by the bg-* utilities above. */
+  :root {
+    color-scheme: light;
+    --glow-bottom: rgb(79 85 255 / 0.15);
+    --glow-cta: #bdccff;
+    --glow-contact: rgb(117 122 255 / 0.2);
+  }
+
+  /* Dark theme: navy surfaces from the brand palette, light text, softer lines. */
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --glow-bottom: rgb(99 105 255 / 0.16);
+    --glow-cta: #1d2c72;
+    --glow-contact: rgb(117 122 255 / 0.22);
+
+    --color-canvas: #070b1f;
+    --color-surface: #0d1330;
+    --color-surface-muted: #141b3d;
+    --color-surface-raised: #1b2352;
+
+    --color-heading: #ffffff;
+    --color-ink: #eef0f7;
+    --color-inverse: #0b1024;
+    --color-body: #b4bad0;
+    --color-prose: #a6adc4;
+    --color-muted: #7f87a1;
+    --color-brand: #9ba9ff;
+    --color-logo-text: #ffffff;
+    --color-icon: #a3a9c0;
+
+    --color-line: rgb(255 255 255 / 0.12);
+    --color-label: rgb(255 255 255 / 0.72);
+    --color-placeholder: rgb(255 255 255 / 0.42);
+    --color-field: rgb(255 255 255 / 0.04);
+
+    --color-tint-blue: rgb(110 130 255 / 0.24);
+    --color-tint-pink: rgb(240 150 210 / 0.2);
+    --color-tint-yellow: rgb(255 221 71 / 0.2);
+    --color-tint-green: rgb(91 194 160 / 0.22);
+
+    --shadow-nav: 0 1px 0 rgb(255 255 255 / 0.06), 0 10px 24px -12px rgb(0 0 0 / 0.6);
+    --shadow-card-hover: 0 0 0 1px rgb(255 255 255 / 0.06), 0 16px 32px -16px rgb(0 0 0 / 0.8);
+    --shadow-dropdown: 0 0 0 1px rgb(255 255 255 / 0.04), 0 16px 40px -10px rgb(0 0 0 / 0.75);
+  }
+
+  /* No colour transitions while the theme switches (avoids a slow "fade" across the page). */
+  .theme-switching,
+  .theme-switching *,
+  .theme-switching *::before,
+  .theme-switching *::after {
+    transition: none !important;
+  }
+
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -324,7 +401,7 @@
   }
 
   body {
-    background-color: #ffffff;
+    background-color: var(--color-canvas);
     color: var(--color-ink);
     font-family: var(--font-sans);
   }
@@ -415,7 +492,7 @@
     }
     & h2 {
       margin-top: 2.5rem;
-      color: #000000;
+      color: var(--color-heading);
       font-family: var(--font-display);
       font-weight: 600;
       font-size: 1.75rem;
@@ -426,7 +503,7 @@
     }
     & h3 {
       margin-top: 2rem;
-      color: #000000;
+      color: var(--color-heading);
       font-family: var(--font-display);
       font-weight: 600;
       font-size: 1.5rem;
@@ -451,12 +528,12 @@
     }
     & li {
       position: relative;
-      padding-left: 1.5rem;
+      padding-inline-start: 1.5rem;
     }
     & ul > li::before {
       content: "•";
       position: absolute;
-      left: 0;
+      inset-inline-start: 0;
     }
     & ol > li {
       counter-increment: post-list;
@@ -464,10 +541,15 @@
     & ol > li::before {
       content: counter(post-list) ".";
       position: absolute;
-      left: 0;
+      inset-inline-start: 0;
     }
     & li > p {
       margin: 0;
     }
   }
+}
+
+/* Arabic script is cursive: letter-spacing would break the joins between letters. */
+:lang(ar) {
+  letter-spacing: normal;
 }

@@ -1,3 +1,4 @@
+import type { Messages } from "@/content/messages/en";
 import type { BlogDivision, Cta, SectionIntro } from "@/content/types";
 
 export type BlogDivisionTab = {
@@ -7,58 +8,52 @@ export type BlogDivisionTab = {
   empty: { title: string; description: string; cta: Cta };
 };
 
-export const blogIndexContent = {
-  meta: {
-    title: "Blog",
-    description:
-      "Insights on IT operations, automation and monitoring, and on building MEP engineering — shaped by hands-on experience.",
-  },
-  title: "Knowledge Hub",
-  description:
-    "Thoughtful content on IT automation and monitoring, and on MEP design and engineering, shaped by hands-on experience.",
-  /** Segmented control above the list. The first entry is the default. */
-  divisions: [
-    {
-      id: "it",
-      label: "IT Services",
-      empty: {
-        title: "IT articles are on their way",
-        description: "We're preparing new insights on automation, monitoring and DevOps.",
-        cta: { label: "Explore IT services", href: "/it-services" },
-      },
-    },
-    {
-      id: "engineering",
-      label: "Engineering",
-      empty: {
-        title: "Engineering articles are coming soon",
-        description:
-          "We're preparing insights on MEP design, 3D coordination and commissioning. In the meantime, explore our engineering services.",
-        cta: { label: "Explore engineering services", href: "/engineering-services" },
-      },
-    },
-  ] satisfies BlogDivisionTab[],
-};
+/** Order of the segmented control above the list. The first entry is the default. */
+const divisions: { id: BlogDivision; emptyHref: string }[] = [
+  { id: "it", emptyHref: "/it-services" },
+  { id: "engineering", emptyHref: "/engineering-services" },
+];
 
-/** Shown at the end of every blog post. */
-export const blogPostContent = {
-  backLink: { label: "All articles", href: "/blog" } satisfies Cta,
-  related: {
-    intro: { badge: "Blog", title: "Keep Reading" } satisfies SectionIntro,
-    limit: 3,
-  },
-  cta: {
-    intro: {
-      badge: "Contact",
-      title: "Let's Work Together",
-      description:
-        "Have a question about this topic or a project in mind? Connect with us to start building smarter solutions.",
-    } satisfies SectionIntro,
-    button: { label: "Contact Us", href: "/contact" } satisfies Cta,
-  },
-};
+export function getBlogIndexContent(t: Messages["blog"]) {
+  return {
+    meta: t.meta,
+    title: t.title,
+    description: t.description,
+    categoryLabel: t.categoryLabel,
+    divisions: divisions.map(({ id, emptyHref }) => ({
+      id,
+      label: t.divisions[id].label,
+      empty: {
+        title: t.divisions[id].emptyTitle,
+        description: t.divisions[id].emptyDescription,
+        cta: { label: t.divisions[id].emptyCta, href: emptyHref },
+      },
+    })) satisfies BlogDivisionTab[],
+  };
+}
+
+/** Shown around every blog post. */
+export function getBlogPostContent(t: Messages["blog"]["post"]) {
+  return {
+    backLink: { label: t.backLink, href: "/blog" } satisfies Cta,
+    untranslated: t.untranslated,
+    related: {
+      label: t.relatedLabel,
+      intro: { badge: t.relatedBadge, title: t.relatedTitle } satisfies SectionIntro,
+      limit: 3,
+    },
+    cta: {
+      intro: {
+        badge: t.cta.badge,
+        title: t.cta.title,
+        description: t.cta.description,
+      } satisfies SectionIntro,
+      button: { label: t.cta.button, href: "/contact" } satisfies Cta,
+    },
+  };
+}
 
 /** Link to the blog with a division pre-selected (the first division is the default). */
 export function blogDivisionHref(division: BlogDivision) {
-  return division === blogIndexContent.divisions[0]?.id ? "/blog" : `/blog?division=${division}`;
+  return division === divisions[0]?.id ? "/blog" : `/blog?division=${division}`;
 }

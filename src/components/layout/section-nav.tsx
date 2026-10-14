@@ -7,9 +7,11 @@ import { useActiveSection } from "@/lib/use-active-section";
 import { cn } from "@/lib/utils";
 
 type SectionNavProps = {
-  /** Page name shown on the left on desktop (e.g. "IT Services"). */
+  /** Page name shown at the start of the bar on desktop (e.g. "IT Services"). */
   title: string;
   links: SectionLink[];
+  /** Accessible name of the bar, e.g. "On this page". */
+  label: string;
 };
 
 /**
@@ -18,7 +20,7 @@ type SectionNavProps = {
  * read is highlighted (scroll-spy) and links are regular #anchors, so every
  * section can be bookmarked or shared.
  */
-export function SectionNav({ title, links }: SectionNavProps) {
+export function SectionNav({ title, links, label }: SectionNavProps) {
   const active = useActiveSection(links.map((link) => link.id));
   const listRef = useRef<HTMLUListElement>(null);
 
@@ -36,9 +38,9 @@ export function SectionNav({ title, links }: SectionNavProps) {
 
   return (
     <nav
-      aria-label="On this page"
+      aria-label={label}
       data-section-nav
-      className="sticky top-(--header-height) z-40 border-b border-line bg-white/90 backdrop-blur-md"
+      className="sticky top-(--header-height) z-40 border-b border-line bg-canvas/90 backdrop-blur-md"
     >
       {/* Height minus the 1px bottom border, so the whole bar is exactly --subnav-height. */}
       <div className="flex h-[calc(var(--subnav-height)-1px)] items-center gap-6 section-x">

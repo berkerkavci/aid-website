@@ -1,41 +1,38 @@
-import type { ContactDepartmentOption, SectionIntro } from "@/content/types";
+import type { Messages } from "@/content/messages/en";
+import type { ContactDepartment, ContactDepartmentOption, SectionIntro } from "@/content/types";
 
-export const contactContent = {
-  meta: {
-    title: "Contact",
-    description:
-      "Get in touch with AID. Offices in Warsaw, Poland and Ankara, Turkey — let's turn your challenges into strategic advantages.",
-  },
-  intro: {
-    badge: "Contact Us",
-    title: "Let's Work Together",
-    description:
-      "Let’s turn your IT and engineering challenges into strategic advantages. Connect with us to start building smarter solutions.",
-  } satisfies SectionIntro,
-  responseTime: "We typically reply within one business day.",
-  /**
-   * "Service" dropdown in the contact form. The choice decides which team receives
-   * the message (see `getContactEmail` in `src/config/site.ts`). Links can preselect
-   * a team with `/contact?department=it` or `/contact?department=engineering`.
-   */
-  department: {
-    label: "Service",
-    placeholder: "Select a service",
-    options: [
-      {
-        value: "it",
-        label: "IT Services",
-        description: "Automation, monitoring & DevOps",
-        icon: "cpu",
-        tint: "blue",
+/**
+ * "Service" dropdown in the contact form. The choice decides which team receives
+ * the message (see `getContactEmail` in `src/config/site.ts`). Links can preselect
+ * a team with `/contact?department=it` or `/contact?department=engineering`.
+ */
+const departments: Pick<ContactDepartmentOption, "value" | "icon" | "tint">[] = [
+  { value: "it", icon: "cpu", tint: "blue" },
+  { value: "engineering", icon: "buildings", tint: "green" },
+];
+
+export const contactDepartments: ContactDepartment[] = departments.map(({ value }) => value);
+
+export function getContactContent(t: Messages["contact"]) {
+  return {
+    meta: t.meta,
+    intro: t.intro satisfies SectionIntro,
+    responseTime: t.responseTime,
+    map: t.map,
+    cards: t.cards,
+    form: {
+      ...t.form,
+      department: {
+        label: t.form.department.label,
+        placeholder: t.form.department.placeholder,
+        options: departments.map((option) => ({
+          ...option,
+          label: t.form.department[option.value].label,
+          description: t.form.department[option.value].description,
+        })) satisfies ContactDepartmentOption[],
       },
-      {
-        value: "engineering",
-        label: "Engineering",
-        description: "MEP design, coordination & commissioning",
-        icon: "buildings",
-        tint: "green",
-      },
-    ] satisfies ContactDepartmentOption[],
-  },
-};
+    },
+  };
+}
+
+export type ContactFormTexts = ReturnType<typeof getContactContent>["form"];

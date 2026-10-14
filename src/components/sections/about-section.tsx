@@ -14,7 +14,7 @@ export function AboutSection({ intro, features }: AboutSectionProps) {
   return (
     <section
       id="about"
-      className="flex section-fit flex-col items-center section-y bg-white section-x"
+      className="flex section-fit flex-col items-center section-y bg-canvas section-x"
     >
       <Reveal className="w-full">
         <SectionIntro {...intro} />
@@ -23,7 +23,7 @@ export function AboutSection({ intro, features }: AboutSectionProps) {
       <div className="grid w-full gap-6 desktop:grid-cols-3 desktop:gap-10">
         {features.map((feature, index) => (
           <Reveal key={feature.title} delay={index * 0.1} className="h-full">
-            <article className="flex h-full flex-col items-center gap-5 rounded-card border border-line bg-white p-8 text-center short:gap-4 short:p-6">
+            <article className="flex h-full flex-col items-center gap-5 rounded-card border border-line bg-surface p-8 text-center short:gap-4 short:p-6">
               <Image
                 src={feature.image}
                 alt=""
@@ -33,7 +33,7 @@ export function AboutSection({ intro, features }: AboutSectionProps) {
                 className="size-20 object-cover desktop:size-[clamp(4rem,8svh,6.25rem)]"
               />
               <div className="flex flex-col gap-2.5">
-                <h3 className="type-h3 text-black">{feature.title}</h3>
+                <h3 className="type-h3 text-heading">{feature.title}</h3>
                 <p className="type-body text-body">{feature.description}</p>
               </div>
             </article>

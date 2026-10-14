@@ -14,7 +14,7 @@ export function Badge({ children, variant = "light", className }: BadgeProps) {
     <span
       className={cn(
         "inline-flex items-center justify-center rounded-button px-4 py-2 type-badge",
-        variant === "light" && "border border-line bg-white text-ink",
+        variant === "light" && "border border-line bg-surface text-ink",
         variant === "glass" && "bg-glass text-glass-text backdrop-blur-[50px]",
         className,
       )}

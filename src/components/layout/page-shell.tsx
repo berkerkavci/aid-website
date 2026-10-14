@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import type { SiteSection } from "@/config/site";
+import { getMessages } from "@/i18n/server";
 
 import { Footer } from "./footer";
 import { Navbar } from "./navbar";
@@ -14,16 +15,30 @@ type PageShellProps = {
 };
 
 /** Navigation + main content + footer. Every page except the landing page uses it. */
-export function PageShell({ children, section = "general", navVariant = "solid" }: PageShellProps) {
+export async function PageShell({
+  children,
+  section = "general",
+  navVariant = "solid",
+}: PageShellProps) {
+  const { common } = await getMessages();
+
   return (
     <>
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-button focus:bg-white focus:px-4 focus:py-2 focus:text-ink"
+        className="sr-only focus:not-sr-only focus:fixed focus:start-3 focus:top-3 focus:z-[60] focus:rounded-button focus:bg-surface focus:px-4 focus:py-2 focus:text-ink"
       >
-        Skip to content
+        {common.skipToContent}
       </a>
-      <Navbar variant={navVariant} />
+      <Navbar
+        variant={navVariant}
+        labels={{
+          nav: common.nav,
+          homeLabel: common.homeLabel,
+          language: common.language,
+          theme: common.theme,
+        }}
+      />
       <main id="main-content">{children}</main>
       <Footer section={section} />
     </>

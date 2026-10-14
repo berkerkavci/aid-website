@@ -1,7 +1,7 @@
 import { ArrowRight } from "@phosphor-icons/react/ssr";
-import Link from "next/link";
 
 import type { SectionIntro as SectionIntroContent } from "@/content/types";
+import { Link } from "@/i18n/link";
 import { cn } from "@/lib/utils";
 
 import { Badge } from "./badge";
@@ -30,7 +30,7 @@ export function SectionIntro({
     <div
       className={cn(
         "flex flex-col gap-6 desktop:gap-4",
-        align === "center" ? "items-center text-center" : "items-start text-left",
+        align === "center" ? "items-center text-center" : "items-start text-start",
         tone === "dark" ? "text-white" : "text-ink",
         className,
       )}
@@ -46,7 +46,7 @@ export function SectionIntro({
           {link.label}
           <ArrowRight
             weight="bold"
-            className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+            className="size-4 transition-transform duration-300 group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1"
             aria-hidden
           />
         </Link>

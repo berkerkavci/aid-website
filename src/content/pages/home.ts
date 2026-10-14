@@ -1,3 +1,4 @@
+import type { Messages } from "@/content/messages/en";
 import type { Cta } from "@/content/types";
 
 export type HomeServiceColumn = {
@@ -6,21 +7,22 @@ export type HomeServiceColumn = {
   cta: Cta;
 };
 
-export const homeContent = {
-  title: "Software & Engineering",
-  subtitle: "One Company, Two Core Services",
-  columns: [
-    {
-      badge: "Software Solutions",
-      description:
-        "We simplify complex IT operations with smart monitoring, automation, and DevOps solutions—boosting efficiency and ensuring uptime.",
-      cta: { label: "Explore IT Services", href: "/it-services" },
-    },
-    {
-      badge: "Engineering Solutions",
-      description:
-        "We simplify complex mechanical design with smart CAD modeling, prototyping, and engineering solutions.",
-      cta: { label: "Explore Engineering Services", href: "/engineering-services" },
-    },
-  ] satisfies HomeServiceColumn[],
-};
+/** Landing page: texts from `src/content/messages/<language>.ts` → `home`. */
+export function getHomeContent(t: Messages["home"]) {
+  return {
+    title: t.title,
+    subtitle: t.subtitle,
+    columns: [
+      {
+        badge: t.software.badge,
+        description: t.software.description,
+        cta: { label: t.software.cta, href: "/it-services" },
+      },
+      {
+        badge: t.engineering.badge,
+        description: t.engineering.description,
+        cta: { label: t.engineering.cta, href: "/engineering-services" },
+      },
+    ] satisfies HomeServiceColumn[],
+  };
+}

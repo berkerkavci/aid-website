@@ -174,7 +174,7 @@ export function Select<T extends string>({
           weight="bold"
           aria-hidden
           className={cn(
-            "ml-auto size-4 shrink-0 text-body transition-transform duration-200 motion-reduce:transition-none",
+            "ms-auto size-4 shrink-0 text-body transition-transform duration-200 motion-reduce:transition-none",
             open && "rotate-180",
           )}
         />
@@ -188,7 +188,7 @@ export function Select<T extends string>({
         // Keep focus on the combobox while an option is clicked.
         onMouseDown={(event) => event.preventDefault()}
         className={cn(
-          "absolute inset-x-0 top-full z-20 mt-2 flex-col gap-1 rounded-field border border-line bg-white p-1.5 shadow-dropdown",
+          "absolute inset-x-0 top-full z-20 mt-2 flex-col gap-1 rounded-field border border-line bg-surface-raised p-1.5 shadow-dropdown",
           "origin-top animate-dropdown-in motion-reduce:animate-none",
           open ? "flex" : "hidden",
         )}
@@ -220,7 +220,7 @@ export function Select<T extends string>({
               <Check
                 weight="bold"
                 aria-hidden
-                className={cn("ml-auto size-4 shrink-0 text-brand", !isSelected && "invisible")}
+                className={cn("ms-auto size-4 shrink-0 text-brand", !isSelected && "invisible")}
               />
             </li>
           );

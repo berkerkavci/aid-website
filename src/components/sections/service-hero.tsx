@@ -11,9 +11,14 @@ type ServiceHeroProps = {
   descriptionClassName?: string;
 };
 
-/** Full-height dark hero: "Your <rotating word> Partner". */
+/**
+ * Full-height dark hero. The headline is a template such as "Your {word} Partner":
+ * the text before `{word}` and the rotating word share the first line, the text
+ * after it goes on the second line (word order differs between languages).
+ */
 export function ServiceHero({ hero, descriptionClassName }: ServiceHeroProps) {
   const [firstWord = ""] = hero.rotatingWords;
+  const [before = "", after = ""] = hero.headline.split("{word}").map((part) => part.trim());
 
   return (
     // Leaves room for the section bar so it is visible on the first screen.
@@ -28,13 +33,13 @@ export function ServiceHero({ hero, descriptionClassName }: ServiceHeroProps) {
             </Reveal>
             <Reveal immediate delay={0.1}>
               <h1 className="type-display text-white">
-                <span className="sr-only">{`Your ${firstWord} Partner`}</span>
+                <span className="sr-only">{hero.headline.replace("{word}", firstWord)}</span>
                 <span aria-hidden className="flex flex-col">
                   <span className="flex flex-wrap items-center gap-x-5">
-                    <span>Your</span>
+                    {before && <span>{before}</span>}
                     <WordTicker words={hero.rotatingWords} />
                   </span>
-                  <span>Partner</span>
+                  {after && <span>{after}</span>}
                 </span>
               </h1>
             </Reveal>
