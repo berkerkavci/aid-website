@@ -64,7 +64,6 @@ export const pl: Messages = {
         "Inteligentny monitoring, automatyzacja i rozwiązania DevOps, które upraszczają złożone operacje IT, zwiększają wydajność i zapewniają ciągłość działania.",
     },
     hero: {
-      badge: "Alternatywnie. Innowacyjnie. Projektowo.",
       headline: "Twój partner w zakresie {word}",
       rotatingWords: ["rozwiązań IT", "automatyzacji", "oprogramowania"],
       description:
@@ -84,7 +83,7 @@ export const pl: Messages = {
       badge: "O nas",
       title: "Poznaj nas",
       description:
-        "Łączymy kompetencje w zakresie operacji IT i inżynierii, aby dostarczać inteligentne, skalowalne rozwiązania. Z biurami w Polsce i Turcji obsługujemy klientów na całym świecie, usprawniając infrastrukturę na rzecz szybszych wdrożeń, trafniejszych decyzji i niezawodnej wydajności.",
+        "AID to skrót od Alternative, Innovative, Design (alternatywny, innowacyjny, projekt). Łączymy kompetencje w zakresie operacji IT i inżynierii, aby dostarczać inteligentne, skalowalne rozwiązania. Z biurami w Polsce i Turcji obsługujemy klientów na całym świecie, usprawniając infrastrukturę na rzecz szybszych wdrożeń, trafniejszych decyzji i niezawodnej wydajności.",
       features: {
         automation: {
           title: "Automatyzacja",
@@ -162,7 +161,6 @@ export const pl: Messages = {
         "Projektowanie, inżynieria i doradztwo w zakresie instalacji budowlanych MEP (mechanicznych, elektrycznych i sanitarnych) z wykorzystaniem najnowszych technologii.",
     },
     hero: {
-      badge: "Alternatywne, innowacyjne projektowanie",
       headline: "Twój partner w zakresie {word}",
       rotatingWords: ["inżynierii MEP", "doradztwa MEP", "zarządzania projektami"],
       description:
@@ -182,7 +180,7 @@ export const pl: Messages = {
       badge: "O nas",
       title: "Poznaj nas",
       description:
-        "AID została założona w 2023 roku przez inż. mechanika E. Güher KAVCI jako podmiot korporacyjny. Choć firma powstała niedawno, jej zespół zarządzający wnosi bogate doświadczenie z wieloletniej współpracy na międzynarodowym rynku budowlanym. AID szybko zyskała uznanie w branży, a jej kluczowi pracownicy słyną z wyjątkowego profesjonalizmu. Firma jest ceniona za głęboką wiedzę, etykę działania i silną filozofię współpracy.",
+        "AID (skrót od Alternative, Innovative, Design) została założona w 2023 roku przez inż. mechanika E. Güher KAVCI jako podmiot korporacyjny. Choć firma powstała niedawno, jej zespół zarządzający wnosi bogate doświadczenie z wieloletniej współpracy na międzynarodowym rynku budowlanym. AID szybko zyskała uznanie w branży, a jej kluczowi pracownicy słyną z wyjątkowego profesjonalizmu. Firma jest ceniona za głęboką wiedzę, etykę działania i silną filozofię współpracy.",
       features: {
         design: {
           title: "Projektowanie instalacji MEP",
@@ -366,6 +364,10 @@ export const pl: Messages = {
         "Zamieńmy Twoje wyzwania z zakresu IT i inżynierii w przewagę strategiczną. Skontaktuj się z nami i zacznijmy tworzyć inteligentniejsze rozwiązania.",
     },
     responseTime: "Zazwyczaj odpowiadamy w ciągu jednego dnia roboczego.",
+    photo: {
+      alt: "Rozmowa z gościem podczas wydarzenia branżowego",
+      caption: "Warszawa · Ankara",
+    },
     map: {
       title: "Mapa — biuro AID w Warszawie",
       show: "Pokaż mapę",

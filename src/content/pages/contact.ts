@@ -18,6 +18,7 @@ export function getContactContent(t: Messages["contact"]) {
     meta: t.meta,
     intro: t.intro satisfies SectionIntro,
     responseTime: t.responseTime,
+    photo: { src: "/images/contact/team-at-event.jpg", ...t.photo },
     map: t.map,
     cards: t.cards,
     form: {

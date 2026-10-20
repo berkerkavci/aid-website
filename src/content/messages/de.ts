@@ -64,7 +64,6 @@ export const de: Messages = {
         "Intelligentes Monitoring, Automatisierung und DevOps-Lösungen, die komplexe IT-Betriebsabläufe vereinfachen, die Effizienz steigern und die Verfügbarkeit sichern.",
     },
     hero: {
-      badge: "Alternativ. Innovativ. Design.",
       headline: "Ihr Partner für {word}",
       rotatingWords: ["Lösungen", "Automatisierung", "Software"],
       description:
@@ -84,7 +83,7 @@ export const de: Messages = {
       badge: "Über uns",
       title: "Lernen Sie uns kennen",
       description:
-        "Wir verbinden Know-how aus IT-Betrieb und Engineering zu intelligenten, skalierbaren Lösungen. Mit Büros in Polen und der Türkei betreuen wir Kunden weltweit und optimieren Infrastrukturen für schnellere Deployments, fundiertere Entscheidungen und zuverlässige Performance.",
+        "AID steht für Alternative, Innovative, Design. Wir verbinden Know-how aus IT-Betrieb und Engineering zu intelligenten, skalierbaren Lösungen. Mit Büros in Polen und der Türkei betreuen wir Kunden weltweit und optimieren Infrastrukturen für schnellere Deployments, fundiertere Entscheidungen und zuverlässige Performance.",
       features: {
         automation: {
           title: "Automatisierung",
@@ -162,7 +161,6 @@ export const de: Messages = {
         "Planung, Engineering und Beratung für die Technische Gebäudeausrüstung (TGA/MEP) mit modernsten Technologien.",
     },
     hero: {
-      badge: "Alternatives, innovatives Design",
       headline: "Ihr Partner für {word}",
       rotatingWords: ["TGA-Planung", "TGA-Beratung", "Projektmanagement"],
       description:
@@ -182,7 +180,7 @@ export const de: Messages = {
       badge: "Über uns",
       title: "Lernen Sie uns kennen",
       description:
-        "AID wurde 2023 von Maschinenbauingenieur (B.Sc.) E. Güher KAVCI als Unternehmen gegründet. Obwohl das Unternehmen noch jung ist, bringt das Führungsteam umfangreiche Erfahrung aus jahrelanger Zusammenarbeit im internationalen Baumarkt mit. AID hat sich schnell einen Namen in der Branche gemacht; die Schlüsselpersonen sind für ihre außergewöhnliche Professionalität bekannt. Das Unternehmen genießt Ansehen für seine fundierte Expertise, ethisches Handeln und eine ausgeprägte Philosophie partnerschaftlicher Zusammenarbeit.",
+        "AID – kurz für Alternative, Innovative, Design – wurde 2023 von Maschinenbauingenieur (B.Sc.) E. Güher KAVCI als Unternehmen gegründet. Obwohl das Unternehmen noch jung ist, bringt das Führungsteam umfangreiche Erfahrung aus jahrelanger Zusammenarbeit im internationalen Baumarkt mit. AID hat sich schnell einen Namen in der Branche gemacht; die Schlüsselpersonen sind für ihre außergewöhnliche Professionalität bekannt. Das Unternehmen genießt Ansehen für seine fundierte Expertise, ethisches Handeln und eine ausgeprägte Philosophie partnerschaftlicher Zusammenarbeit.",
       features: {
         design: {
           title: "TGA-Systemplanung",
@@ -367,6 +365,10 @@ export const de: Messages = {
         "Machen wir aus Ihren IT- und Engineering-Herausforderungen strategische Vorteile. Nehmen Sie Kontakt auf und lassen Sie uns gemeinsam intelligentere Lösungen entwickeln.",
     },
     responseTime: "Wir antworten in der Regel innerhalb eines Werktags.",
+    photo: {
+      alt: "Gespräch mit einem Besucher auf einer Branchenveranstaltung",
+      caption: "Warschau · Ankara",
+    },
     map: {
       title: "Karte – AID-Büro in Warschau",
       show: "Karte anzeigen",

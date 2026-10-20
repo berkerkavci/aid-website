@@ -1,3 +1,4 @@
+import { BrandTagline } from "@/components/ui/brand-tagline";
 import { Icon } from "@/components/ui/icon";
 import { Logo } from "@/components/ui/logo";
 import {
@@ -48,9 +49,12 @@ export async function Footer({ section = "general" }: { section?: SiteSection })
       <div className="flex flex-col gap-10 pt-15 pb-10 tablet:pt-25">
         <div className="flex flex-col gap-10 tablet:flex-row">
           <div className="flex flex-1 flex-col items-start gap-6">
-            <Link href="/" aria-label={common.homeLabel}>
-              <Logo tone="white" />
-            </Link>
+            <div className="flex flex-col items-start gap-2.5">
+              <Link href="/" aria-label={common.homeLabel}>
+                <Logo tone="white" />
+              </Link>
+              <BrandTagline className="text-[0.6875rem] tracking-[0.16em] text-white/50 uppercase" />
+            </div>
             <p className="max-w-[394px] type-body">{site.footerTagline}</p>
           </div>
 

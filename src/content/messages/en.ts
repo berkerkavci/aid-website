@@ -72,7 +72,6 @@ export const en = {
         "Smart monitoring, automation, and DevOps solutions that simplify complex IT operations, boost efficiency and ensure uptime.",
     },
     hero: {
-      badge: "Alternative. Innovative. Design.",
       /** {word} is replaced by the rotating words below. */
       headline: "Your {word} Partner",
       rotatingWords: ["Solution", "Automation", "Software"],
@@ -93,7 +92,7 @@ export const en = {
       badge: "About",
       title: "Explore Us",
       description:
-        "We combine IT operations and engineering expertise to deliver smart, scalable solutions. With offices in Poland and Turkey, we serve clients around the world by streamlining infrastructure for faster deployments, smarter decisions, and reliable performance.",
+        "AID stands for Alternative, Innovative, Design. We combine IT operations and engineering expertise to deliver smart, scalable solutions. With offices in Poland and Turkey, we serve clients around the world by streamlining infrastructure for faster deployments, smarter decisions, and reliable performance.",
       features: {
         automation: {
           title: "Automation",
@@ -171,7 +170,6 @@ export const en = {
         "Building MEP (Mechanical, Electrical and Plumbing) system design, engineering and consultancy services delivered with cutting-edge technologies.",
     },
     hero: {
-      badge: "Alternative, Innovative Design",
       headline: "Your {word} Partner",
       rotatingWords: ["MEP Engineering", "MEP Consultancy", "Project Management"],
       description:
@@ -191,7 +189,7 @@ export const en = {
       badge: "About",
       title: "Explore Us",
       description:
-        "AID was founded in 2023 by B.Sc. Mechanical Engineer E. Güher KAVCI as a corporate entity. Although recently established, the management team brings extensive experience from years of collaboration in the international construction market. AID has rapidly earned industry recognition, with key personnel renowned for their outstanding professionalism. The company is respected among peers for its deep expertise, ethical practices, and a strong philosophy of collaborative business.",
+        "AID — short for Alternative, Innovative, Design — was founded in 2023 by B.Sc. Mechanical Engineer E. Güher KAVCI as a corporate entity. Although recently established, the management team brings extensive experience from years of collaboration in the international construction market. AID has rapidly earned industry recognition, with key personnel renowned for their outstanding professionalism. The company is respected among peers for its deep expertise, ethical practices, and a strong philosophy of collaborative business.",
       features: {
         design: {
           title: "MEP System Design",
@@ -376,6 +374,10 @@ export const en = {
         "Let’s turn your IT and engineering challenges into strategic advantages. Connect with us to start building smarter solutions.",
     },
     responseTime: "We typically reply within one business day.",
+    photo: {
+      alt: "A conversation with a visitor at an industry event",
+      caption: "Warsaw · Ankara",
+    },
     map: {
       title: "Map — AID office in Warsaw",
       show: "Show map",

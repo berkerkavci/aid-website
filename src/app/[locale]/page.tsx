@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Badge } from "@/components/ui/badge";
+import { BrandTagline } from "@/components/ui/brand-tagline";
 import { ButtonLink } from "@/components/ui/button";
 import { HeroBackground } from "@/components/ui/hero-background";
 import { Logo } from "@/components/ui/logo";
@@ -53,6 +54,11 @@ export default async function HomePage() {
           {engineering && <ServiceColumn column={engineering} delay={0.3} />}
         </div>
       </div>
+
+      {/* Where the name comes from — a quiet line at the foot of the page. */}
+      <p className="absolute inset-x-0 bottom-6 text-center text-[0.6875rem] tracking-[0.2em] text-white/40 uppercase">
+        <BrandTagline />
+      </p>
     </main>
   );
 }

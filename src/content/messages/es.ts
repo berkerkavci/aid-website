@@ -64,7 +64,6 @@ export const es: Messages = {
         "Monitorización inteligente, automatización y soluciones DevOps que simplifican las operaciones de TI complejas, aumentan la eficiencia y garantizan la disponibilidad.",
     },
     hero: {
-      badge: "Alternativo. Innovador. Diseño.",
       headline: "Su socio en {word}",
       rotatingWords: ["soluciones", "automatización", "software"],
       description:
@@ -84,7 +83,7 @@ export const es: Messages = {
       badge: "Nosotros",
       title: "Conózcanos",
       description:
-        "Combinamos experiencia en operaciones de TI e ingeniería para ofrecer soluciones inteligentes y escalables. Con oficinas en Polonia y Turquía, atendemos a clientes de todo el mundo optimizando su infraestructura para lograr despliegues más rápidos, decisiones más acertadas y un rendimiento fiable.",
+        "AID significa Alternative, Innovative, Design (alternativo, innovador, diseño). Combinamos experiencia en operaciones de TI e ingeniería para ofrecer soluciones inteligentes y escalables. Con oficinas en Polonia y Turquía, atendemos a clientes de todo el mundo optimizando su infraestructura para lograr despliegues más rápidos, decisiones más acertadas y un rendimiento fiable.",
       features: {
         automation: {
           title: "Automatización",
@@ -162,7 +161,6 @@ export const es: Messages = {
         "Diseño, ingeniería y consultoría de instalaciones MEP (mecánicas, eléctricas y de fontanería) en edificios, con las tecnologías más avanzadas.",
     },
     hero: {
-      badge: "Diseño alternativo e innovador",
       headline: "Su socio en {word}",
       rotatingWords: ["ingeniería MEP", "consultoría MEP", "gestión de proyectos"],
       description:
@@ -182,7 +180,7 @@ export const es: Messages = {
       badge: "Nosotros",
       title: "Conózcanos",
       description:
-        "AID fue fundada en 2023 por el ingeniero mecánico (B.Sc.) E. Güher KAVCI como entidad corporativa. Aunque es una empresa reciente, su equipo directivo aporta una amplia experiencia fruto de años de colaboración en el mercado internacional de la construcción. AID ha ganado rápidamente reconocimiento en el sector y su personal clave destaca por su extraordinaria profesionalidad. La empresa es respetada por su profundo conocimiento, su ética y una sólida filosofía de colaboración.",
+        "AID —siglas de Alternative, Innovative, Design— fue fundada en 2023 por el ingeniero mecánico (B.Sc.) E. Güher KAVCI como entidad corporativa. Aunque es una empresa reciente, su equipo directivo aporta una amplia experiencia fruto de años de colaboración en el mercado internacional de la construcción. AID ha ganado rápidamente reconocimiento en el sector y su personal clave destaca por su extraordinaria profesionalidad. La empresa es respetada por su profundo conocimiento, su ética y una sólida filosofía de colaboración.",
       features: {
         design: {
           title: "Diseño de instalaciones MEP",
@@ -373,6 +371,10 @@ export const es: Messages = {
         "Convirtamos sus retos de TI e ingeniería en ventajas estratégicas. Contáctenos para empezar a crear soluciones más inteligentes.",
     },
     responseTime: "Normalmente respondemos en un día laborable.",
+    photo: {
+      alt: "Conversación con un visitante en un evento del sector",
+      caption: "Varsovia · Ankara",
+    },
     map: {
       title: "Mapa — oficina de AID en Varsovia",
       show: "Mostrar mapa",

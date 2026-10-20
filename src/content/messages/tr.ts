@@ -64,7 +64,6 @@ export const tr: Messages = {
         "Karmaşık BT operasyonlarını sadeleştiren, verimliliği artıran ve kesintisiz hizmet sağlayan akıllı izleme, otomasyon ve DevOps çözümleri.",
     },
     hero: {
-      badge: "Alternatif. Yenilikçi. Tasarım.",
       headline: "{word} Ortağınız",
       rotatingWords: ["Çözüm", "Otomasyon", "Yazılım"],
       description:
@@ -84,7 +83,7 @@ export const tr: Messages = {
       badge: "Hakkımızda",
       title: "Bizi Tanıyın",
       description:
-        "BT operasyonları ile mühendislik uzmanlığını birleştirerek akıllı ve ölçeklenebilir çözümler sunuyoruz. Polonya ve Türkiye'deki ofislerimizle dünyanın dört bir yanındaki müşterilerimize hizmet veriyor; altyapıyı daha hızlı devreye alma, daha akıllı kararlar ve güvenilir performans için sadeleştiriyoruz.",
+        "AID adını Alternative, Innovative, Design (Alternatif, Yenilikçi, Tasarım) kelimelerinin baş harflerinden alır. BT operasyonları ile mühendislik uzmanlığını birleştirerek akıllı ve ölçeklenebilir çözümler sunuyoruz. Polonya ve Türkiye'deki ofislerimizle dünyanın dört bir yanındaki müşterilerimize hizmet veriyor; altyapıyı daha hızlı devreye alma, daha akıllı kararlar ve güvenilir performans için sadeleştiriyoruz.",
       features: {
         automation: {
           title: "Otomasyon",
@@ -162,7 +161,6 @@ export const tr: Messages = {
         "En yeni teknolojilerle sunulan bina MEP (mekanik, elektrik ve sıhhi tesisat) sistemleri tasarım, mühendislik ve danışmanlık hizmetleri.",
     },
     hero: {
-      badge: "Alternatif, Yenilikçi Tasarım",
       headline: "{word} Ortağınız",
       rotatingWords: ["MEP Mühendislik", "MEP Danışmanlık", "Proje Yönetimi"],
       description:
@@ -182,7 +180,7 @@ export const tr: Messages = {
       badge: "Hakkımızda",
       title: "Bizi Tanıyın",
       description:
-        "AID, 2023 yılında Makine Mühendisi (Lisans) E. Güher KAVCI tarafından kurumsal bir yapı olarak kurulmuştur. Yeni kurulmuş olmasına rağmen yönetim ekibi, uluslararası inşaat sektöründe yıllara dayanan iş birliklerinden gelen geniş bir deneyime sahiptir. AID kısa sürede sektörde tanınırlık kazanmış; kilit çalışanları üstün profesyonellikleriyle öne çıkmaktadır. Şirket; derin uzmanlığı, etik çalışma anlayışı ve güçlü iş birliği felsefesiyle meslektaşları arasında saygınlık görmektedir.",
+        "Adını Alternative, Innovative ve Design kelimelerinin baş harflerinden alan AID, 2023 yılında Makine Mühendisi (Lisans) E. Güher KAVCI tarafından kurumsal bir yapı olarak kurulmuştur. Yeni kurulmuş olmasına rağmen yönetim ekibi, uluslararası inşaat sektöründe yıllara dayanan iş birliklerinden gelen geniş bir deneyime sahiptir. AID kısa sürede sektörde tanınırlık kazanmış; kilit çalışanları üstün profesyonellikleriyle öne çıkmaktadır. Şirket; derin uzmanlığı, etik çalışma anlayışı ve güçlü iş birliği felsefesiyle meslektaşları arasında saygınlık görmektedir.",
       features: {
         design: {
           title: "MEP Sistem Tasarımı",
@@ -368,6 +366,10 @@ export const tr: Messages = {
         "BT ve mühendislik zorluklarınızı stratejik avantajlara dönüştürelim. Daha akıllı çözümler geliştirmeye başlamak için bizimle iletişime geçin.",
     },
     responseTime: "Genellikle bir iş günü içinde yanıt veriyoruz.",
+    photo: {
+      alt: "Bir sektör etkinliğinde bir ziyaretçiyle sohbet",
+      caption: "Varşova · Ankara",
+    },
     map: {
       title: "Harita — AID Varşova ofisi",
       show: "Haritayı göster",

@@ -50,7 +50,6 @@ export function getEngineeringServicesContent(t: Texts) {
     meta: t.meta,
 
     hero: {
-      badge: t.hero.badge,
       headline: t.hero.headline,
       rotatingWords: t.hero.rotatingWords,
       description: t.hero.description,

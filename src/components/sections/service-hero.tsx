@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { BrandTagline } from "@/components/ui/brand-tagline";
 import { ButtonLink } from "@/components/ui/button";
 import { HeroBackground } from "@/components/ui/hero-background";
 import { Reveal } from "@/components/ui/reveal";
@@ -29,7 +30,9 @@ export function ServiceHero({ hero, descriptionClassName }: ServiceHeroProps) {
         <div className="flex flex-col items-start gap-6">
           <div className="flex flex-col items-start gap-3">
             <Reveal immediate>
-              <Badge variant="glass">{hero.badge}</Badge>
+              <Badge variant="glass">
+                <BrandTagline />
+              </Badge>
             </Reveal>
             <Reveal immediate delay={0.1}>
               <h1 className="type-display text-white">

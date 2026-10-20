@@ -20,7 +20,6 @@ export type SectionIntro = {
 };
 
 export type HeroContent = {
-  badge: string;
   /** Headline with a `{word}` placeholder, e.g. "Your {word} Partner". */
   headline: string;
   /** Words that rotate in place of `{word}`. */
