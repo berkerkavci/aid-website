@@ -5,6 +5,8 @@ import type {
   FeatureCard,
   HeroContent,
   ListGroup,
+  ProjectGroup,
+  ProjectStatus,
   SectionIntro,
   SectionLink,
   ServiceCard,
@@ -30,22 +32,108 @@ const stats: { key: "experience" | "clients" | "countries"; value: string }[] = 
   { key: "countries", value: "15+" },
 ];
 
+/** Follows the project flow, one row per phase: design, technical office, site and handover. */
 const serviceCards: ({ key: keyof Texts["services"]["items"] } & Pick<
   ServiceCard,
   "icon" | "tint"
 >)[] = [
-  { key: "projectEngineering", icon: "clipboard", tint: "blue" },
-  { key: "coordination", icon: "cube", tint: "pink" },
-  { key: "shopDrawings", icon: "ruler", tint: "yellow" },
-  { key: "costAnalysis", icon: "calculator", tint: "green" },
-  { key: "tender", icon: "file-text", tint: "blue" },
+  { key: "systemDesign", icon: "blueprint", tint: "blue" },
   { key: "specifications", icon: "files", tint: "pink" },
   { key: "designReview", icon: "magnifying-glass", tint: "yellow" },
-  { key: "commissioning", icon: "wrench", tint: "green" },
-  { key: "fireProtection", icon: "fire-extinguisher", tint: "blue" },
+  { key: "projectEngineering", icon: "clipboard", tint: "green" },
+  { key: "costAnalysis", icon: "calculator", tint: "blue" },
+  { key: "tender", icon: "file-text", tint: "pink" },
+  { key: "coordination", icon: "cube", tint: "yellow" },
+  { key: "shopDrawings", icon: "ruler", tint: "green" },
+  { key: "commissioning", icon: "wrench", tint: "blue" },
 ];
 
-export function getEngineeringServicesContent(t: Texts) {
+const endUsers = {
+  obo: "OBO (U.S. Department of State)",
+  navfac: "NAVFAC (U.S. Navy)",
+  nspa: "NSPA (NATO Support and Procurement Agency)",
+  canada: "Public Works and Government Services Canada",
+  grenada: "Ministry of Infrastructure Development, Grenada",
+} as const;
+
+type ProjectEntry = { name: string; region: string; endUser: string };
+
+/** The first status is the one shown by default. */
+const projectStatuses: ProjectStatus[] = ["completed", "ongoing"];
+
+/**
+ * Add a project here to list it. Official project and client names are shown as written
+ * in every language; `region` is an ISO code that is translated automatically.
+ */
+const projects: Record<ProjectStatus, ProjectEntry[]> = {
+  completed: [
+    {
+      name: "CMR Repair & Improvement Project (R&I)",
+      region: "IS",
+      endUser: endUsers.obo,
+    },
+    {
+      name: "Regional Training Centre at Bouficha",
+      region: "TN",
+      endUser: endUsers.nspa,
+    },
+    { name: "Compound Security Upgrades", region: "SV", endUser: endUsers.obo },
+    {
+      name: "New Office Annex-D (NOX-D), U.S. Embassy Tunis",
+      region: "TN",
+      endUser: endUsers.obo,
+    },
+    {
+      name: "Select Improvements CMR Main Residence, Guest House & Guard House",
+      region: "DK",
+      endUser: endUsers.obo,
+    },
+    {
+      name: "Construction of a New High Commission of Canada",
+      region: "LK",
+      endUser: endUsers.canada,
+    },
+    {
+      name: "Caribbean Regional Air Transport Connectivity Project (CATCOP)",
+      region: "GD",
+      endUser: endUsers.grenada,
+    },
+    { name: "Female Accommodation Facility", region: "JO", endUser: endUsers.nspa },
+    {
+      name: "Class V (ECM) Warehouse, Support Building & Infrastructure (Siauliai Air Base)",
+      region: "LT",
+      endUser: endUsers.nspa,
+    },
+    {
+      name: "SAC Combined Aerial Port Facility (CAPF) - Papa Air Base",
+      region: "HU",
+      endUser: endUsers.nspa,
+    },
+  ],
+  ongoing: [
+    {
+      name: "HVAC Equipment Replacement, U.S. Embassy Paris",
+      region: "FR",
+      endUser: endUsers.obo,
+    },
+    { name: "Repairs to UPH 24, F-165", region: "DG", endUser: endUsers.navfac },
+    { name: "Repairs to UPH 25, F-165", region: "DG", endUser: endUsers.navfac },
+    {
+      name: "Repair HVAC and Fire Protection Systems, UPH 14",
+      region: "DG",
+      endUser: endUsers.navfac,
+    },
+    {
+      name: "Repair HVAC and Fire Protection Systems, UPH 15",
+      region: "DG",
+      endUser: endUsers.navfac,
+    },
+  ],
+};
+
+export function getEngineeringServicesContent(t: Texts, locale: string) {
+  const regionNames = new Intl.DisplayNames([locale], { type: "region" });
+
   return {
     meta: t.meta,
 
@@ -65,6 +153,7 @@ export function getEngineeringServicesContent(t: Texts) {
         { id: "about", label: t.sectionNav.about },
         { id: "services", label: t.sectionNav.services },
         { id: "capabilities", label: t.sectionNav.capabilities },
+        { id: "references", label: t.sectionNav.references },
         { id: "blog", label: t.sectionNav.blog },
         { id: "contact", label: t.sectionNav.contact },
       ] satisfies SectionLink[],
@@ -100,8 +189,27 @@ export function getEngineeringServicesContent(t: Texts) {
     },
 
     capabilities: {
-      intro: { badge: t.capabilities.badge, title: t.capabilities.title } satisfies SectionIntro,
-      groups: [t.capabilities.standards, t.capabilities.systems] satisfies ListGroup[],
+      intro: { title: t.capabilities.title } satisfies SectionIntro,
+      groups: [t.capabilities.systems, t.capabilities.standards] satisfies ListGroup[],
+    },
+
+    references: {
+      intro: {
+        badge: t.references.badge,
+        title: t.references.title,
+        description: t.references.description,
+      } satisfies SectionIntro,
+      statusLabel: t.references.statusLabel,
+      columns: t.references.columns,
+      groups: projectStatuses.map((status) => ({
+        id: status,
+        label: t.references.status[status],
+        projects: projects[status].map(({ name, region, endUser }) => ({
+          name,
+          endUser,
+          location: regionNames.of(region) ?? region,
+        })),
+      })) satisfies ProjectGroup[],
     },
 
     blog: {

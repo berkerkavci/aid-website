@@ -1,6 +1,7 @@
 import type { IconProps } from "@phosphor-icons/react";
 import {
   BellSimple,
+  Blueprint,
   Buildings,
   Calculator,
   CheckCircle,
@@ -11,7 +12,6 @@ import {
   EnvelopeSimple,
   FileText,
   Files,
-  FireExtinguisher,
   Gear,
   MagnifyingGlass,
   MapPin,
@@ -56,7 +56,7 @@ const icons: Record<IconName, ComponentType<IconProps>> = {
   files: Files,
   "magnifying-glass": MagnifyingGlass,
   wrench: Wrench,
-  "fire-extinguisher": FireExtinguisher,
+  blueprint: Blueprint,
   cpu: Cpu,
   buildings: Buildings,
 };

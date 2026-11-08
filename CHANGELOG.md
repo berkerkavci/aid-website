@@ -2,6 +2,39 @@
 
 Bu dosya sitedeki önemli değişiklikleri tarih sırasıyla listeler (en yeni en üstte).
 
+## 2026-11-09 — MEP referansları ve iletişim bilgileri
+
+- MEP sayfasına "Systems & Standards" altına "References" bölümü ("Proven on Critical Projects Worldwide") eklendi: 10 tamamlanan ve 5 devam eden proje,
+  durum seçicisiyle (7 dilde). Yeni proje `src/content/pages/engineering-services.ts` içine tek satırla eklenir.
+- İletişim kartlarında telefonlar ve e-postalar "MEP Services" ve "IT Services" olarak gruplandı;
+  MEP için +90 507 760 89 02 eklendi. Footer'da servis sayfaları kendi numaralarını, diğer sayfalar etiketli
+  olarak hepsini gösteriyor.
+- Ankara adresinden ve harita bağlantısından bina ve daire numarası kaldırıldı.
+- Ana sayfa başlığı, rozetler ve butonlar "MEP Services" ve "IT Services" oldu (7 dilde); iletişim kartları ve
+  footer etiketleri de aynı adları kullanıyor.
+- Sitenin Türkçesi baştan sona gözden geçirildi: yazım (TDK), MEP ve BT terimleri, anlatım ve buton yazımı.
+- "Explore Us" bölümlerinin altına logonun anlamını anlatan küçük bir not eklendi (7 dilde); adın açılımı
+  paragraflardan bu nota taşındı.
+- Mühendislik hattının adı sitede "MEP Services" oldu: üst menü, footer, sayfa başlığı, Blog filtresi ve iletişim
+  formu (7 dilde). Sayfa adresi `/engineering-services` olarak kaldı.
+
+## 2026-11-09 — MEP sayfası: Services ve Systems & Standards
+
+- "Capabilities" bölümünün adı "Systems & Standards" oldu (7 dilde); başlık "Systems We Design, Standards We Work
+  To", "References" rozeti kaldırıldı. Kartlarda artık önce sistemler, sonra standartlar geliyor.
+- "Fire Protection System Design" kartı, HVAC, tesisat ve yangını kapsayan "MEP System Design" kartına dönüştü.
+- Hizmet kartları proje akışına göre sıralandı: tasarım, teknik ofis, saha ve teslim.
+
+## 2026-11-08 — Ana sayfa: MEP & Software Solutions
+
+- Başlık "MEP & Software Solutions" oldu (7 dilde).
+- Sütunların yeri değişti: solda MEP, sağda Software (mobilde MEP üstte).
+- MEP sütunu için rozet "MEP Solutions" ve yeni açıklama; butonlar aynı kalıpta: "Explore MEP Solutions" ve
+  "Explore Software Solutions".
+- İki sütunun açıklamaları aynı satır sayısında; butonlar aynı hizada ve aynı genişlikte.
+- Almanca sitede "TGA" yerine her yerde "MEP" kullanılıyor (ana sayfa, Engineering sayfası, Knowledge Hub ve
+  blog yazıları).
+
 ## 2026-10-14 — 7 dil desteği ve açık / koyu tema
 
 ### Diller

@@ -1,16 +1,20 @@
 import Image from "next/image";
 
+import { LogoMark } from "@/components/ui/logo";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionIntro } from "@/components/ui/section-intro";
 import type { FeatureCard, SectionIntro as SectionIntroContent } from "@/content/types";
+import { getMessages } from "@/i18n/server";
 
 type AboutSectionProps = {
   intro: SectionIntroContent;
   features: FeatureCard[];
 };
 
-/** "Explore Us" — intro text and three feature cards with holographic shapes. */
-export function AboutSection({ intro, features }: AboutSectionProps) {
+/** "Explore Us" — intro text, three feature cards with holographic shapes and the logo's meaning. */
+export async function AboutSection({ intro, features }: AboutSectionProps) {
+  const { site } = await getMessages();
+
   return (
     <section
       id="about"
@@ -40,6 +44,14 @@ export function AboutSection({ intro, features }: AboutSectionProps) {
           </Reveal>
         ))}
       </div>
+
+      <Reveal
+        delay={0.2}
+        className="flex flex-col items-center gap-4 text-center tablet:flex-row tablet:gap-6 tablet:text-start"
+      >
+        <LogoMark className="h-14 w-auto shrink-0" />
+        <p className="max-w-[46rem] text-[0.9375rem]/6 text-body">{site.logoStory}</p>
+      </Reveal>
     </section>
   );
 }

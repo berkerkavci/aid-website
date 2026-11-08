@@ -8,6 +8,8 @@ export const fr: Messages = {
     footerTagline:
       "AID est un cabinet de conseil en technologie et en ingénierie spécialisé dans l'optimisation des opérations IT et des infrastructures.",
     offices: { warsaw: "Varsovie, Pologne", ankara: "Ankara, Turquie" },
+    logoStory:
+      "Les trois formes de notre logo se lisent d'abord comme des chevrons de code : ils représentent nos services IT. Vues comme des couches, elles incarnent Alternative, Innovative et Design et s'élèvent comme un bâtiment pour notre ingénierie MEP.",
   },
 
   common: {
@@ -19,8 +21,8 @@ export const fr: Messages = {
       footer: "Navigation du pied de page",
       onThisPage: "Sur cette page",
       itServices: "Services IT",
-      engineering: "Ingénierie",
-      engineeringServices: "Services d'ingénierie",
+      engineering: "Services MEP",
+      engineeringServices: "Services MEP",
       blog: "Blog",
       home: "Accueil",
       contact: "Contact",
@@ -41,19 +43,19 @@ export const fr: Messages = {
   },
 
   home: {
-    title: "Logiciel & Ingénierie",
+    title: "Services MEP et IT",
     subtitle: "Une entreprise, deux expertises",
     software: {
-      badge: "Solutions logicielles",
+      badge: "Services IT",
       description:
         "Nous simplifions les opérations IT complexes grâce à la supervision intelligente, l'automatisation et des solutions DevOps — pour plus d'efficacité et une disponibilité garantie.",
       cta: "Découvrir les services IT",
     },
     engineering: {
-      badge: "Solutions d'ingénierie",
+      badge: "Services MEP",
       description:
-        "Nous simplifions la conception mécanique complexe grâce à la modélisation CAO intelligente, au prototypage et à des solutions d'ingénierie.",
-      cta: "Découvrir les services d'ingénierie",
+        "Nous simplifions les systèmes complexes du bâtiment grâce à une conception MEP intelligente, une coordination BIM sans conflit et des solutions d'ingénierie de bureau d'études de bout en bout.",
+      cta: "Découvrir les services MEP",
     },
   },
 
@@ -83,7 +85,7 @@ export const fr: Messages = {
       badge: "À propos",
       title: "Qui sommes-nous",
       description:
-        "AID signifie Alternative, Innovative, Design. Nous associons expertise en opérations IT et en ingénierie pour proposer des solutions intelligentes et évolutives. Avec des bureaux en Pologne et en Turquie, nous accompagnons des clients du monde entier en optimisant leurs infrastructures pour des déploiements plus rapides, des décisions plus éclairées et des performances fiables.",
+        "Nous associons expertise en opérations IT et en ingénierie pour proposer des solutions intelligentes et évolutives. Avec des bureaux en Pologne et en Turquie, nous accompagnons des clients du monde entier en optimisant leurs infrastructures pour des déploiements plus rapides, des décisions plus éclairées et des performances fiables.",
       features: {
         automation: {
           title: "Automatisation",
@@ -156,7 +158,7 @@ export const fr: Messages = {
 
   engineeringServices: {
     meta: {
-      title: "Services d'ingénierie",
+      title: "Services MEP",
       description:
         "Conception, ingénierie et conseil pour les lots techniques du bâtiment (MEP : génie climatique, électricité et plomberie), avec les technologies les plus récentes.",
     },
@@ -169,10 +171,11 @@ export const fr: Messages = {
       secondaryCta: "Découvrir",
     },
     sectionNav: {
-      title: "Services d'ingénierie",
+      title: "Services MEP",
       about: "À propos",
       services: "Services",
-      capabilities: "Compétences",
+      capabilities: "Systèmes et normes",
+      references: "Références",
       blog: "Centre de ressources",
       contact: "Contact",
     },
@@ -180,7 +183,7 @@ export const fr: Messages = {
       badge: "À propos",
       title: "Qui sommes-nous",
       description:
-        "AID — pour Alternative, Innovative, Design — a été fondée en 2023 par E. Güher KAVCI, ingénieur en mécanique (B.Sc.), en tant que société. Bien que récente, son équipe de direction possède une vaste expérience acquise au fil d'années de collaboration sur le marché international de la construction. AID s'est rapidement fait un nom dans le secteur, et ses collaborateurs clés sont reconnus pour leur grand professionnalisme. L'entreprise est respectée pour son expertise approfondie, son éthique et une forte culture de la collaboration.",
+        "AID a été fondée en 2023 par E. Güher KAVCI, ingénieur en mécanique (B.Sc.), en tant que société. Bien que récente, son équipe de direction possède une vaste expérience acquise au fil d'années de collaboration sur le marché international de la construction. AID s'est rapidement fait un nom dans le secteur, et ses collaborateurs clés sont reconnus pour leur grand professionnalisme. L'entreprise est respectée pour son expertise approfondie, son éthique et une forte culture de la collaboration.",
       features: {
         design: {
           title: "Conception des lots techniques",
@@ -249,16 +252,15 @@ export const fr: Messages = {
           description:
             "Essais et mise en service pour vérifier que chaque système fonctionne comme prévu.",
         },
-        fireProtection: {
-          title: "Conception des systèmes de protection incendie",
+        systemDesign: {
+          title: "Conception des systèmes MEP",
           description:
-            "Systèmes d'extinction et de protection incendie conformes aux normes NFPA et EN.",
+            "Génie climatique, plomberie et protection incendie, de l'esquisse à l'étude d'exécution.",
         },
       },
     },
     capabilities: {
-      badge: "Références",
-      title: "Compétences de l'équipe MEP d'AID",
+      title: "Les systèmes que nous concevons, les normes que nous appliquons",
       standards: {
         title: "Normes de conception",
         intro:
@@ -296,6 +298,15 @@ export const fr: Messages = {
         ],
       },
     },
+    references: {
+      badge: "Références",
+      title: "Une expertise éprouvée sur des projets critiques",
+      description:
+        "Ingénierie et conception MEP pour des projets diplomatiques, de défense et gouvernementaux sur quatre continents.",
+      statusLabel: "Statut du projet",
+      status: { completed: "Terminés", ongoing: "En cours" },
+      columns: { project: "Projet", location: "Lieu", endUser: "Utilisateur final" },
+    },
     blog: {
       badge: "Blog",
       title: "Centre de ressources",
@@ -331,7 +342,7 @@ export const fr: Messages = {
         emptyCta: "Découvrir les services IT",
       },
       engineering: {
-        label: "Ingénierie",
+        label: "Services MEP",
         emptyTitle: "Les articles d'ingénierie arrivent bientôt",
         emptyDescription:
           "Nous préparons des contenus sur la conception MEP, la synthèse 3D et la mise en service. En attendant, découvrez nos services d'ingénierie.",
@@ -393,7 +404,7 @@ export const fr: Messages = {
         placeholder: "Choisissez un service",
         it: { label: "Services IT", description: "Automatisation, supervision et DevOps" },
         engineering: {
-          label: "Ingénierie",
+          label: "Services MEP",
           description: "Conception MEP, synthèse et mise en service",
         },
       },
@@ -411,7 +422,7 @@ export const fr: Messages = {
       errors: {
         summary: "Veuillez vérifier les champs signalés.",
         failed: "Désolé, votre message n'a pas pu être envoyé. Écrivez-nous à l'adresse {email}.",
-        department: "Veuillez choisir Services IT ou Ingénierie.",
+        department: "Veuillez choisir Services IT ou Services MEP.",
         fullName: "Veuillez saisir votre nom complet.",
         email: "Veuillez saisir une adresse e-mail valide.",
         phone: "Veuillez saisir un numéro de téléphone valide.",

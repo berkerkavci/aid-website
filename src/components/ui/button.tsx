@@ -28,6 +28,8 @@ type ButtonLinkProps = Omit<ComponentProps<"a">, "href" | "className" | "childre
   href: string;
   variant?: ButtonVariant;
   icon?: "arrow-right" | "arrow-down";
+  /** Label of a neighbouring button: both buttons then take the width of the longer one. */
+  matchWidthOf?: string;
   className?: string;
   children: ReactNode;
 };
@@ -38,6 +40,7 @@ export function ButtonLink({
   href,
   variant = "light",
   icon,
+  matchWidthOf,
   className,
   children,
   ...props
@@ -48,18 +51,35 @@ export function ButtonLink({
     variants[variant],
     className,
   );
-  const content = (
+  const iconElement = IconComponent && (
+    <IconComponent
+      weight="bold"
+      // Horizontal arrows point the other way in right-to-left languages.
+      className={cn("size-5 shrink-0", icon === "arrow-right" && "rtl:-scale-x-100")}
+      aria-hidden
+    />
+  );
+  const label = (
     <>
       {variant === "dark" && typeof children === "string" ? <RollText text={children} /> : children}
-      {IconComponent && (
-        <IconComponent
-          weight="bold"
-          // Horizontal arrows point the other way in right-to-left languages.
-          className={cn("size-5", icon === "arrow-right" && "rtl:-scale-x-100")}
-          aria-hidden
-        />
-      )}
+      {iconElement}
     </>
+  );
+  // An invisible, zero-height copy of the other label in the same grid cell makes the
+  // button as wide as the longer of the two without making it taller.
+  const content = matchWidthOf ? (
+    <span className="inline-grid justify-items-center">
+      <span className="col-start-1 row-start-1 inline-flex items-center gap-2">{label}</span>
+      <span
+        aria-hidden
+        className="invisible col-start-1 row-start-1 inline-flex h-0 items-center gap-2"
+      >
+        {matchWidthOf}
+        {iconElement}
+      </span>
+    </span>
+  ) : (
+    label
   );
 
   // In-page anchors use a native link: the browser scrolls on every click,

@@ -36,9 +36,9 @@ const offices: Office[] = [
   },
   {
     key: "ankara",
-    address: "Bağlıca Mah. 1290. Sokak No:6B/5 Etimesgut/ANKARA",
+    address: "Bağlıca Mah. 1290. Sokak Etimesgut/ANKARA",
     mapUrl:
-      "https://www.google.com/maps/place/Ba%C4%9Fl%C4%B1ca,+1290.+Sk+No:6+D:5,+06790+Etimesgut%2FAnkara/@39.8853811,32.6269975,17z",
+      "https://www.google.com/maps/search/?api=1&query=Ba%C4%9Fl%C4%B1ca%20Mah.%201290.%20Sokak%2C%20Etimesgut%2FAnkara",
   },
 ];
 
@@ -47,7 +47,11 @@ export const contactInfo = {
     it: "bkavci@aidprojectsolutions.com",
     engineering: "gkavci@aidprojectsolutions.com",
   },
-  phones: ["+48798644643", "+905352101418"],
+  /** Grouped by business line, so callers can see whom to reach for what. */
+  phones: {
+    engineering: ["+90 507 760 89 02"],
+    it: ["+48 798 644 643", "+90 535 210 14 18"],
+  },
   offices,
   /** Google Maps embed shown on the contact page (Warsaw office). */
   mapEmbedUrl:
@@ -56,6 +60,11 @@ export const contactInfo = {
 
 export function getContactEmail(section: SiteSection) {
   return section === "engineering" ? contactInfo.emails.engineering : contactInfo.emails.it;
+}
+
+/** `tel:` link for a phone number written with spaces. */
+export function telHref(phone: string) {
+  return `tel:${phone.replace(/\s/g, "")}`;
 }
 
 /** Top navigation — the two business lines are always one click away. */

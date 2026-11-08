@@ -6,6 +6,7 @@ import { AboutSection } from "@/components/sections/about-section";
 import { BlogPreview } from "@/components/sections/blog-preview";
 import { CapabilitiesSection } from "@/components/sections/capabilities-section";
 import { CtaSection } from "@/components/sections/cta-section";
+import { ReferencesSection } from "@/components/sections/references-section";
 import { ServiceHero } from "@/components/sections/service-hero";
 import { ServicesGrid } from "@/components/sections/services-grid";
 import { StatsSection } from "@/components/sections/stats-section";
@@ -24,8 +25,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function EngineeringServicesPage() {
-  const { engineeringServices, common } = await getMessages();
-  const content = getEngineeringServicesContent(engineeringServices);
+  const locale = await getLocale();
+  const { engineeringServices, common } = await getMessages(locale);
+  const content = getEngineeringServicesContent(engineeringServices, locale);
 
   return (
     <PageShell section="engineering" navVariant="transparent">
@@ -41,6 +43,12 @@ export default async function EngineeringServicesPage() {
       <CapabilitiesSection
         intro={content.capabilities.intro}
         groups={content.capabilities.groups}
+      />
+      <ReferencesSection
+        intro={content.references.intro}
+        groups={content.references.groups}
+        columns={content.references.columns}
+        statusLabel={content.references.statusLabel}
       />
       <BlogPreview
         intro={content.blog.intro}

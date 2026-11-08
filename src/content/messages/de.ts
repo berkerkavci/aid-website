@@ -8,6 +8,8 @@ export const de: Messages = {
     footerTagline:
       "AID ist ein Technologie- und Ingenieurberatungsunternehmen mit Fokus auf die Optimierung von IT-Betrieb und Infrastruktur.",
     offices: { warsaw: "Warschau, Polen", ankara: "Ankara, Türkei" },
+    logoStory:
+      "Die drei Formen unseres Logos lesen sich zuerst als Code-Klammern und stehen für unsere IT-Services. Als Schichten betrachtet stehen sie für Alternative, Innovative und Design und ragen wie ein Gebäude auf – ein Zeichen für unser MEP-Engineering.",
   },
 
   common: {
@@ -19,8 +21,8 @@ export const de: Messages = {
       footer: "Fußzeilennavigation",
       onThisPage: "Auf dieser Seite",
       itServices: "IT-Services",
-      engineering: "Engineering",
-      engineeringServices: "Engineering-Services",
+      engineering: "MEP-Services",
+      engineeringServices: "MEP-Services",
       blog: "Blog",
       home: "Startseite",
       contact: "Kontakt",
@@ -41,19 +43,19 @@ export const de: Messages = {
   },
 
   home: {
-    title: "Software & Engineering",
+    title: "MEP- und IT-Services",
     subtitle: "Ein Unternehmen, zwei Kernleistungen",
     software: {
-      badge: "Softwarelösungen",
+      badge: "IT-Services",
       description:
         "Wir vereinfachen komplexe IT-Betriebsabläufe mit intelligentem Monitoring, Automatisierung und DevOps-Lösungen – für mehr Effizienz und maximale Verfügbarkeit.",
       cta: "IT-Services entdecken",
     },
     engineering: {
-      badge: "Engineering-Lösungen",
+      badge: "MEP-Services",
       description:
-        "Wir vereinfachen komplexe Maschinenbau-Konstruktionen mit intelligenter CAD-Modellierung, Prototyping und Engineering-Lösungen.",
-      cta: "Engineering-Services entdecken",
+        "Wir vereinfachen komplexe Gebäudesysteme mit intelligenter MEP-Planung, kollisionsfreier BIM-Koordination und durchgängigen Engineering-Lösungen des technischen Büros.",
+      cta: "MEP-Services entdecken",
     },
   },
 
@@ -83,7 +85,7 @@ export const de: Messages = {
       badge: "Über uns",
       title: "Lernen Sie uns kennen",
       description:
-        "AID steht für Alternative, Innovative, Design. Wir verbinden Know-how aus IT-Betrieb und Engineering zu intelligenten, skalierbaren Lösungen. Mit Büros in Polen und der Türkei betreuen wir Kunden weltweit und optimieren Infrastrukturen für schnellere Deployments, fundiertere Entscheidungen und zuverlässige Performance.",
+        "Wir verbinden Know-how aus IT-Betrieb und Engineering zu intelligenten, skalierbaren Lösungen. Mit Büros in Polen und der Türkei betreuen wir Kunden weltweit und optimieren Infrastrukturen für schnellere Deployments, fundiertere Entscheidungen und zuverlässige Performance.",
       features: {
         automation: {
           title: "Automatisierung",
@@ -156,23 +158,24 @@ export const de: Messages = {
 
   engineeringServices: {
     meta: {
-      title: "Engineering-Services",
+      title: "MEP-Services",
       description:
-        "Planung, Engineering und Beratung für die Technische Gebäudeausrüstung (TGA/MEP) mit modernsten Technologien.",
+        "Planung, Engineering und Beratung für die Technische Gebäudeausrüstung (MEP) mit modernsten Technologien.",
     },
     hero: {
       headline: "Ihr Partner für {word}",
-      rotatingWords: ["TGA-Planung", "TGA-Beratung", "Projektmanagement"],
+      rotatingWords: ["MEP-Planung", "MEP-Beratung", "Projektmanagement"],
       description:
-        "AID ist ein modernes Ingenieurbüro, das mithilfe modernster Technologien erstklassige Planungs- und Entwicklungsleistungen für die Technische Gebäudeausrüstung (TGA/MEP: Heizung, Lüftung, Klima, Elektro und Sanitär) erbringt.",
+        "AID ist ein modernes Ingenieurbüro, das mithilfe modernster Technologien erstklassige Planungs- und Entwicklungsleistungen für die Technische Gebäudeausrüstung (MEP: Heizung, Lüftung, Klima, Elektro und Sanitär) erbringt.",
       primaryCta: "Kontakt aufnehmen",
       secondaryCta: "Mehr erfahren",
     },
     sectionNav: {
-      title: "Engineering-Services",
+      title: "MEP-Services",
       about: "Über uns",
       services: "Leistungen",
-      capabilities: "Kompetenzen",
+      capabilities: "Systeme & Normen",
+      references: "Referenzen",
       blog: "Wissensportal",
       contact: "Kontakt",
     },
@@ -180,10 +183,10 @@ export const de: Messages = {
       badge: "Über uns",
       title: "Lernen Sie uns kennen",
       description:
-        "AID – kurz für Alternative, Innovative, Design – wurde 2023 von Maschinenbauingenieur (B.Sc.) E. Güher KAVCI als Unternehmen gegründet. Obwohl das Unternehmen noch jung ist, bringt das Führungsteam umfangreiche Erfahrung aus jahrelanger Zusammenarbeit im internationalen Baumarkt mit. AID hat sich schnell einen Namen in der Branche gemacht; die Schlüsselpersonen sind für ihre außergewöhnliche Professionalität bekannt. Das Unternehmen genießt Ansehen für seine fundierte Expertise, ethisches Handeln und eine ausgeprägte Philosophie partnerschaftlicher Zusammenarbeit.",
+        "AID wurde 2023 von Maschinenbauingenieur (B.Sc.) E. Güher KAVCI als Unternehmen gegründet. Obwohl das Unternehmen noch jung ist, bringt das Führungsteam umfangreiche Erfahrung aus jahrelanger Zusammenarbeit im internationalen Baumarkt mit. AID hat sich schnell einen Namen in der Branche gemacht; die Schlüsselpersonen sind für ihre außergewöhnliche Professionalität bekannt. Das Unternehmen genießt Ansehen für seine fundierte Expertise, ethisches Handeln und eine ausgeprägte Philosophie partnerschaftlicher Zusammenarbeit.",
       features: {
         design: {
-          title: "TGA-Systemplanung",
+          title: "MEP-Systemplanung",
           description:
             "Heizung, Lüftung, Klima, Sanitär, Brandschutz und Versorgungssysteme nach ASHRAE-, EN-, NFPA- und FM-Standards – vom Konzept bis zur Ausführungsplanung.",
         },
@@ -215,14 +218,14 @@ export const de: Messages = {
       items: {
         projectEngineering: {
           title: "Projekt-Engineering",
-          description: "Durchgängiges TGA-Engineering-Management vom Konzept bis zur Übergabe.",
+          description: "Durchgängiges MEP-Engineering-Management vom Konzept bis zur Übergabe.",
         },
         coordination: {
-          title: "TGA-3D-Koordinationspläne",
+          title: "MEP-3D-Koordinationspläne",
           description: "Kollisionsfreie, gewerkeübergreifende 3D-Koordination vor Baubeginn.",
         },
         shopDrawings: {
-          title: "TGA-3D-Werkstattzeichnungen",
+          title: "MEP-3D-Werkstattzeichnungen",
           description:
             "Detaillierte, montagefertige Zeichnungen für ausführende Firmen und Hersteller.",
         },
@@ -247,15 +250,15 @@ export const de: Messages = {
           title: "Inbetriebnahme",
           description: "Prüfung und Inbetriebnahme, damit jedes System wie geplant funktioniert.",
         },
-        fireProtection: {
-          title: "Planung von Brandschutzanlagen",
-          description: "Lösch- und Brandschutzanlagen nach NFPA- und EN-Normen.",
+        systemDesign: {
+          title: "MEP-Systemplanung",
+          description:
+            "Heizung, Lüftung, Klima, Sanitär und Brandschutz – vom Konzept bis zur Ausführungsplanung.",
         },
       },
     },
     capabilities: {
-      badge: "Referenzen",
-      title: "Kompetenzen des AID-TGA-Teams",
+      title: "Systeme, die wir planen, Normen, nach denen wir arbeiten",
       standards: {
         title: "Planungsnormen",
         intro:
@@ -293,18 +296,27 @@ export const de: Messages = {
         ],
       },
     },
+    references: {
+      badge: "Referenzen",
+      title: "Bewährt in kritischen Projekten weltweit",
+      description:
+        "MEP-Engineering und -Planung für Diplomatie-, Verteidigungs- und Regierungsprojekte auf vier Kontinenten.",
+      statusLabel: "Projektstatus",
+      status: { completed: "Abgeschlossen", ongoing: "Laufend" },
+      columns: { project: "Projekt", location: "Standort", endUser: "Endnutzer" },
+    },
     blog: {
       badge: "Blog",
       title: "Wissensportal",
       description:
-        "Praxiswissen zu TGA-Planung, 3D-Koordination, Brandschutz und Inbetriebnahme – aus echter Projekterfahrung.",
+        "Praxiswissen zu MEP-Planung, 3D-Koordination, Brandschutz und Inbetriebnahme – aus echter Projekterfahrung.",
       link: "Alle Artikel ansehen",
     },
     cta: {
       badge: "Kontakt",
       title: "Lassen Sie uns zusammenarbeiten",
       description:
-        "Machen wir aus Ihren TGA-Herausforderungen gut koordinierte, baubare Lösungen. Nehmen Sie Kontakt auf und starten wir Ihr nächstes Projekt.",
+        "Machen wir aus Ihren MEP-Herausforderungen gut koordinierte, baubare Lösungen. Nehmen Sie Kontakt auf und starten wir Ihr nächstes Projekt.",
       button: "Kontakt aufnehmen",
     },
   },
@@ -317,7 +329,7 @@ export const de: Messages = {
     },
     title: "Wissensportal",
     description:
-      "Fundierte Beiträge zu IT-Automatisierung und Monitoring sowie zu TGA-Planung und Engineering – aus der Praxis.",
+      "Fundierte Beiträge zu IT-Automatisierung und Monitoring sowie zu MEP-Planung und Engineering – aus der Praxis.",
     categoryLabel: "Blog-Kategorie",
     divisions: {
       it: {
@@ -328,10 +340,10 @@ export const de: Messages = {
         emptyCta: "IT-Services entdecken",
       },
       engineering: {
-        label: "Engineering",
+        label: "MEP-Services",
         emptyTitle: "Engineering-Artikel folgen in Kürze",
         emptyDescription:
-          "Wir bereiten Beiträge zu TGA-Planung, 3D-Koordination und Inbetriebnahme vor. Entdecken Sie bis dahin unsere Engineering-Services.",
+          "Wir bereiten Beiträge zu MEP-Planung, 3D-Koordination und Inbetriebnahme vor. Entdecken Sie bis dahin unsere Engineering-Services.",
         emptyCta: "Engineering-Services entdecken",
       },
     },
@@ -390,8 +402,8 @@ export const de: Messages = {
         placeholder: "Leistungsbereich wählen",
         it: { label: "IT-Services", description: "Automatisierung, Monitoring & DevOps" },
         engineering: {
-          label: "Engineering",
-          description: "TGA-Planung, Koordination & Inbetriebnahme",
+          label: "MEP-Services",
+          description: "MEP-Planung, Koordination & Inbetriebnahme",
         },
       },
       message: "Wie können wir helfen?",
@@ -410,7 +422,7 @@ export const de: Messages = {
         summary: "Bitte prüfen Sie die markierten Felder.",
         failed:
           "Ihre Nachricht konnte leider nicht gesendet werden. Bitte schreiben Sie uns an {email}.",
-        department: "Bitte wählen Sie IT-Services oder Engineering.",
+        department: "Bitte wählen Sie IT-Services oder MEP-Services.",
         fullName: "Bitte geben Sie Ihren vollständigen Namen ein.",
         email: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
         phone: "Bitte geben Sie eine gültige Telefonnummer ein.",

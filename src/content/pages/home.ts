@@ -14,14 +14,14 @@ export function getHomeContent(t: Messages["home"]) {
     subtitle: t.subtitle,
     columns: [
       {
-        badge: t.software.badge,
-        description: t.software.description,
-        cta: { label: t.software.cta, href: "/it-services" },
-      },
-      {
         badge: t.engineering.badge,
         description: t.engineering.description,
         cta: { label: t.engineering.cta, href: "/engineering-services" },
+      },
+      {
+        badge: t.software.badge,
+        description: t.software.description,
+        cta: { label: t.software.cta, href: "/it-services" },
       },
     ] satisfies HomeServiceColumn[],
   };

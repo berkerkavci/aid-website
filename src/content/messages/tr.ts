@@ -6,8 +6,10 @@ export const tr: Messages = {
     description:
       "Akıllı izleme, otomasyon ve DevOps çözümleriyle karmaşık BT operasyonlarını sadeleştiriyor; verimliliği artırıp kesintisiz hizmet sağlıyoruz.",
     footerTagline:
-      "AID, BT operasyonlarını ve altyapıyı optimize etmeye odaklanan bir teknoloji ve mühendislik danışmanlık şirketidir.",
+      "AID, BT operasyonlarını ve altyapıyı optimize etmeye odaklanan bir teknoloji ve mühendislik danışmanlığı şirketidir.",
     offices: { warsaw: "Varşova, Polonya", ankara: "Ankara, Türkiye" },
+    logoStory:
+      "Logomuzdaki üç form önce kod parantezi olarak okunur ve BT hizmetlerimizi anlatır. Katman olarak okunduğunda ise Alternative, Innovative ve Design'ı temsil eder; bir yapı gibi yükselerek MEP mühendisliğimize işaret eder.",
   },
 
   common: {
@@ -19,8 +21,8 @@ export const tr: Messages = {
       footer: "Alt menü",
       onThisPage: "Bu sayfada",
       itServices: "BT Hizmetleri",
-      engineering: "Mühendislik",
-      engineeringServices: "Mühendislik Hizmetleri",
+      engineering: "MEP Hizmetleri",
+      engineeringServices: "MEP Hizmetleri",
       blog: "Blog",
       home: "Ana Sayfa",
       contact: "İletişim",
@@ -32,7 +34,7 @@ export const tr: Messages = {
       menu: "Dil seçin",
     },
     theme: {
-      toggle: "Karanlık mod",
+      toggle: "Koyu tema",
     },
     footer: {
       rights: "Tüm hakları saklıdır.",
@@ -41,19 +43,19 @@ export const tr: Messages = {
   },
 
   home: {
-    title: "Yazılım ve Mühendislik",
+    title: "MEP ve BT Hizmetleri",
     subtitle: "Tek Şirket, İki Temel Hizmet",
     software: {
-      badge: "Yazılım Çözümleri",
+      badge: "BT Hizmetleri",
       description:
         "Akıllı izleme, otomasyon ve DevOps çözümleriyle karmaşık BT operasyonlarını sadeleştiriyor; verimliliği artırıp kesintisiz hizmet sağlıyoruz.",
       cta: "BT Hizmetlerini Keşfedin",
     },
     engineering: {
-      badge: "Mühendislik Çözümleri",
+      badge: "MEP Hizmetleri",
       description:
-        "Akıllı CAD modelleme, prototipleme ve mühendislik çözümleriyle karmaşık mekanik tasarımı sadeleştiriyoruz.",
-      cta: "Mühendislik Hizmetlerini Keşfedin",
+        "Akıllı MEP tasarımı, çakışmasız BIM koordinasyonu ve uçtan uca teknik ofis mühendisliği çözümleriyle karmaşık bina sistemlerini sadeleştiriyoruz.",
+      cta: "MEP Hizmetlerini Keşfedin",
     },
   },
 
@@ -68,7 +70,7 @@ export const tr: Messages = {
       rotatingWords: ["Çözüm", "Otomasyon", "Yazılım"],
       description:
         "Akıllı izleme, otomasyon ve DevOps çözümleriyle karmaşık BT operasyonlarını sadeleştiriyor; verimliliği artırıp kesintisiz hizmet sağlıyoruz.",
-      primaryCta: "İletişime geçin",
+      primaryCta: "İletişime Geçin",
       secondaryCta: "Keşfedin",
     },
     sectionNav: {
@@ -83,7 +85,7 @@ export const tr: Messages = {
       badge: "Hakkımızda",
       title: "Bizi Tanıyın",
       description:
-        "AID adını Alternative, Innovative, Design (Alternatif, Yenilikçi, Tasarım) kelimelerinin baş harflerinden alır. BT operasyonları ile mühendislik uzmanlığını birleştirerek akıllı ve ölçeklenebilir çözümler sunuyoruz. Polonya ve Türkiye'deki ofislerimizle dünyanın dört bir yanındaki müşterilerimize hizmet veriyor; altyapıyı daha hızlı devreye alma, daha akıllı kararlar ve güvenilir performans için sadeleştiriyoruz.",
+        "BT operasyonları ve mühendislik alanlarındaki uzmanlığımızı birleştirerek akıllı ve ölçeklenebilir çözümler sunuyoruz. Polonya ve Türkiye'deki ofislerimizle dünyanın dört bir yanındaki müşterilerimize hizmet veriyor; altyapıları daha hızlı dağıtım, daha isabetli kararlar ve güvenilir performans için sadeleştiriyoruz.",
       features: {
         automation: {
           title: "Otomasyon",
@@ -93,19 +95,19 @@ export const tr: Messages = {
         monitoring: {
           title: "İzleme ve Gözlemlenebilirlik",
           description:
-            "Proaktif sistem sağlığı kontrolleri, gerçek zamanlı uyarılar ve anlaşılır panolarla altyapınızı uçtan uca görün.",
+            "Proaktif sistem sağlığı kontrolleri, gerçek zamanlı uyarılar ve anlaşılır gösterge panelleriyle altyapınızda tam görünürlük elde edin.",
         },
         devops: {
           title: "DevOps Mühendisliği",
           description:
-            "CI/CD hatları ve konteyner orkestrasyonuyla dağıtım döngülerinizi hızlandırın, geliştirme ve operasyon ekipleri arasındaki iş birliğini güçlendirin.",
+            "CI/CD süreçleri ve konteyner orkestrasyonuyla dağıtım döngülerinizi hızlandırın, geliştirme ve operasyon ekipleri arasındaki iş birliğini güçlendirin.",
         },
       },
     },
     stats: {
       title: "Sınır Tanımayan Çözümler",
       description:
-        "Pek çok sektörde ve ülkede işletmelerle çalışıyor, gerçek sonuçlar doğuran kişiye özel BT ve mühendislik çözümleri sunuyoruz.",
+        "Pek çok sektörde ve ülkede işletmelerle çalışıyor, somut sonuçlar sağlayan, ihtiyaca özel BT ve mühendislik çözümleri sunuyoruz.",
       experience: "Yıllık deneyim.",
       clients: "Bize güvenen memnun müşteri.",
       countries: "Dünya genelinde varlık gösterdiğimiz ülke.",
@@ -114,7 +116,7 @@ export const tr: Messages = {
       badge: "Hizmetler",
       title: "Kurumsal Düzeyde BT Çözümleri",
       description:
-        "Hizmetlerimiz BT operasyonlarını ölçekli biçimde optimize eder; dayanıklılığı artırır, riski azaltır ve teknolojiyi stratejik hedeflerle uyumlu hale getirir.",
+        "Hizmetlerimiz BT operasyonlarını kurumsal ölçekte optimize eder; dayanıklılığı artırır, riski azaltır ve teknolojiyi stratejik hedeflerle uyumlu hâle getirir.",
       items: {
         automation: {
           title: "Süreç ve Altyapı Otomasyonu",
@@ -124,7 +126,7 @@ export const tr: Messages = {
         monitoring: {
           title: "Akıllı İzleme ve Uyarılar",
           description:
-            "Akıllı uyarılar, otomatik müdahale aksiyonları ve proaktif kararlar için kapsamlı raporlama ve analizle sistem sağlığını gerçek zamanlı izleyin.",
+            "Akıllı uyarılar, otomatik müdahaleler ve proaktif kararlar için kapsamlı raporlama ve analizle sistem sağlığını gerçek zamanlı izleyin.",
         },
         configuration: {
           title: "Konfigürasyon Yönetimi",
@@ -134,7 +136,7 @@ export const tr: Messages = {
         itsm: {
           title: "ITSM ve Pano Görünümü",
           description:
-            "Görsel pano, olay iş akışları ve iş hedefleriyle uyumlu hizmet seviyesi anlaşmalarıyla (SLA) BT hizmetlerini sorunsuz sunun ve yönetin.",
+            "Görsel pano, olay yönetimi iş akışları ve iş hedefleriyle uyumlu hizmet seviyesi anlaşmalarıyla (SLA) BT hizmetlerini sorunsuz sunun ve yönetin.",
         },
       },
     },
@@ -143,7 +145,7 @@ export const tr: Messages = {
       title: "Bilgi Merkezi",
       description:
         "Otomasyon, izleme ve dijital dönüşüm üzerine, sahadaki deneyimlerle şekillenmiş içerikler.",
-      link: "Tüm yazıları görün",
+      link: "Tüm Yazıları Görün",
     },
     cta: {
       badge: "İletişim",
@@ -156,23 +158,24 @@ export const tr: Messages = {
 
   engineeringServices: {
     meta: {
-      title: "Mühendislik Hizmetleri",
+      title: "MEP Hizmetleri",
       description:
-        "En yeni teknolojilerle sunulan bina MEP (mekanik, elektrik ve sıhhi tesisat) sistemleri tasarım, mühendislik ve danışmanlık hizmetleri.",
+        "En yeni teknolojilerle sunulan, binalara yönelik MEP (mekanik, elektrik ve sıhhi tesisat) tasarım, mühendislik ve danışmanlık hizmetleri.",
     },
     hero: {
       headline: "{word} Ortağınız",
       rotatingWords: ["MEP Mühendislik", "MEP Danışmanlık", "Proje Yönetimi"],
       description:
-        "AID, en yeni teknolojilerden yararlanarak bina MEP (mekanik, elektrik ve sıhhi tesisat) sistemleri için üst düzey tasarım ve geliştirme hizmetleri sunan çağdaş bir mühendislik firmasıdır.",
-      primaryCta: "İletişime geçin",
+        "AID, en yeni teknolojilerden yararlanarak bina MEP (mekanik, elektrik ve sıhhi tesisat) sistemleri için üst düzey tasarım ve proje geliştirme hizmetleri sunan çağdaş bir mühendislik firmasıdır.",
+      primaryCta: "İletişime Geçin",
       secondaryCta: "Keşfedin",
     },
     sectionNav: {
-      title: "Mühendislik Hizmetleri",
+      title: "MEP Hizmetleri",
       about: "Hakkımızda",
       services: "Hizmetler",
-      capabilities: "Yetkinlikler",
+      capabilities: "Sistemler ve Standartlar",
+      references: "Referanslar",
       blog: "Bilgi Merkezi",
       contact: "İletişim",
     },
@@ -180,7 +183,7 @@ export const tr: Messages = {
       badge: "Hakkımızda",
       title: "Bizi Tanıyın",
       description:
-        "Adını Alternative, Innovative ve Design kelimelerinin baş harflerinden alan AID, 2023 yılında Makine Mühendisi (Lisans) E. Güher KAVCI tarafından kurumsal bir yapı olarak kurulmuştur. Yeni kurulmuş olmasına rağmen yönetim ekibi, uluslararası inşaat sektöründe yıllara dayanan iş birliklerinden gelen geniş bir deneyime sahiptir. AID kısa sürede sektörde tanınırlık kazanmış; kilit çalışanları üstün profesyonellikleriyle öne çıkmaktadır. Şirket; derin uzmanlığı, etik çalışma anlayışı ve güçlü iş birliği felsefesiyle meslektaşları arasında saygınlık görmektedir.",
+        "AID, 2023 yılında Makine Mühendisi E. Güher KAVCI tarafından kurumsal bir yapı olarak hayata geçirilmiştir. Şirket yeni kurulmuş olsa da yönetim ekibi, uluslararası inşaat sektöründe yıllara dayanan iş birliklerinden gelen geniş bir deneyime sahiptir. AID kısa sürede sektörde tanınırlık kazanmış; kilit personeli üstün profesyonelliğiyle öne çıkmaktadır. Şirket; derin uzmanlığı, etik çalışma anlayışı ve güçlü iş birliği felsefesiyle sektör paydaşları arasında saygın bir konuma sahiptir.",
       features: {
         design: {
           title: "MEP Sistem Tasarımı",
@@ -190,19 +193,19 @@ export const tr: Messages = {
         coordination: {
           title: "3D Koordinasyon ve BIM",
           description:
-            "Sahada maliyetli yeniden işçiliği önleyen, çakışmasız çok disiplinli 3D modeller ve montaja hazır imalat çizimleri.",
+            "Sahada maliyetli yeniden imalatları önleyen, çakışmasız çok disiplinli 3D modeller ve montaja hazır imalat çizimleri.",
         },
         delivery: {
           title: "Proje Teslimi ve Kalite",
           description:
-            "Projeleri bütçe içinde ve tasarlandığı gibi çalışır halde tutan maliyet analizi, ihale dokümantasyonu, bağımsız tasarım incelemesi ve devreye alma.",
+            "Projeleri bütçe sınırları içinde tutan ve sistemlerin tasarlandığı gibi çalışmasını sağlayan maliyet analizi, ihale dokümantasyonu, bağımsız tasarım incelemesi ve devreye alma.",
         },
       },
     },
     stats: {
       title: "Sınır Tanımayan Çözümler",
       description:
-        "Pek çok sektörde ve ülkede işletmelerle çalışıyor, gerçek sonuçlar doğuran kişiye özel mühendislik ve tasarım çözümleri sunuyoruz.",
+        "Pek çok sektörde ve ülkede işletmelerle çalışıyor, somut sonuçlar sağlayan, ihtiyaca özel mühendislik ve tasarım çözümleri sunuyoruz.",
       experience: "Yıllık deneyim.",
       clients: "Bize güvenen memnun müşteri.",
       countries: "Dünya genelinde varlık gösterdiğimiz ülke.",
@@ -211,7 +214,7 @@ export const tr: Messages = {
       badge: "Hizmetler",
       title: "Bina MEP Sistemleri Tasarım, Mühendislik ve Danışmanlık Hizmetleri",
       description:
-        "Bina MEP sistemlerinin işletimini ölçekli biçimde optimize ediyor; sistem dayanıklılığını ve enerji verimliliğini artırıyor, işletme maliyetlerini ve riskleri azaltıyor, teknolojileri proje hedefleriyle uyumlu hale getiriyoruz.",
+        "Bina MEP sistemlerinin işletimini her ölçekte optimize ediyor; sistem güvenilirliğini ve enerji verimliliğini artırıyor, işletme maliyetlerini ve riskleri azaltıyor, teknolojileri proje hedefleriyle uyumlu hâle getiriyoruz.",
       items: {
         projectEngineering: {
           title: "Proje Mühendisliği",
@@ -228,11 +231,11 @@ export const tr: Messages = {
         },
         costAnalysis: {
           title: "Maliyet Analizi",
-          description: "Bütçeyi kontrol altında tutan doğru metrajlar ve maliyet tahminleri.",
+          description: "Bütçeyi kontrol altında tutan doğru metraj ve maliyet tahminleri.",
         },
         tender: {
-          title: "İhale Dokümantasyonu Hizmetleri",
-          description: "Çizimler, keşif listeleri ve şartnamelerle eksiksiz ihale paketleri.",
+          title: "İhale Dosyası Hazırlama Hizmetleri",
+          description: "Çizimler, metraj cetvelleri ve şartnamelerle eksiksiz ihale dosyaları.",
         },
         specifications: {
           title: "Teknik Dokümantasyon ve Şartname Hazırlığı",
@@ -241,33 +244,32 @@ export const tr: Messages = {
         designReview: {
           title: "Bağımsız Tasarım İnceleme Süreci",
           description:
-            "Uygunluk, verimlilik ve uygulanabilirlik için bağımsız tasarım incelemeleri.",
+            "Uygunluk, verimlilik ve uygulanabilirlik açısından bağımsız tasarım incelemeleri.",
         },
         commissioning: {
           title: "Devreye Alma Hizmetleri",
           description:
             "Her sistemin tasarlandığı gibi çalıştığını doğrulayan test ve devreye alma.",
         },
-        fireProtection: {
-          title: "Yangından Korunma Sistemleri Tasarımı",
+        systemDesign: {
+          title: "MEP Sistem Tasarımı",
           description:
-            "NFPA ve EN standartlarına göre tasarlanan yangın söndürme ve koruma sistemleri.",
+            "Konseptten detay tasarıma kadar HVAC, sıhhi tesisat ve yangından korunma sistemleri.",
         },
       },
     },
     capabilities: {
-      badge: "Referanslar",
-      title: "AID MEP Ekibinin Yetkinlikleri",
+      title: "Tasarladığımız Sistemler, Uyguladığımız Standartlar",
       standards: {
         title: "Tasarım Standartları",
         intro:
           "Ekibimiz mekanik sistemleri aşağıdaki standartlara uygun olarak tasarlama konusunda deneyimlidir:",
         items: [
           "ASHRAE (Amerikan Isıtma, Soğutma ve İklimlendirme Mühendisleri Derneği) standartları ve el kitapları",
-          "OBO (Overseas Building Operations) standartları",
+          "OBO (Overseas Buildings Operations) standartları",
           "MMO (TMMOB Makina Mühendisleri Odası) yayınları",
           "EN standartları",
-          "NFPA (Ulusal Yangından Korunma Birliği) yönetmelikleri",
+          "NFPA (Ulusal Yangından Korunma Birliği) standartları",
           "FM (Factory Mutual) tasarım standartları",
           "UFC (Unified Facilities Criteria)",
           "BS-EN standartları",
@@ -295,12 +297,21 @@ export const tr: Messages = {
         ],
       },
     },
+    references: {
+      badge: "Referanslar",
+      title: "Kritik Projelerde Kanıtlanmış Deneyim",
+      description:
+        "Dört kıtada diplomatik, savunma ve kamu projelerinde MEP mühendislik ve tasarım çalışmaları.",
+      statusLabel: "Proje durumu",
+      status: { completed: "Tamamlanan", ongoing: "Devam Eden" },
+      columns: { project: "Proje", location: "Konum", endUser: "Son Kullanıcı" },
+    },
     blog: {
       badge: "Blog",
       title: "Bilgi Merkezi",
       description:
         "MEP tasarımı, 3D koordinasyon, yangından korunma ve devreye alma üzerine, sahadaki proje deneyimleriyle şekillenmiş pratik içerikler.",
-      link: "Tüm yazıları görün",
+      link: "Tüm Yazıları Görün",
     },
     cta: {
       badge: "İletişim",
@@ -324,16 +335,16 @@ export const tr: Messages = {
     divisions: {
       it: {
         label: "BT Hizmetleri",
-        emptyTitle: "BT yazıları yolda",
+        emptyTitle: "BT yazıları çok yakında",
         emptyDescription: "Otomasyon, izleme ve DevOps üzerine yeni içerikler hazırlıyoruz.",
-        emptyCta: "BT hizmetlerini keşfedin",
+        emptyCta: "BT Hizmetlerini Keşfedin",
       },
       engineering: {
-        label: "Mühendislik",
-        emptyTitle: "Mühendislik yazıları çok yakında",
+        label: "MEP Hizmetleri",
+        emptyTitle: "MEP yazıları çok yakında",
         emptyDescription:
-          "MEP tasarımı, 3D koordinasyon ve devreye alma üzerine içerikler hazırlıyoruz. Bu arada mühendislik hizmetlerimizi keşfedin.",
-        emptyCta: "Mühendislik hizmetlerini keşfedin",
+          "MEP tasarımı, 3D koordinasyon ve devreye alma üzerine içerikler hazırlıyoruz. Bu arada MEP hizmetlerimizi keşfedin.",
+        emptyCta: "MEP Hizmetlerini Keşfedin",
       },
     },
     post: {
@@ -341,8 +352,7 @@ export const tr: Messages = {
       relatedLabel: "İlgili yazılar",
       relatedBadge: "Blog",
       relatedTitle: "Okumaya Devam Edin",
-      untranslated:
-        "Bu yazı henüz {language} dilinde mevcut değil. İngilizce sürümünü okuyorsunuz.",
+      untranslated: "Bu yazının henüz {language} sürümü yok. İngilizce sürümünü okuyorsunuz.",
       cta: {
         badge: "İletişim",
         title: "Birlikte Çalışalım",
@@ -372,9 +382,9 @@ export const tr: Messages = {
     },
     map: {
       title: "Harita — AID Varşova ofisi",
-      show: "Haritayı göster",
+      show: "Haritayı Göster",
       consent:
-        "Google Haritalar yüklenir. Google IP adresinizi alır ve çerez yerleştirebilir — ayrıntılar için <link>Gizlilik Politikası</link>.",
+        "Google Haritalar yüklenir. Google IP adresinizi alır ve çerez yerleştirebilir. Ayrıntılar için <link>Gizlilik Politikasına</link> bakın.",
     },
     cards: { office: "Ofis", phone: "Telefon", mail: "E-posta" },
     form: {
@@ -391,30 +401,30 @@ export const tr: Messages = {
         placeholder: "Bir hizmet seçin",
         it: { label: "BT Hizmetleri", description: "Otomasyon, izleme ve DevOps" },
         engineering: {
-          label: "Mühendislik",
+          label: "MEP Hizmetleri",
           description: "MEP tasarımı, koordinasyon ve devreye alma",
         },
       },
       message: "Size nasıl yardımcı olabiliriz?",
       messagePlaceholder: "İhtiyacınızı kısaca anlatın",
       privacy:
-        "<link>Gizlilik Politikası</link>'nı okudum; talebime yanıt verilmesi amacıyla bilgilerimin AID tarafından işlenmesini kabul ediyorum.",
-      submit: "Mesajı gönder",
+        "<link>Gizlilik Politikasını</link> okudum; talebime yanıt verilmesi amacıyla bilgilerimin AID tarafından işlenmesini kabul ediyorum.",
+      submit: "Mesajı Gönder",
       sending: "Gönderiliyor…",
       success: {
         title: "Teşekkürler!",
         message: "Mesajınız gönderildi. Genellikle bir iş günü içinde yanıt veriyoruz.",
-        again: "Yeni bir mesaj gönder",
+        again: "Yeni Mesaj Gönder",
       },
       errors: {
         summary: "Lütfen işaretli alanları kontrol edin.",
         failed: "Üzgünüz, mesajınız gönderilemedi. Lütfen bize {email} adresinden yazın.",
-        department: "Lütfen BT Hizmetleri veya Mühendislik'i seçin.",
+        department: "Lütfen bir hizmet seçin.",
         fullName: "Lütfen adınızı ve soyadınızı girin.",
         email: "Lütfen geçerli bir e-posta adresi girin.",
         phone: "Lütfen geçerli bir telefon numarası girin.",
         message: "Lütfen biraz daha ayrıntı verin (en az 10 karakter).",
-        privacy: "Lütfen Gizlilik Politikası'nı okuduğunuzu onaylayın.",
+        privacy: "Lütfen Gizlilik Politikasını okuduğunuzu onaylayın.",
       },
     },
   },
@@ -434,6 +444,6 @@ export const tr: Messages = {
     title: "Bu sayfa bulunamadı",
     metaTitle: "Sayfa bulunamadı",
     description: "Aradığınız sayfa taşınmış ya da artık mevcut olmayabilir.",
-    back: "Ana sayfaya dön",
+    back: "Ana Sayfaya Dön",
   },
 };

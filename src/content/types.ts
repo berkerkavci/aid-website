@@ -48,6 +48,15 @@ export type FeatureCard = {
 
 export type Stat = { value: string; label: string };
 
+export type ProjectStatus = "completed" | "ongoing";
+
+export type ProjectReference = { name: string; location: string; endUser: string };
+
+export type ProjectGroup = { id: ProjectStatus; label: string; projects: ProjectReference[] };
+
+/** Column titles of the project reference list. */
+export type ProjectColumns = { project: string; location: string; endUser: string };
+
 /** Icon names map to Phosphor icons in `src/components/ui/icon.tsx`. */
 export type IconName =
   | "robot"
@@ -67,7 +76,7 @@ export type IconName =
   | "files"
   | "magnifying-glass"
   | "wrench"
-  | "fire-extinguisher"
+  | "blueprint"
   | "cpu"
   | "buildings";
 

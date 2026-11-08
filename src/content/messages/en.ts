@@ -15,6 +15,8 @@ export const en = {
     footerTagline:
       "AID is a technology and engineering consultancy focused on optimizing IT operations and infrastructure.",
     offices: { warsaw: "Warsaw, Poland", ankara: "Ankara, Turkey" },
+    logoStory:
+      "The three forms in our logo read first as code brackets, for our IT services. Seen as layers, they stand for Alternative, Innovative and Design, and rise like a building for our MEP engineering.",
   },
 
   common: {
@@ -26,8 +28,8 @@ export const en = {
       footer: "Footer",
       onThisPage: "On this page",
       itServices: "IT Services",
-      engineering: "Engineering",
-      engineeringServices: "Engineering Services",
+      engineering: "MEP Services",
+      engineeringServices: "MEP Services",
       blog: "Blog",
       home: "Home",
       contact: "Contact Us",
@@ -49,19 +51,19 @@ export const en = {
   },
 
   home: {
-    title: "Software & Engineering",
+    title: "MEP & IT Services",
     subtitle: "One Company, Two Core Services",
     software: {
-      badge: "Software Solutions",
+      badge: "IT Services",
       description:
         "We simplify complex IT operations with smart monitoring, automation, and DevOps solutions—boosting efficiency and ensuring uptime.",
       cta: "Explore IT Services",
     },
     engineering: {
-      badge: "Engineering Solutions",
+      badge: "MEP Services",
       description:
-        "We simplify complex mechanical design with smart CAD modeling, prototyping, and engineering solutions.",
-      cta: "Explore Engineering Services",
+        "We simplify complex building systems with smart MEP design, clash-free BIM coordination, and end-to-end technical office engineering solutions.",
+      cta: "Explore MEP Services",
     },
   },
 
@@ -92,7 +94,7 @@ export const en = {
       badge: "About",
       title: "Explore Us",
       description:
-        "AID stands for Alternative, Innovative, Design. We combine IT operations and engineering expertise to deliver smart, scalable solutions. With offices in Poland and Turkey, we serve clients around the world by streamlining infrastructure for faster deployments, smarter decisions, and reliable performance.",
+        "We combine IT operations and engineering expertise to deliver smart, scalable solutions. With offices in Poland and Turkey, we serve clients around the world by streamlining infrastructure for faster deployments, smarter decisions, and reliable performance.",
       features: {
         automation: {
           title: "Automation",
@@ -165,7 +167,7 @@ export const en = {
 
   engineeringServices: {
     meta: {
-      title: "Engineering Services",
+      title: "MEP Services",
       description:
         "Building MEP (Mechanical, Electrical and Plumbing) system design, engineering and consultancy services delivered with cutting-edge technologies.",
     },
@@ -178,10 +180,11 @@ export const en = {
       secondaryCta: "Explore",
     },
     sectionNav: {
-      title: "Engineering Services",
+      title: "MEP Services",
       about: "About",
       services: "Services",
-      capabilities: "Capabilities",
+      capabilities: "Systems & Standards",
+      references: "References",
       blog: "Knowledge Hub",
       contact: "Contact",
     },
@@ -189,7 +192,7 @@ export const en = {
       badge: "About",
       title: "Explore Us",
       description:
-        "AID — short for Alternative, Innovative, Design — was founded in 2023 by B.Sc. Mechanical Engineer E. Güher KAVCI as a corporate entity. Although recently established, the management team brings extensive experience from years of collaboration in the international construction market. AID has rapidly earned industry recognition, with key personnel renowned for their outstanding professionalism. The company is respected among peers for its deep expertise, ethical practices, and a strong philosophy of collaborative business.",
+        "AID was founded in 2023 by B.Sc. Mechanical Engineer E. Güher KAVCI as a corporate entity. Although recently established, the management team brings extensive experience from years of collaboration in the international construction market. AID has rapidly earned industry recognition, with key personnel renowned for their outstanding professionalism. The company is respected among peers for its deep expertise, ethical practices, and a strong philosophy of collaborative business.",
       features: {
         design: {
           title: "MEP System Design",
@@ -256,15 +259,15 @@ export const en = {
           title: "Commissioning Services",
           description: "Testing and commissioning to verify every system performs as designed.",
         },
-        fireProtection: {
-          title: "Fire Protection System Design",
-          description: "Fire suppression and protection systems designed to NFPA and EN standards.",
+        systemDesign: {
+          title: "MEP System Design",
+          description:
+            "HVAC, plumbing and fire protection systems, from concept to detailed design.",
         },
       },
     },
     capabilities: {
-      badge: "References",
-      title: "AID MEP Team Capabilities",
+      title: "Systems We Design, Standards We Work To",
       standards: {
         title: "Design Standards",
         intro:
@@ -302,6 +305,15 @@ export const en = {
         ],
       },
     },
+    references: {
+      badge: "References",
+      title: "Proven on Critical Projects Worldwide",
+      description:
+        "MEP engineering and design work on diplomatic, defense and government projects across four continents.",
+      statusLabel: "Project status",
+      status: { completed: "Completed", ongoing: "Ongoing" },
+      columns: { project: "Project", location: "Location", endUser: "End User" },
+    },
     blog: {
       badge: "Blog",
       title: "Knowledge Hub",
@@ -336,7 +348,7 @@ export const en = {
         emptyCta: "Explore IT services",
       },
       engineering: {
-        label: "Engineering",
+        label: "MEP Services",
         emptyTitle: "Engineering articles are coming soon",
         emptyDescription:
           "We're preparing insights on MEP design, 3D coordination and commissioning. In the meantime, explore our engineering services.",
@@ -399,7 +411,7 @@ export const en = {
         placeholder: "Select a service",
         it: { label: "IT Services", description: "Automation, monitoring & DevOps" },
         engineering: {
-          label: "Engineering",
+          label: "MEP Services",
           description: "MEP design, coordination & commissioning",
         },
       },
@@ -417,7 +429,7 @@ export const en = {
       errors: {
         summary: "Please check the highlighted fields.",
         failed: "Sorry, your message could not be sent. Please e-mail us at {email}.",
-        department: "Please choose IT Services or Engineering.",
+        department: "Please choose IT Services or MEP Services.",
         fullName: "Please enter your full name.",
         email: "Please enter a valid e-mail address.",
         phone: "Please enter a valid phone number.",

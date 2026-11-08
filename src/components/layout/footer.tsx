@@ -6,6 +6,7 @@ import {
   footerNavigation,
   getContactEmail,
   siteConfig,
+  telHref,
   type SiteSection,
 } from "@/config/site";
 import type { IconName } from "@/content/types";
@@ -19,6 +20,8 @@ type ContactItem = {
   external?: boolean;
   /** Phone numbers and e-mail addresses always read left-to-right (also on Arabic pages). */
   ltr?: boolean;
+  /** Small text after the label, e.g. the business line a phone number belongs to. */
+  note?: string;
 };
 
 function Divider() {
@@ -26,16 +29,28 @@ function Divider() {
 }
 
 export async function Footer({ section = "general" }: { section?: SiteSection }) {
-  const { site, common } = await getMessages();
+  const { site, common, home } = await getMessages();
   const email = getContactEmail(section);
+  // Service pages list only their own numbers; everywhere else each number shows its team.
+  const phoneGroups = [
+    ...(section === "it"
+      ? []
+      : [{ team: home.engineering.badge, phones: contactInfo.phones.engineering }]),
+    ...(section === "engineering"
+      ? []
+      : [{ team: home.software.badge, phones: contactInfo.phones.it }]),
+  ];
   const contactItems: ContactItem[] = [
     { icon: "envelope", label: email, href: `mailto:${email}`, ltr: true },
-    ...contactInfo.phones.map((phone) => ({
-      icon: "phone" as const,
-      label: phone,
-      href: `tel:${phone}`,
-      ltr: true,
-    })),
+    ...phoneGroups.flatMap(({ team, phones }) =>
+      phones.map((phone) => ({
+        icon: "phone" as const,
+        label: phone,
+        href: telHref(phone),
+        ltr: true,
+        note: section === "general" ? team : undefined,
+      })),
+    ),
     ...contactInfo.offices.map((office) => ({
       icon: "map-pin" as const,
       label: site.offices[office.key],
@@ -87,11 +102,14 @@ export async function Footer({ section = "general" }: { section?: SiteSection })
                     {...(item.external && { target: "_blank", rel: "noopener noreferrer" })}
                   >
                     <Icon name={item.icon} className="size-6 shrink-0" />
-                    <span
-                      dir={item.ltr ? "ltr" : undefined}
-                      className="min-w-0 [overflow-wrap:anywhere]"
-                    >
-                      {item.label}
+                    <span className="flex min-w-0 flex-wrap items-baseline gap-x-2">
+                      <span
+                        dir={item.ltr ? "ltr" : undefined}
+                        className="min-w-0 [overflow-wrap:anywhere]"
+                      >
+                        {item.label}
+                      </span>
+                      {item.note && <span className="text-sm text-white/60">{item.note}</span>}
                     </span>
                   </a>
                 </li>

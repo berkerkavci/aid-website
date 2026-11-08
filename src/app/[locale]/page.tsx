@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
   const { home, common } = await getMessages();
   const content = getHomeContent(home);
-  const [software, engineering] = content.columns;
+  const [engineering, software] = content.columns;
 
   return (
     <main className="relative isolate flex min-h-svh items-center justify-center overflow-hidden bg-hero section-x py-24">
@@ -43,15 +43,19 @@ export default async function HomePage() {
           <p className="type-lead">{content.subtitle}</p>
         </Reveal>
 
-        <div className="flex w-full flex-col items-center gap-10 desktop:flex-row desktop:items-start desktop:justify-center desktop:gap-3">
-          {software && <ServiceColumn column={software} delay={0.15} />}
+        <div className="flex w-full flex-col items-center gap-10 desktop:flex-row desktop:items-stretch desktop:justify-center desktop:gap-3">
+          {engineering && (
+            <ServiceColumn column={engineering} matchWidthOf={software?.cta.label} delay={0.15} />
+          )}
           <Reveal
             immediate
             delay={0.25}
             aria-hidden
-            className="h-px w-full shrink-0 bg-white/50 desktop:h-[270px] desktop:w-px"
+            className="h-px w-full shrink-0 bg-white/50 desktop:h-auto desktop:w-px"
           />
-          {engineering && <ServiceColumn column={engineering} delay={0.3} />}
+          {software && (
+            <ServiceColumn column={software} matchWidthOf={engineering?.cta.label} delay={0.3} />
+          )}
         </div>
       </div>
 
@@ -63,7 +67,16 @@ export default async function HomePage() {
   );
 }
 
-function ServiceColumn({ column, delay }: { column: HomeServiceColumn; delay: number }) {
+function ServiceColumn({
+  column,
+  matchWidthOf,
+  delay,
+}: {
+  column: HomeServiceColumn;
+  /** The other column's button label, so both buttons are equally wide. */
+  matchWidthOf?: string;
+  delay: number;
+}) {
   return (
     <Reveal
       immediate
@@ -72,7 +85,13 @@ function ServiceColumn({ column, delay }: { column: HomeServiceColumn; delay: nu
     >
       <Badge variant="glass">{column.badge}</Badge>
       <p className="max-w-[520px] type-lead text-white">{column.description}</p>
-      <ButtonLink href={column.cta.href} icon="arrow-right">
+      {/* Sits at the bottom of the column, so the two buttons line up; long labels may wrap. */}
+      <ButtonLink
+        href={column.cta.href}
+        icon="arrow-right"
+        matchWidthOf={matchWidthOf}
+        className="max-w-full shrink whitespace-normal desktop:mt-auto"
+      >
         {column.cta.label}
       </ButtonLink>
     </Reveal>

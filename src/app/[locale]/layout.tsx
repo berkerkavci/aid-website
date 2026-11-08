@@ -71,7 +71,7 @@ const organizationJsonLd = {
   url: siteUrl,
   logo: `${siteUrl}/images/favicon-light.png`,
   email: contactInfo.emails.it,
-  telephone: contactInfo.phones[0],
+  telephone: contactInfo.phones.it[0],
   address: contactInfo.offices.map((office) => ({
     "@type": "PostalAddress",
     streetAddress: office.address,
